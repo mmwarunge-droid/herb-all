@@ -1,144 +1,56 @@
-import { defineCollection } from 'astro:content'
-import { glob } from 'astro/loaders'
-import { z } from 'astro/zod'
-
-// Blog: dated articles with optional image, author and cross-links.
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      // Optional SEO `<title>` / headline split: `title` stays the document
-      // title and JSON-LD headline, `h1` overrides the visible on-page H1.
-      h1: z.string().optional(),
-      summary: z.string(),
-      date: z.coerce.date().optional(),
-      update: z.coerce.date().optional(),
-      image: image().optional(),
-      author: z.string().optional(),
-      similarPosts: z.array(z.string()).optional(),
-      // Key takeaways rendered as a highlighted box at the top of the article.
-      takeaways: z.array(z.string()).default([]),
-      // Drafts are excluded from the blog index and from the generated pages.
-      draft: z.boolean().default(false),
-      // Opt a single post out of the auto-inserted mid-article CTA.
-      hideInlineCta: z.boolean().default(false),
-      // Override the copy and the destination of that CTA on a single post.
-      cta: z
-        .object({
-          title: z.string().optional(),
-          text: z.string().optional(),
-          label: z.string().optional(),
-          href: z.string().optional(),
-        })
-        .optional(),
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
+import { glob } from 'astro/loaders';
+const base = {
+  title: z.string(),
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  description: z.string(),
+  category: z.string(),
+  image: z.string().default('/images/botanical.webp'),
+  imageAlt: z.string(),
+  featured: z.boolean().default(false),
+  tags: z.array(z.string()).default([]),
+  draft: z.boolean().default(false),
+};
+const products = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/products' }),
+  schema: z
+    .object({
+      ...base,
+      botanicalName: z.string(),
+      ingredient: z.string(),
+      ingredients: z.array(z.string()),
+      preparation: z.string(),
+      cautions: z.array(z.string()),
+      price: z.number().nonnegative().optional(),
+      currency: z.string().length(3).optional(),
+    })
+    .refine((data) => data.price === undefined || !!data.currency, {
+      message: 'A price requires an ISO currency code',
     }),
-})
-
-// Case studies: customer / project stories with optional logo + sector metadata.
-const clientCases = defineCollection({
-  loader: glob({
-    pattern: '**/*.{md,mdx}',
-    base: './src/content/client-cases',
-  }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      summary: z.string(),
-      sector: z.string().optional(),
-      teamSize: z.string().optional(),
-      logo: image().optional(),
-    }),
-})
-
-// Product documentation, structured in a sidebar via the `order` field.
-const docs = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/docs' }),
+});
+const seedlings = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/seedlings' }),
   schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    order: z.number().optional(),
-    // Set to false on titles that already name the brand, so the document
-    // title is not suffixed with it twice.
-    titleBrand: z.boolean().default(true),
+    ...base,
+    botanicalName: z.string(),
+    climate: z.string(),
+    maturity: z.string(),
+    spacing: z.string(),
+    care: z.array(z.string()),
   }),
-})
-
-// How-to guides. Sit alongside docs in the sidebar.
-const guides = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/guides' }),
+});
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
   schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    order: z.number().optional(),
-    // Set to false on titles that already name the brand, so the document
-    // title is not suffixed with it twice.
-    titleBrand: z.boolean().default(true),
+    ...base,
+    publishedDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string(),
+    references: z
+      .array(z.object({ title: z.string(), url: z.url() }))
+      .default([]),
+    editorialReview: z.boolean().default(true),
   }),
-})
-
-// Developer docs: separate /developers section with its own top nav.
-const developers = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/developers' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    order: z.number().optional(),
-    // Set to false on titles that already name the brand, so the document
-    // title is not suffixed with it twice.
-    titleBrand: z.boolean().default(true),
-  }),
-})
-
-// API reference categories: group API entities in the sidebar.
-const apiCategories = defineCollection({
-  loader: glob({
-    pattern: '**/*.{md,mdx}',
-    base: './src/content/api-categories',
-  }),
-  schema: z.object({
-    title: z.string(),
-    order: z.number().optional(),
-  }),
-})
-
-// API entities: individual entity pages shown under their category in the sidebar.
-const api = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/api' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    entity: z.string().optional(),
-    category: z.string().optional(),
-    titleBrand: z.boolean().default(true),
-  }),
-})
-
-// UI strings shared across layouts (header, footer, sidebars, CTAs).
-const translations = defineCollection({
-  loader: glob({ pattern: '**/*.yaml', base: './src/content/translations' }),
-})
-
-// Top-level static pages (home, features, pricing, legal, 404, etc.).
-// Each slug becomes `/<lang>/<slug>`; the slug `index` becomes `/<lang>`.
-const pages = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/pages' }),
-  schema: z.object({
-    title: z.string(),
-    // Meta description, rendered by `BaseLayout` and the social preview.
-    description: z.string().optional(),
-    titleBrand: z.boolean().default(true),
-  }),
-})
-
-export const collections = {
-  blog,
-  'client-cases': clientCases,
-  docs,
-  guides,
-  developers,
-  'api-categories': apiCategories,
-  api,
-  translations,
-  pages,
-}
+});
+export const collections = { products, seedlings, articles };

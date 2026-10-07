@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Catalogue from '../../components/Catalogue.astro';
+import { publishedArticles } from '../../utils/content';
+const entries = await publishedArticles();
+---
+
+<BaseLayout
+  title="Curiosity, naturally."
+  description="Practical guides to plants, herbal preparation and growing — one thoughtful guide at a time."
+>
+  <header class="container page-heading">
+    <p class="eyebrow">Knowledge hub</p>
+    <h1>Curiosity, naturally.</h1>
+    <p>
+      Practical guides to plants, herbal preparation and growing — one
+      thoughtful guide at a time.
+    </p>
+  </header>
+  <section class="container catalogue-section">
+    <Catalogue entries={entries} kind="articles" />
+  </section>
+</BaseLayout>

@@ -1,17 +1,23 @@
 ---
-import { getCollection, render } from 'astro:content'
-import BaseLayout from '../layouts/BaseLayout.astro'
-import { mdxComponents } from '../components'
-import { getLangFromUrl } from '../utils/i18n'
-
-const lang = getLangFromUrl(Astro.url)
-const entries = await getCollection('pages', (e) => e.id === `404/${lang}`)
-const entry = entries[0]
-const { Content } = await render(entry)
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title={entry.data.title} titleBrand={entry.data.titleBrand} description={entry.data.description}>
-  <div class="w-full flex-1 flex flex-col items-center justify-center text-center px-6">
-    <Content components={mdxComponents} />
-  </div>
+<BaseLayout
+  title="Page not found"
+  description="This Herb-All page could not be found. Explore the catalogue or knowledge hub."
+  noindex
+>
+  <section class="container">
+    <p class="eyebrow">404 · A different path</p>
+    <h1>This page hasn’t taken root.</h1>
+    <p>Try the herbal catalogue, seedlings or knowledge hub.</p>
+    <div class="actions">
+      <a class="button" href="/">
+        Back to home
+      </a>
+      <a class="button outline" href="/products/">
+        Explore products
+      </a>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Catalogue from '../../components/Catalogue.astro';
+import { publishedSeedlings } from '../../utils/content';
+const entries = await publishedSeedlings();
+---
+
+<BaseLayout
+  title="A fresh start for your growing plans."
+  description="Explore fruit tree and useful plant seedlings. Discover a plant, learn what to ask about growing it, and enquire about current availability."
+>
+  <header class="container page-heading">
+    <p class="eyebrow">Herb-All catalogue</p>
+    <h1>A fresh start for your growing plans.</h1>
+    <p>
+      Explore fruit tree and useful plant seedlings. Discover a plant, learn
+      what to ask about growing it, and enquire about current availability.
+    </p>
+  </header>
+  <section class="container catalogue-section">
+    <Catalogue entries={entries} kind="seedlings" />
+  </section>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Catalogue from '../../../components/Catalogue.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { publishedArticles, slugify } from '../../../utils/content';
+export async function getStaticPaths() {
+  const entries = await publishedArticles();
+  const values = [...new Set(entries.flatMap((e) => e.data.tags))];
+  return values.map((value) => ({
+    params: { slug: slugify(value) },
+    props: {
+      value,
+      entries: entries.filter((e) => e.data.tags.includes(value)),
+    },
+  }));
+}
+const { value, entries } = Astro.props;
+---
+
+<BaseLayout
+  title={`${value} guides`}
+  description={`Explore Herb-All articles about ${value.toLowerCase()} and thoughtful plant knowledge.`}
+>
+  <header class="container page-heading">
+    <Breadcrumb category="Learn" categoryUrl="/learn/" title={value} />
+    <p class="eyebrow">Browse by tag</p>
+    <h1>{value}</h1>
+  </header>
+  <section class="container catalogue-section">
+    <Catalogue entries={entries} kind="articles" />
+  </section>
+</BaseLayout>

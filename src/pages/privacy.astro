@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Privacy"
+  description="How Herb-All handles browsing and contact enquiries."
+>
+  <header class="container page-heading">
+    <p class="eyebrow">Herb-All · Good to know</p>
+    <h1>Privacy</h1>
+  </header>
+  <section class="container">
+    <div class="prose">
+      <p class="sample-note">
+        Starter copy requiring owner and legal review before commercial launch.
+        This is not a jurisdiction-specific legal document.
+      </p>
+      <h2>Browsing this website</h2>
+      <p>
+        Herb-All does not currently use analytics, advertising cookies, customer
+        accounts or an online checkout. The website host may process technical
+        request information, such as IP addresses and server logs, to deliver
+        and protect the site. The owner must confirm the chosen hosting
+        provider’s policies before launch.
+      </p>
+      <h2>Contacting us</h2>
+      <p>
+        {site.netlifyFormEnabled
+          ? 'The contact form submits your name, email address and message to Netlify Forms for Herb-All to review. Netlify processes and stores the submission. Do not send sensitive health information.'
+          : 'The enquiry form creates an email in your own email application. It does not submit to a website backend.'}{' '}
+        When you send an email or contact us by telephone or WhatsApp, the
+        relevant service processes that communication and Herb-All receives the
+        details you choose to share.
+      </p>
+      <h2>Information you share</h2>
+      <p>
+        Do not send medical records or sensitive health information. The owner
+        must confirm retention periods, contact details, applicable rights and
+        the process for privacy requests before commercial launch.
+      </p>
+      <h2>External services</h2>
+      <p>
+        Linked social platforms have their own privacy policies. No analytics or
+        advertising scripts are installed.
+      </p>
+      <p>
+        For privacy questions, <a href="/contact/">contact Herb-All</a> when the
+        direct contact details become available.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

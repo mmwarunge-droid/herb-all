@@ -1,0 +1,56 @@
+---
+import Picture from './Picture.astro';
+import { readingTime } from '../utils/content';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  entry:
+    | CollectionEntry<'products'>
+    | CollectionEntry<'seedlings'>
+    | CollectionEntry<'articles'>;
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const kind = entry.collection;
+const url = `/${kind === 'articles' ? 'learn' : kind}/${d.slug}/`;
+---
+
+<article
+  class="card"
+  data-item
+  data-search={`${d.title} ${d.description} ${d.tags.join(' ')} ${'ingredient' in d ? d.ingredient : ''}`.toLowerCase()}
+  data-category={d.category}
+  data-ingredient={'ingredient' in d ? d.ingredient : ''}
+  data-tags={JSON.stringify(d.tags)}
+>
+  <a href={url} class="card-image" tabindex="-1" aria-hidden="true">
+    <Picture src={d.image} alt={d.imageAlt} />
+    <span class="image-label">
+      {kind === 'articles' ? 'Field notes' : 'Sample catalogue'}
+    </span>
+  </a>
+  <div class="card-body">
+    <p class="eyebrow">{d.category}</p>
+    <h3>
+      <a href={url}>{d.title}</a>
+    </h3>
+    {'botanicalName' in d && <p class="botanical">{d.botanicalName}</p>}
+    <p>{d.description}</p>
+    {'climate' in d && (
+      <p class="card-meta">
+        {d.climate}
+        <br />
+        {d.maturity}
+      </p>
+    )}
+    {kind === 'articles' && (
+      <p class="card-meta">{readingTime(entry.body)} min read</p>
+    )}
+    <a class="text-link" href={url}>
+      {kind === 'products'
+        ? 'View product'
+        : kind === 'seedlings'
+          ? 'Explore seedling'
+          : 'Read article'}
+    </a>
+  </div>
+</article>

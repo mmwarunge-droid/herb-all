@@ -26,3 +26,8 @@ AGENTS.md
 # MCP cache
 .mcp-web-inspector
 .playwright-mcp
+
+# QA output
+playwright-report/
+test-results/
+.sites-runtime/

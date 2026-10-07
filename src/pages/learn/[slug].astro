@@ -1,0 +1,119 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Picture from '../../components/Picture.astro';
+import MedicalDisclaimer from '../../components/MedicalDisclaimer.astro';
+import JsonLd from '../../components/JsonLd.astro';
+import Card from '../../components/Card.astro';
+import { publishedArticles, slugify, readingTime } from '../../utils/content';
+import { site } from '../../config/site';
+export async function getStaticPaths() {
+  return (await publishedArticles()).map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const related = (await publishedArticles())
+  .filter((e) => e.id !== entry.id)
+  .sort(
+    (a, b) =>
+      Number(b.data.category === d.category) -
+      Number(a.data.category === d.category),
+  )
+  .slice(0, 3);
+const date = (d: Date) =>
+  d.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<BaseLayout title={d.title} description={d.description} image={d.image} article>
+  <article class="container detail">
+    <Breadcrumb category="Learn" categoryUrl="/learn/" title={d.title} />
+    <header class="article-header">
+      <p class="eyebrow">{d.category}</p>
+      <h1>{d.title}</h1>
+      <p>{d.description}</p>
+      <p class="article-meta">
+        By {d.author} ·{' '}
+        <time datetime={d.publishedDate.toISOString()}>
+          {date(d.publishedDate)}
+        </time>{' '}
+        · {readingTime(entry.body)} min read
+      </p>
+      {d.updatedDate && (
+        <p class="article-meta">
+          Updated{' '}
+          <time datetime={d.updatedDate.toISOString()}>
+            {date(d.updatedDate)}
+          </time>
+        </p>
+      )}
+    </header>
+    <div class="prose">
+      <Picture src={d.image} alt={d.imageAlt} eager class="article-cover" />
+      <Content />
+      <h2>References & editorial status</h2>
+      {d.references.length ? (
+        <ul>
+          {d.references.map((r) => (
+            <li>
+              <a href={r.url} rel="noopener noreferrer">
+                {r.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>
+          Scientific references have not yet been supplied. This introductory
+          copy makes no treatment claims. Product-specific scientific and
+          nutritional statements require editorial review before publication.
+        </p>
+      )}
+      {d.editorialReview && (
+        <p class="sample-note">
+          Starter educational copy: botanical details and any future scientific
+          claims need owner and qualified editorial review.
+        </p>
+      )}
+      <div class="taxonomy">
+        <a href={`/learn/category/${slugify(d.category)}/`}>{d.category}</a>
+        {d.tags.map((tag) => (
+          <a href={`/learn/tag/${slugify(tag)}/`}>#{tag}</a>
+        ))}
+      </div>
+      <MedicalDisclaimer />
+    </div>
+  </article>
+  <section class="container">
+    <div class="section-head">
+      <h2>Keep learning.</h2>
+    </div>
+    <div class="card-grid">
+      {related.map((entry) => (
+        <Card entry={entry} />
+      ))}
+    </div>
+  </section>
+  <JsonLd
+    data={{
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: d.title,
+      description: d.description,
+      image: new URL(d.image, site.siteUrl).href,
+      url: new URL(Astro.url.pathname, site.siteUrl).href,
+      datePublished: d.publishedDate.toISOString(),
+      dateModified: (d.updatedDate || d.publishedDate).toISOString(),
+      author: { '@type': 'Organization', name: site.siteName },
+    }}
+  />
+</BaseLayout>

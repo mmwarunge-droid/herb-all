@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Contact & order enquiries"
+  description="Contact Herb-All about herbal products, seedlings, ingredients and availability. Order by direct enquiry, with no online checkout."
+>
+  <header class="container page-heading">
+    <p class="eyebrow">Let’s talk plants</p>
+    <h1>A question is a good place to start.</h1>
+    <p>
+      Ask about a herbal product, a seedling or current availability. There’s no
+      online checkout — confirm the details with us before placing an order.
+    </p>
+  </header>
+  <section class="container contact-grid">
+    <div>
+      <h2>Get in touch.</h2>
+      <ul class="contact-methods">
+        {site.email && (
+          <li>
+            <strong>Email</strong>
+            <br />
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </li>
+        )}
+        {site.phone && (
+          <li>
+            <strong>Telephone</strong>
+            <br />
+            <a href={`tel:${site.phone.replace(/[^+0-9]/g, '')}`}>
+              {site.phone}
+            </a>
+          </li>
+        )}
+        {site.whatsapp && (
+          <li>
+            <strong>WhatsApp</strong>
+            <br />
+            <a href={`https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}`}>
+              Start a WhatsApp conversation
+            </a>
+          </li>
+        )}
+      </ul>
+      {!site.email && !site.phone && !site.whatsapp && (
+        <p class="sample-note">
+          Our direct contact channels are being set up. Please check back for
+          ordering and availability enquiries.
+        </p>
+      )}
+      <SocialLinks />
+      <p class="muted">
+        For your privacy, please don’t send medical records or sensitive health
+        information. Herb-All cannot give individual medical advice.
+      </p>
+    </div>
+    <div class="contact-form">
+      <h2>Your enquiry</h2>
+      <p>
+        {site.netlifyFormEnabled
+          ? 'Send an availability or product enquiry.'
+          : 'Prepare an email with the details you’d like us to confirm.'}
+      </p>
+      <form
+        id="enquiry-form"
+        data-email={site.email}
+        data-mode={site.netlifyFormEnabled ? 'netlify' : 'email'}
+        name="herb-all-enquiry"
+        method={site.netlifyFormEnabled ? 'POST' : 'GET'}
+        action={site.netlifyFormEnabled ? '/contact/thanks/' : undefined}
+        data-netlify={site.netlifyFormEnabled ? 'true' : undefined}
+        data-netlify-honeypot={
+          site.netlifyFormEnabled ? 'bot-field' : undefined
+        }
+      >
+        {site.netlifyFormEnabled && (
+          <>
+            <input type="hidden" name="form-name" value="herb-all-enquiry" />
+            <p hidden>
+              <label for="bot-field">Leave this field empty</label>
+              <input
+                id="bot-field"
+                name="bot-field"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </p>
+          </>
+        )}
+        <div>
+          <label for="name">Your name</label>
+          <input
+            id="name"
+            name="name"
+            required
+            autocomplete="name"
+            maxlength="100"
+          />
+        </div>
+        <div>
+          <label for="email">Your email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            maxlength="254"
+          />
+        </div>
+        <div>
+          <label for="item">Product or seedling (optional)</label>
+          <input id="item" name="item" maxlength="150" />
+        </div>
+        <div>
+          <label for="message">What would you like to know?</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            maxlength="3000"
+          ></textarea>
+        </div>
+        <p class="muted">
+          {site.netlifyFormEnabled
+            ? 'Your enquiry is processed by Netlify Forms and received by Herb-All. Please do not include sensitive health information.'
+            : 'This form opens your email application; it does not send or store information on this website.'}{' '}
+          <a href="/privacy/">Privacy information</a>.
+        </p>
+        <button
+          class="button"
+          type="submit"
+          disabled={!site.email && !site.netlifyFormEnabled}
+        >
+          {site.netlifyFormEnabled
+            ? 'Send enquiry'
+            : site.email
+              ? 'Open email enquiry'
+              : 'Email enquiries coming soon'}
+        </button>
+        <p id="enquiry-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#enquiry-form');
+  if (form) {
+    const item = form.querySelector<HTMLInputElement>('#item')!;
+    item.value = (new URLSearchParams(location.search).get('item') || '').slice(
+      0,
+      150,
+    );
+    if (form.dataset.mode !== 'netlify')
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = form.dataset.email;
+        if (!email) return;
+        const d = new FormData(form);
+        const body = `Hello Herb-All,\n\nName: ${d.get('name')}\nReply email: ${d.get('email')}\nEnquiry: ${d.get('item') || 'General enquiry'}\n\n${d.get('message')}`;
+        location.href = `mailto:${email}?subject=${encodeURIComponent('Herb-All enquiry: ' + String(d.get('item') || 'General'))}&body=${encodeURIComponent(body)}`;
+        document.querySelector('#enquiry-status')!.textContent =
+          'Your email application will open. Review and send your message there.';
+      });
+  }
+</script>

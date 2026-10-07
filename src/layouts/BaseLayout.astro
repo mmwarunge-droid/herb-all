@@ -1,106 +1,124 @@
 ---
-import TopNav from '../components/TopNav.astro'
-import TopNavDev from '../components/TopNavDev.astro'
-import Footer from '../components/Footer.astro'
-import SocialPreview from '../components/SocialPreview.astro'
-import config from '../../website.config'
-import { getLangFromUrl } from '../utils/i18n'
-import { getCanonicalPath } from '../utils/getCanonicalPath'
-import '../styles/global.css'
-
+import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import JsonLd from '../components/JsonLd.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site, socialLinks } from '../config/site';
 interface Props {
-  title: string
-  /**
-   * Meta description of the page, also reused for the social preview. Comes
-   * from the content: `summary` on a blog post, `description` on a doc, a
-   * guide or a `pages` entry.
-   */
-  description?: string
-  /** `article` on blog posts, `website` everywhere else. */
-  ogType?: 'website' | 'article'
-  /** Appends ` | <brand>` to the document title. */
-  titleBrand?: boolean
-  staticHeader?: boolean
-  image?: ImageMetadata
-  /**
-   * Bottom padding on the main content area. Defaults to true so content
-   * pages (home, features, blog, ...) breathe before the footer. Docs-style
-   * layouts with a side rail pass `false` so the sidebar stays flush.
-   */
-  bottomSpace?: boolean
+  title: string;
+  description: string;
+  image?: string;
+  article?: boolean;
+  noindex?: boolean;
 }
-
-const {
-  title,
-  description,
-  ogType = 'website',
-  titleBrand = true,
-  staticHeader = false,
-  image,
-  bottomSpace = true,
-} = Astro.props
-// Very short titles ("Blog", "Introduction") need the brand appended to read
-// as a full document title. Titles that already name it opt out.
-const pageTitle = titleBrand ? `${title} | ${config.siteName}` : title
-const currentPath = Astro.url.pathname
-const lang = getLangFromUrl(Astro.url)
-const isDevSection = currentPath.includes('/developers') || currentPath.includes('/api')
-const canonicalPath = getCanonicalPath(currentPath)
-const hasLangPrefix = canonicalPath.startsWith(`/${lang}`)
-const altPath = (l: string) => hasLangPrefix ? canonicalPath.replace(`/${lang}`, `/${l}`) : canonicalPath
-
-/** Absolute URL of a site-relative path, for the tags that require one. */
-const absoluteUrl = (path: string) => new URL(path, Astro.site).href
-const canonicalUrl = absoluteUrl(canonicalPath)
-const mdAlternateUrl = absoluteUrl(`${canonicalPath}.md`)
+const links = [
+  ['Home', '/'],
+  ['Herbal Products', '/products/'],
+  ['Seedlings', '/seedlings/'],
+  ['Learn', '/learn/'],
+  ['About', '/about/'],
+];
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#153c2e" />
+    <SEO {...Astro.props} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalUrl} />
-    {hasLangPrefix && config.langs.map((l) => (
-      <link rel="alternate" hreflang={l} href={absoluteUrl(altPath(l))} />
-    ))}
-    {hasLangPrefix && (
-      <link rel="alternate" hreflang="x-default" href={absoluteUrl(altPath(config.defaultLang))} />
-    )}
-    <link
-      rel="alternate"
-      type="text/markdown"
-      href={mdAlternateUrl}
-    />
-    <SocialPreview
-      title={pageTitle}
-      description={description}
-      image={image}
-      type={ogType}
-      url={canonicalUrl}
-      lang={lang}
-    />
-    <!--
-      Drop analytics / chat widgets here. Guard with `import.meta.env.PROD`
-      so they never load in local dev. Example:
-
-      {import.meta.env.PROD && (
-        <script defer src="https://analytics.example.com/script.js"></script>
-      )}
-    -->
   </head>
-  <body class="min-h-dvh flex flex-col">
-    {isDevSection ? <TopNavDev /> : <TopNav staticHeader={staticHeader} />}
-    <main class:list={['flex-1 flex flex-col items-center', bottomSpace && 'pb-24']}>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="announcement">Rooted in nature. Shared with everyone.</div>
+    <header class="header">
+      <div class="container nav-shell">
+        <a class="brand" href="/" aria-label="Herb-All home">
+          <span class="brand-mark" aria-hidden="true">
+            ✳
+          </span>{' '}
+          herb-all<span class="brand-dot">.</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          {links.map(([label, url]) => (
+            <a
+              href={url}
+              aria-current={Astro.url.pathname === url ? 'page' : undefined}
+            >
+              {label}
+            </a>
+          ))}
+          <a href="/contact/" class="button small">
+            Get in touch
+          </a>
+        </nav>
+        <details class="mobile-nav">
+          <summary>Menu</summary>
+          <nav aria-label="Mobile navigation">
+            {[...links, ['Contact', '/contact/']].map(([label, url]) => (
+              <a href={url}>{label}</a>
+            ))}
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main">
       <slot />
     </main>
-    <Footer />
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="/">
+            ✳ herb-all.
+          </a>
+          <p>
+            Plants. Wellness. Knowledge.
+            <br />
+            Herbs for all, a little closer to nature.
+          </p>
+          <SocialLinks />
+        </div>
+        <div>
+          <strong>Explore</strong>
+          <a href="/products/">Herbal products</a>
+          <a href="/seedlings/">Seedlings</a>
+          <a href="/learn/">Knowledge hub</a>
+        </div>
+        <div>
+          <strong>Herb-All</strong>
+          <a href="/about/">Our story</a>
+          <a href="/contact/">Contact & enquiries</a>
+          <a href="/disclaimer/">Health information policy</a>
+        </div>
+        <div>
+          <strong>Good to know</strong>
+          <p>
+            Educational information, not medical advice. Catalogue samples: ask
+            us about ingredients and availability.
+          </p>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} Herb-All</span>
+        <span>Naturally better living.</span>
+      </div>
+    </footer>
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: site.organization.name,
+        url: site.siteUrl,
+        ...(site.email ? { email: site.email } : {}),
+        ...(socialLinks.length
+          ? { sameAs: socialLinks.map((l) => l.url) }
+          : {}),
+      }}
+    />
   </body>
 </html>
-
-<script>
-  import '../scripts/mermaid.ts'
-</script>

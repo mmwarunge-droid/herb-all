@@ -1,0 +1,47 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  eager?: boolean;
+  class?: string;
+}
+const { src, alt, eager = false, class: className } = Astro.props;
+const responsive = [
+  '/images/botanical.webp',
+  '/images/tea.webp',
+  '/images/seedlings.webp',
+].includes(src);
+const srcset = responsive
+  ? `${src.replace('.webp', '-small.webp')} 600w, ${src} 1200w`
+  : undefined;
+---
+
+<img
+  src={src}
+  srcset={srcset}
+  sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 600px"
+  alt={alt}
+  width="1000"
+  height="750"
+  loading={eager ? 'eager' : 'lazy'}
+  fetchpriority={eager ? 'high' : 'auto'}
+  decoding="async"
+  class={className}
+  data-fallback="/images/botanical.webp"
+/>
+<script>
+  document
+    .querySelectorAll<HTMLImageElement>('img[data-fallback]')
+    .forEach((img) => {
+      const fallback = () => {
+        const src = img.dataset.fallback;
+        if (src && !img.src.endsWith(src)) {
+          img.removeAttribute('srcset');
+          img.src = src;
+          img.alt = 'Botanical placeholder photograph of tea leaves';
+        }
+      };
+      img.addEventListener('error', fallback, { once: true });
+      if (img.complete && !img.naturalWidth) fallback();
+    });
+</script>

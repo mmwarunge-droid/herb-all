@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Catalogue from '../../components/Catalogue.astro';
+import { publishedProducts } from '../../utils/content';
+const entries = await publishedProducts();
+---
+
+<BaseLayout
+  title="Herbal products"
+  description="Explore herbal teas, single-herb products and botanical blends. Search our sample catalogue, then enquire about the full ingredients and availability."
+>
+  <header class="container page-heading">
+    <p class="eyebrow">Herb-All catalogue</p>
+    <h1>Herbal products</h1>
+    <p>
+      Explore herbal teas, single-herb products and botanical blends. Search our
+      sample catalogue, then enquire about the full ingredients and
+      availability.
+    </p>
+  </header>
+  <section class="container catalogue-section">
+    <Catalogue entries={entries} kind="products" />
+  </section>
+</BaseLayout>

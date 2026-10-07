@@ -1,0 +1,128 @@
+---
+import Card from './Card.astro';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  entries: Array<
+    | CollectionEntry<'products'>
+    | CollectionEntry<'seedlings'>
+    | CollectionEntry<'articles'>
+  >;
+  kind: 'products' | 'seedlings' | 'articles';
+}
+const { entries, kind } = Astro.props;
+const categories = [...new Set(entries.map((e) => e.data.category))].sort();
+const ingredients = [
+  ...new Set(
+    entries.flatMap((e) => ('ingredient' in e.data ? [e.data.ingredient] : [])),
+  ),
+].sort();
+const tags = [...new Set(entries.flatMap((e) => e.data.tags))].sort();
+---
+
+<div data-catalogue>
+  <form class="filters" role="search">
+    <div class="search-field">
+      <label for="search">
+        Search {kind === 'articles' ? 'articles' : kind}
+      </label>
+      <input
+        id="search"
+        name="search"
+        type="search"
+        placeholder="Search by name or keyword"
+      />
+    </div>
+    <div>
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="">All categories</option>
+        {categories.map((c) => (
+          <option>{c}</option>
+        ))}
+      </select>
+    </div>
+    {kind === 'products' && (
+      <div>
+        <label for="ingredient">Ingredient</label>
+        <select id="ingredient" name="ingredient">
+          <option value="">All ingredients</option>
+          {ingredients.map((i) => (
+            <option>{i}</option>
+          ))}
+        </select>
+      </div>
+    )}
+    {kind === 'articles' && (
+      <div>
+        <label for="tag">Tag</label>
+        <select id="tag" name="tag">
+          <option value="">All tags</option>
+          {tags.map((t) => (
+            <option>{t}</option>
+          ))}
+        </select>
+      </div>
+    )}
+    <button type="reset" class="button outline">
+      Clear filters
+    </button>
+  </form>
+  <p data-count aria-live="polite" class="result-count">
+    {entries.length} {kind === 'articles' ? 'articles' : kind}
+  </p>
+  <div class="card-grid">
+    {entries.map((entry) => (
+      <Card entry={entry} />
+    ))}
+  </div>
+  <div data-empty hidden class="empty-state">
+    <h2>No matches yet</h2>
+    <p>Try a different keyword or clear the filters to browse everything.</p>
+  </div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-catalogue]').forEach((root) => {
+    const form = root.querySelector<HTMLFormElement>('form')!;
+    const items = [...root.querySelectorAll<HTMLElement>('[data-item]')];
+    const update = () => {
+      const data = new FormData(form);
+      const search = String(data.get('search') || '')
+        .trim()
+        .toLowerCase();
+      const category = String(data.get('category') || '');
+      const ingredient = String(data.get('ingredient') || '');
+      const tag = String(data.get('tag') || '');
+      let count = 0;
+      items.forEach((item) => {
+        const matches =
+          (!search || item.dataset.search?.includes(search)) &&
+          (!category || category === item.dataset.category) &&
+          (!ingredient || ingredient === item.dataset.ingredient) &&
+          (!tag || JSON.parse(item.dataset.tags || '[]').includes(tag));
+        item.hidden = !matches;
+        if (matches) count++;
+      });
+      root.querySelector('[data-count]')!.textContent =
+        `${count} ${count === 1 ? 'result' : 'results'}`;
+      root.querySelector<HTMLElement>('[data-empty]')!.hidden = count !== 0;
+      const url = new URL(location.href);
+      for (const key of ['search', 'category', 'ingredient', 'tag']) {
+        const value = String(data.get(key) || '');
+        if (value) url.searchParams.set(key, value);
+        else url.searchParams.delete(key);
+      }
+      history.replaceState(null, '', url);
+    };
+    const params = new URLSearchParams(location.search);
+    for (const field of form.querySelectorAll<
+      HTMLInputElement | HTMLSelectElement
+    >('input,select')) {
+      if (params.has(field.name)) field.value = params.get(field.name)!;
+    }
+    form.addEventListener('submit', (e) => e.preventDefault());
+    form.addEventListener('input', update);
+    form.addEventListener('change', update);
+    form.addEventListener('reset', () => setTimeout(update, 0));
+    update();
+  });
+</script>

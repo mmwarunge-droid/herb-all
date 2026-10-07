@@ -1,0 +1,39 @@
+---
+import { site } from '../config/site';
+import SocialPreview from './SocialPreview.astro';
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  article?: boolean;
+  noindex?: boolean;
+}
+const {
+  title,
+  description,
+  image,
+  article = false,
+  noindex = false,
+} = Astro.props;
+const fullTitle = `${title} | ${site.siteName}`;
+const url = new URL(Astro.url.pathname, site.siteUrl).href;
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={url} />
+{noindex && <meta name="robots" content="noindex" />}
+<SocialPreview
+  title={fullTitle}
+  description={description}
+  image={image}
+  type={article ? 'article' : 'website'}
+  url={url}
+/>
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Herb-All Journal"
+  href="/rss.xml"
+/>

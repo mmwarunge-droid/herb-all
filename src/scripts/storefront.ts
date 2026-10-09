@@ -184,7 +184,10 @@ async function renderCart() {
     return;
   }
   try {
-    const q = await api('quote', { items });
+    const [q, settings] = await Promise.all([
+      api('quote', { items }),
+      api('public/settings'),
+    ]);
     el.innerHTML =
       summary(q) +
       q.items
@@ -193,7 +196,10 @@ async function renderCart() {
             `<div class="cart-row"><label for="cart-${esc(i.product_id)}">${esc(i.name)} quantity</label><input id="cart-${esc(i.product_id)}" data-quantity="${esc(i.product_id)}" type="number" min="1" max="10000" value="${i.quantity}"/><button class="button outline" data-remove="${esc(i.product_id)}">Remove ${esc(i.name)}</button></div>`,
         )
         .join('');
-    (document.querySelector('#checkout-link') as HTMLElement).hidden = false;
+    (document.querySelector('#checkout-link') as HTMLElement).hidden =
+      !settings.checkout_enabled;
+    if (!settings.checkout_enabled)
+      message('Checkout is not open yet. Contact Herb-All about availability.');
     el.querySelectorAll<HTMLInputElement>('[data-quantity]').forEach(
       (input) =>
         (input.onchange = async () => {
@@ -225,7 +231,7 @@ async function renderCart() {
           } finally {
             controls.forEach((control) => (control.disabled = false));
             (document.querySelector('#checkout-link') as HTMLElement).hidden =
-              false;
+              !settings.checkout_enabled;
           }
         }),
     );
@@ -278,6 +284,12 @@ async function checkout() {
         summary({ ...q, transport_cents: fields.disabled ? 0 : null }) +
         `<p>Unpaid reservations: ${s.reservation_hours} hours, with pending evidence held for staff review.</p>`;
     };
+    if (!s.checkout_enabled) {
+      message(
+        'Checkout is not open yet. Please contact Herb-All about availability.',
+      );
+      return;
+    }
     (form.querySelector('button') as HTMLButtonElement).disabled = false;
     let pending: any = null;
     form.onsubmit = async (e) => {

@@ -359,3 +359,68 @@ test('super administrator creates staff, changes role and revokes existing sessi
   ).toBe(true);
   await staff.close();
 });
+
+test('unconfigured preview and closed checkout display safe, usable messaging', async ({
+  page,
+}) => {
+  await page.route('**/api/**', (route) =>
+    route.fulfill({
+      status: 503,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        error:
+          'Shop configuration is not available yet. Please enquire directly.',
+      }),
+    }),
+  );
+  await page.goto('/shop/');
+  await expect(page.getByRole('status')).toContainText(
+    'Shop configuration is not available yet',
+  );
+  await expect(
+    page
+      .locator('#shop-content')
+      .getByRole('link', { name: 'Contact Herb-All' }),
+  ).toBeVisible();
+  await axe(page);
+  await page.goto('/about/');
+  await expect(
+    page.getByText('David Muriu Warunge', { exact: true }).first(),
+  ).toBeVisible();
+  await page.unroute('**/api/**');
+  const p = await fixtureProduct(admin);
+  await page.route('**/api/public/settings', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        checkout_enabled: false,
+        reservation_hours: 48,
+        collection_enabled: false,
+      }),
+    }),
+  );
+  await page.goto('/shop/');
+  await page.evaluate(
+    (item) =>
+      localStorage.setItem(
+        'herb-all-cart',
+        JSON.stringify([{ product_id: item, quantity: 1 }]),
+      ),
+    p.id,
+  );
+  await page.goto('/cart/');
+  await expect(page.getByRole('status')).toContainText(
+    'Checkout is not open yet',
+  );
+  await expect(page.locator('#checkout-link')).toBeHidden();
+  await page.goto('/checkout/');
+  await expect(page.getByRole('status')).toContainText(
+    'Checkout is not open yet',
+  );
+  await expect(page.locator('#checkout-form button')).toBeDisabled();
+  await axe(page);
+  expect(
+    (await database().query('SELECT count(*) n FROM orders')).rows[0].n,
+  ).toBe('0');
+});

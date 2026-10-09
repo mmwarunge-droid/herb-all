@@ -1,5 +1,7 @@
 # Herb-All commerce implementation — 2026-10-09
 
+Historical implementation record; the subsequent [production-readiness pass](COMMERCE_PRODUCTION_READINESS.md) adds a default-off checkout gate and records fresh checks.
+
 Implemented in the existing Astro repository on `feat/commerce-inventory`. This is a locally and CI-validated implementation with an automatically deployed static/function preview, not a configured or production-certified store. The existing Netlify configuration is retained. No production database, authenticated Netlify administration access, verified Pochi account or farm coordinates were available; no production promotion, real payment, external refund or customer email was initiated.
 
 ## Implemented customer and administrator workflows

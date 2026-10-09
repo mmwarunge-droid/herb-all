@@ -1,6 +1,7 @@
 import { test, beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
+import { spawnSync } from 'node:child_process';
 import { database, transaction, row, closeDatabase } from '../../server/db.mjs';
 import { id, token, hash, cents, finance } from '../../server/core.mjs';
 import {
@@ -20,7 +21,10 @@ import { reset, fixtureAdmin, fixtureProduct, basket } from './fixtures.mjs';
 process.env.ORDER_TOKEN_SECRET = token();
 process.env.PUBLIC_SITE_URL = 'http://127.0.0.1:4321';
 process.env.APP_ENV = 'development';
-beforeEach(reset);
+beforeEach(async () => {
+  process.env.COMMERCE_CHECKOUT_ENABLED = 'true';
+  await reset();
+});
 after(closeDatabase);
 const tx = (fn) => transaction(fn);
 async function call(path, body, session = {}, method) {
@@ -1101,4 +1105,190 @@ test('cancelled payment evidence can be reconciled and refunded without reopenin
     stock,
   );
   assert.equal(stock.reserved, 0);
+});
+
+test('checkout launch gate fails closed without reserving stock and permits administration', async () => {
+  const a = await fixtureAdmin();
+  const p = await fixtureProduct(a);
+  const session = await login(a);
+  for (const value of [undefined, 'false', 'TRUE']) {
+    if (value === undefined) delete process.env.COMMERCE_CHECKOUT_ENABLED;
+    else process.env.COMMERCE_CHECKOUT_ENABLED = value;
+    assert.equal((await call('public/settings')).data.checkout_enabled, false);
+    assert.equal(
+      (await call('orders', basket([{ product_id: p.id, quantity: 1 }])))
+        .status,
+      503,
+    );
+  }
+  assert.equal((await row(database(), 'SELECT count(*) n FROM orders')).n, '0');
+  assert.equal(
+    (await row(database(), 'SELECT reserved FROM products WHERE id=$1', [p.id]))
+      .reserved,
+    0,
+  );
+  assert.equal((await call('admin/products', undefined, session)).status, 200);
+  process.env.COMMERCE_CHECKOUT_ENABLED = 'true';
+  const secret = process.env.ORDER_TOKEN_SECRET;
+  try {
+    process.env.ORDER_TOKEN_SECRET = '';
+    assert.equal((await call('public/settings')).data.checkout_enabled, false);
+    assert.equal(
+      (await call('orders', basket([{ product_id: p.id, quantity: 1 }])))
+        .status,
+      503,
+    );
+  } finally {
+    process.env.ORDER_TOKEN_SECRET = secret;
+  }
+  assert.equal(
+    (await call('orders', basket([{ product_id: p.id, quantity: 1 }]))).status,
+    201,
+  );
+});
+
+test('all financial, inventory, image, fulfillment and account writes enforce role and CSRF', async () => {
+  const matrix = {
+    inventory: [
+      'admin/order',
+      'admin/distance',
+      'admin/payments/decision',
+      'admin/refund',
+      'admin/accounts',
+      'admin/accounts/role',
+      'admin/settings',
+    ],
+    orders: [
+      'admin/products',
+      'admin/stock',
+      'admin/image',
+      'admin/payments/decision',
+      'admin/refund',
+      'admin/accounts',
+      'admin/accounts/role',
+      'admin/settings',
+    ],
+    payments: [
+      'admin/products',
+      'admin/stock',
+      'admin/image',
+      'admin/order',
+      'admin/distance',
+      'admin/accounts',
+      'admin/accounts/role',
+      'admin/settings',
+    ],
+  };
+  for (const [role, paths] of Object.entries(matrix)) {
+    const session = await login(await fixtureAdmin(role));
+    for (const path of paths)
+      assert.equal(
+        (await call(path, {}, session)).status,
+        403,
+        role + ':' + path,
+      );
+  }
+  const superSession = await login(await fixtureAdmin());
+  for (const path of [
+    'admin/products',
+    'admin/stock',
+    'admin/image',
+    'admin/order',
+    'admin/distance',
+    'admin/payments/decision',
+    'admin/refund',
+    'admin/accounts',
+    'admin/accounts/role',
+    'admin/settings',
+  ]) {
+    assert.equal(
+      (await call(path, {}, { ...superSession, csrf: 'wrong' })).status,
+      403,
+      path,
+    );
+    assert.equal((await call(path, {})).status, 401, path);
+  }
+});
+
+test('payment enablement requires complete details and literal verified confirmation', async () => {
+  const session = await login(await fixtureAdmin());
+  const settings = {
+    collection_enabled: false,
+    reservation_hours: 48,
+    transport_policy: 'upfront',
+    balance_policy: 'before_dispatch',
+    payment_enabled: true,
+    payee: 'Isolated QA payee',
+    pochi_phone: '+254712345678',
+    payment_instructions: 'QA only',
+    confirmed: true,
+  };
+  for (const fields of [
+    { payee: '' },
+    { pochi_phone: '' },
+    { payment_instructions: '' },
+    { confirmed: 'false' },
+    { confirmed: false },
+  ])
+    assert.equal(
+      (await call('admin/settings', { ...settings, ...fields }, session))
+        .status,
+      400,
+    );
+  assert.equal(
+    (await row(database(), 'SELECT data FROM settings')).data.payment_enabled,
+    undefined,
+  );
+  assert.equal((await call('admin/settings', settings, session)).status, 200);
+});
+
+test('failed multi-item checkout rolls back all reservations and creates no order', async () => {
+  const a = await fixtureAdmin();
+  const p = await fixtureProduct(a, 'Available QA plant', '150', 2);
+  const missing = await fixtureProduct(a, 'Unavailable QA plant', '80', 0);
+  assert.equal(
+    (
+      await call(
+        'orders',
+        basket([
+          { product_id: p.id, quantity: 1 },
+          { product_id: missing.id, quantity: 1 },
+        ]),
+      )
+    ).status,
+    409,
+  );
+  assert.equal((await row(database(), 'SELECT count(*) n FROM orders')).n, '0');
+  assert.equal(
+    (await row(database(), 'SELECT sum(reserved) n FROM products')).n,
+    '0',
+  );
+});
+
+test('unconfigured database and private tracking errors never expose secrets or traces', async () => {
+  const databaseUrl = process.env.DATABASE_URL;
+  try {
+    delete process.env.DATABASE_URL;
+    const response = await handler(
+      new Request('http://127.0.0.1:4321/api/products'),
+    );
+    assert.equal(response.status, 503);
+    assert.equal(response.headers.get('x-robots-tag'), 'noindex');
+    assert.deepEqual(await response.json(), {
+      error:
+        'Shop configuration is not available yet. Please enquire directly.',
+    });
+  } finally {
+    process.env.DATABASE_URL = databaseUrl;
+  }
+});
+
+test('migration failures do not print private connection values', () => {
+  const r = spawnSync(process.execPath, ['server/migrate.mjs'], {
+    encoding: 'utf8',
+    env: { ...process.env, DATABASE_URL: 'invalid-QA-private-url-sentinel' },
+  });
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /Migration failed/);
+  assert.doesNotMatch(r.stderr + r.stdout, /sentinel|stack|ERR_INVALID_URL/);
 });

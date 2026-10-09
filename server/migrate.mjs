@@ -2,7 +2,8 @@ import { readFile, readdir } from 'node:fs/promises';
 import { transaction, closeDatabase } from './db.mjs';
 import { hash } from './core.mjs';
 try {
-  await transaction(async (c) => {
+  const applied = await transaction(async (c) => {
+    const names = [];
     await c.query('SELECT pg_advisory_xact_lock(81324001)');
     await c.query(
       'CREATE TABLE IF NOT EXISTS schema_migrations(name text PRIMARY KEY, checksum text NOT NULL, applied_at timestamptz NOT NULL DEFAULT now())',
@@ -31,9 +32,16 @@ try {
         'INSERT INTO schema_migrations(name,checksum) VALUES($1,$2)',
         [name, hash(sql)],
       );
-      console.log('Applied', name);
+      names.push(name);
     }
+    return names;
   });
+  for (const name of applied) console.log('Applied', name);
+} catch {
+  console.error(
+    'Migration failed. Check private configuration, database access and migration checksums. Inspect migration records before retrying.',
+  );
+  process.exitCode = 1;
 } finally {
   await closeDatabase();
 }

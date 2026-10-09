@@ -50,6 +50,10 @@ export function accessToken(key) {
     fail('Order security is not configured.', 503);
   return createHmac('sha256', secret).update(key).digest('base64url');
 }
+// Launch is an explicit operational decision; absence or malformed values fail closed.
+export const checkoutEnabled = () =>
+  process.env.COMMERCE_CHECKOUT_ENABLED === 'true' &&
+  (process.env.ORDER_TOKEN_SECRET?.length ?? 0) >= 32;
 export function finance(o) {
   const merchandise = Number(o.subtotal_cents) + Number(o.adjustment_cents);
   const transport =

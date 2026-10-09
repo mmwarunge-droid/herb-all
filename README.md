@@ -48,7 +48,7 @@ Replace `PUBLIC_SITE_URL` with the final HTTPS domain and supply business email,
 
 Search Console instructions are in [SEO](docs/SEO.md). A GitHub or Netlify account, live domain or hosting deployment is not created by the source build. Deployment needs your GitHub/Netlify account and final business configuration.
 
-Future commerce can use product slugs and optional prices/currency as identifiers. Availability, inventory, a CMS or checkout can be added without changing the public content-first architecture; none is implemented now.
+The educational Markdown catalogue is independent of the implemented PostgreSQL shop. Its optional sample metadata is never used as a live price or stock source. Checkout defaults to closed until `COMMERCE_CHECKOUT_ENABLED=true` is explicitly configured after launch validation; Pochi instructions require separate verified administrator configuration.
 
 ## Founder and gardens enhancement
 

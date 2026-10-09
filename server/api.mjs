@@ -12,6 +12,7 @@ import {
   passwordHash,
   permit,
   uuid,
+  checkoutEnabled,
 } from './core.mjs';
 import {
   settings,
@@ -34,6 +35,7 @@ const headers = {
   'Cache-Control': 'no-store',
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'no-referrer',
+  'X-Robots-Tag': 'noindex',
 };
 const json = (data, status = 200, extra = {}) =>
   new Response(JSON.stringify(data), {
@@ -320,6 +322,7 @@ export async function handler(req, context = {}) {
         await transaction(async (c) => {
           const s = await settings(c);
           return {
+            checkout_enabled: checkoutEnabled(),
             collection_enabled: s.collection_enabled,
             reservation_hours: s.reservation_hours,
             transport_policy: s.transport_policy,
@@ -465,7 +468,7 @@ export async function handler(req, context = {}) {
                 (!data.payee ||
                   !data.pochi_phone ||
                   !data.payment_instructions ||
-                  !b.confirmed)
+                  b.confirmed !== true)
               )
                 fail(
                   'Verify the Pochi account and instructions before enabling payments.',

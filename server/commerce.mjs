@@ -3,6 +3,7 @@ import {
   id,
   hash,
   accessToken,
+  checkoutEnabled,
   fail,
   text,
   integer,
@@ -247,6 +248,11 @@ export async function cartQuote(c, items) {
   };
 }
 export async function placeOrder(c, b, key) {
+  if (!checkoutEnabled())
+    fail(
+      'Checkout is not open yet. Please contact Herb-All about availability.',
+      503,
+    );
   text(key, 'submission key', 100);
   if (!/^[a-zA-Z0-9_-]{24,100}$/.test(key)) fail('Invalid submission key.');
   await c.query('SELECT pg_advisory_xact_lock(hashtextextended($1,0))', [

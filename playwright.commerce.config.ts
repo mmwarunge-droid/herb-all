@@ -15,6 +15,8 @@ export default defineConfig({
     url: 'http://127.0.0.1:4321',
     env: {
       APP_ENV: 'development',
+      COMMERCE_CHECKOUT_ENABLED:
+        process.env.COMMERCE_CHECKOUT_ENABLED || 'true',
       PUBLIC_SITE_URL: 'http://127.0.0.1:4321',
       ORDER_TOKEN_SECRET:
         'local-browser-test-key-not-for-production-0123456789',

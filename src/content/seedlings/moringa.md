@@ -3,8 +3,8 @@ title: 'Moringa Seedlings'
 description: 'Grow a useful botanical and deepen your plant knowledge.'
 botanicalName: 'Moringa oleifera'
 category: 'Medicinal Plants'
-image: '/images/seedlings.webp'
-imageAlt: 'Young plants in nursery pots, illustrative photograph rather than Herb-All stock'
+image: '/images/brand/moringa-seedlings-1200.webp'
+imageAlt: 'Moringa seedlings growing in black nursery bags in a photograph supplied by Herb-All'
 climate: 'Confirm local suitability and protect young plants as advised by your supplier.'
 maturity: 'Harvest timing depends on the intended use and growing conditions.'
 spacing: 'Spacing depends on whether grown for leaves, a hedge or a mature tree.'
@@ -14,7 +14,7 @@ care:
     'Choose a suitable site and seek advice on soil and drainage.',
     'Follow locally appropriate watering, mulching and plant protection guidance.',
   ]
-featured: false
+featured: true
 tags: ['moringa', 'growing']
 draft: false
 slug: 'moringa'

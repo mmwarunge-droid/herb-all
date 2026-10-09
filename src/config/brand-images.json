@@ -1,0 +1,218 @@
+{
+  "/images/brand/founder-laboratory-1200.webp": {
+    "original": "Dr David in Hospital.png",
+    "width": 1122,
+    "height": 1402,
+    "variants": [
+      {
+        "src": "/images/brand/founder-laboratory-480.webp",
+        "width": 480,
+        "height": 600,
+        "bytes": 24154
+      },
+      {
+        "src": "/images/brand/founder-laboratory-800.webp",
+        "width": 800,
+        "height": 1000,
+        "bytes": 44614
+      },
+      {
+        "src": "/images/brand/founder-laboratory-1200.webp",
+        "width": 1122,
+        "height": 1402,
+        "bytes": 67242
+      }
+    ],
+    "sourceWidth": 1122,
+    "sourceHeight": 1402
+  },
+  "/images/brand/founder-garden-1200.webp": {
+    "original": "Dr David in the garden.png",
+    "width": 1122,
+    "height": 1402,
+    "variants": [
+      {
+        "src": "/images/brand/founder-garden-480.webp",
+        "width": 480,
+        "height": 600,
+        "bytes": 62806
+      },
+      {
+        "src": "/images/brand/founder-garden-800.webp",
+        "width": 800,
+        "height": 1000,
+        "bytes": 125328
+      },
+      {
+        "src": "/images/brand/founder-garden-1200.webp",
+        "width": 1122,
+        "height": 1402,
+        "bytes": 190168
+      }
+    ],
+    "sourceWidth": 1122,
+    "sourceHeight": 1402
+  },
+  "/images/brand/wheatgrass-1200.webp": {
+    "original": "Wheatgrass.png",
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/images/brand/wheatgrass-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 61794
+      },
+      {
+        "src": "/images/brand/wheatgrass-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 142420
+      },
+      {
+        "src": "/images/brand/wheatgrass-1200.webp",
+        "width": 1200,
+        "height": 1200,
+        "bytes": 249654
+      }
+    ],
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  },
+  "/images/brand/moringa-seedlings-1200.webp": {
+    "original": "Moringa oleifera seedlings.png",
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/images/brand/moringa-seedlings-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 41672
+      },
+      {
+        "src": "/images/brand/moringa-seedlings-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 94768
+      },
+      {
+        "src": "/images/brand/moringa-seedlings-1200.webp",
+        "width": 1200,
+        "height": 1200,
+        "bytes": 177208
+      }
+    ],
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  },
+  "/images/brand/rosemary-seedlings-1200.webp": {
+    "original": "Rosemary seedlings.png",
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/images/brand/rosemary-seedlings-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 46298
+      },
+      {
+        "src": "/images/brand/rosemary-seedlings-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 113986
+      },
+      {
+        "src": "/images/brand/rosemary-seedlings-1200.webp",
+        "width": 1200,
+        "height": 1200,
+        "bytes": 223104
+      }
+    ],
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  },
+  "/images/brand/packaged-herbs-1200.webp": {
+    "original": "Packaged herbs.png",
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/images/brand/packaged-herbs-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 38496
+      },
+      {
+        "src": "/images/brand/packaged-herbs-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 86736
+      },
+      {
+        "src": "/images/brand/packaged-herbs-1200.webp",
+        "width": 1200,
+        "height": 1200,
+        "bytes": 152862
+      }
+    ],
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  },
+  "/images/brand/garden-plants-1200.webp": {
+    "original": "Establishment of kitchen gardens and agro ecological gardensfarms.png",
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/images/brand/garden-plants-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 88282
+      },
+      {
+        "src": "/images/brand/garden-plants-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 199114
+      },
+      {
+        "src": "/images/brand/garden-plants-1200.webp",
+        "width": 1200,
+        "height": 1200,
+        "bytes": 355410
+      }
+    ],
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  },
+  "/images/brand/garden-growing-1200.webp": {
+    "original": "Establishment of kitchen gardens and agro ecological gardensfarms 2.png",
+    "width": 1200,
+    "height": 1200,
+    "variants": [
+      {
+        "src": "/images/brand/garden-growing-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 94700
+      },
+      {
+        "src": "/images/brand/garden-growing-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 222620
+      },
+      {
+        "src": "/images/brand/garden-growing-1200.webp",
+        "width": 1200,
+        "height": 1200,
+        "bytes": 402204
+      }
+    ],
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  }
+}

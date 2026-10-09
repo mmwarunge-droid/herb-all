@@ -10,6 +10,8 @@ const routes = [
   '/learn/beginners-guide-to-moringa/',
   '/contact/',
   '/about/',
+  '/gardens/',
+  '/seedlings/moringa/',
   '/privacy/',
   '/terms/',
   '/disclaimer/',
@@ -67,19 +69,29 @@ test('search, combined filters, empty/reset states and query persistence', async
   await page.getByLabel('Tag', { exact: true }).selectOption('ginger');
   await expect(page.locator('[data-item]:visible')).toHaveCount(1);
 });
-test('enquiry carries item and unconfigured channel stays disabled', async ({
-  page,
-}) => {
-  await page.goto('/products/moringa-tea/');
-  await page
-    .getByRole('link', { name: 'Enquire about this product', exact: true })
-    .click();
+test('enquiry topics and supplied contact channels work', async ({ page }) => {
+  await page.goto('/contact/?topic=Garden%20visit&item=Moringa');
+  await expect(page.getByLabel('Enquiry type')).toHaveValue('Garden visit');
   await expect(page.getByLabel('Product or seedling (optional)')).toHaveValue(
-    'Moringa Tea',
+    'Moringa',
   );
   await expect(
-    page.getByRole('button', { name: 'Email enquiries coming soon' }),
-  ).toBeDisabled();
+    page.getByRole('button', { name: 'Open email enquiry' }),
+  ).toBeEnabled();
+  await expect(
+    page.getByRole('link', { name: 'Start a WhatsApp conversation' }),
+  ).toHaveAttribute('href', 'https://wa.me/254722603819');
+  await expect(
+    page.getByRole('link', { name: 'dwmuriu725@gmail.com' }),
+  ).toHaveAttribute('href', 'mailto:dwmuriu725@gmail.com');
+  await page.goto('/contact/?topic=Unknown');
+  await expect(page.getByLabel('Enquiry type')).toHaveValue('General enquiry');
+  await page.goto('/gardens/');
+  await page
+    .locator('#learning')
+    .getByRole('link', { name: 'Discuss a consultation' })
+    .click();
+  await expect(page.getByLabel('Enquiry type')).toHaveValue('Consultation');
 });
 test('mobile navigation, keyboard skip link and no-JS content', async ({
   page,
@@ -110,7 +122,7 @@ test('mobile navigation, keyboard skip link and no-JS content', async ({
   await context.close();
 });
 test('image failures fall back with corrected alt text', async ({ page }) => {
-  await page.route('**/tea*.webp', (route) => route.abort());
+  await page.route('**/packaged-herbs-*.webp', (route) => route.abort());
   await page.goto('/products/');
   const image = page.locator('main img').first();
   await expect(image).toHaveAttribute('src', '/images/botanical.webp');

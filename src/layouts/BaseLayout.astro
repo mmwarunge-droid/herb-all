@@ -4,6 +4,7 @@ import SEO from '../components/SEO.astro';
 import JsonLd from '../components/JsonLd.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import { site, socialLinks } from '../config/site';
+import { founder } from '../config/brand';
 interface Props {
   title: string;
   description: string;
@@ -15,6 +16,7 @@ const links = [
   ['Home', '/'],
   ['Herbal Products', '/products/'],
   ['Seedlings', '/seedlings/'],
+  ['Gardens', '/gardens/'],
   ['Learn', '/learn/'],
   ['About', '/about/'],
 ];
@@ -89,7 +91,8 @@ const links = [
         </div>
         <div>
           <strong>Herb-All</strong>
-          <a href="/about/">Our story</a>
+          <a href="/about/">Our story & founder</a>
+          <a href="/gardens/">Gardens, visits & learning</a>
           <a href="/contact/">Contact & enquiries</a>
           <a href="/disclaimer/">Health information policy</a>
         </div>
@@ -114,6 +117,7 @@ const links = [
         '@type': 'Organization',
         name: site.organization.name,
         url: site.siteUrl,
+        founder: { '@type': 'Person', name: founder.name },
         ...(site.email ? { email: site.email } : {}),
         ...(socialLinks.length
           ? { sameAs: socialLinks.map((l) => l.url) }

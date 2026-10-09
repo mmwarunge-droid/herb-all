@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Catalogue from '../../components/Catalogue.astro';
+import Picture from '../../components/Picture.astro';
+import { photos } from '../../config/brand';
 import { publishedProducts } from '../../utils/content';
 const entries = await publishedProducts();
 ---
@@ -18,6 +20,29 @@ const entries = await publishedProducts();
       availability.
     </p>
   </header>
+  <section class="container product-context">
+    <Picture
+      src={photos.packaged}
+      alt="Three jars of powdered herbs with handwritten moringa labels"
+      class="product-context-photo"
+    />
+    <div>
+      <p class="eyebrow">A closer look at the products</p>
+      <h2>Know what’s in your jar.</h2>
+      <p>
+        The moringa-labelled jars shown here are part of Herb-All’s supplied
+        product collection. Confirm the current product format, complete label,
+        ingredients and packaging before ordering. This photograph does not
+        represent every tea listed below.
+      </p>
+      <a
+        class="text-link"
+        href="/contact/?topic=Products%20%26%20seedlings&amp;item=Moringa%20products"
+      >
+        Ask about moringa products
+      </a>
+    </div>
+  </section>
   <section class="container catalogue-section">
     <Catalogue entries={entries} kind="products" />
   </section>

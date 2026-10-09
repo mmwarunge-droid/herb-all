@@ -2,173 +2,199 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 import Picture from '../components/Picture.astro';
+import FounderStory from '../components/FounderStory.astro';
+import EnquiryPanel from '../components/EnquiryPanel.astro';
 import SocialLinks from '../components/SocialLinks.astro';
-import {
-  publishedProducts,
-  publishedSeedlings,
-  publishedArticles,
-} from '../utils/content';
-const products = (await publishedProducts()).filter((e) => e.data.featured);
-const seedlings = (await publishedSeedlings()).filter((e) => e.data.featured);
+import { publishedArticles } from '../utils/content';
+import { photos, enquiryPath } from '../config/brand';
 const articles = (await publishedArticles()).slice(0, 3);
+const offerings = [
+  {
+    title: 'Herbal products',
+    label: 'For your everyday rituals',
+    image: photos.packaged,
+    alt: 'Three jars of powdered herbs labelled moringa',
+    body: 'Explore our herbal catalogue and ask about the complete ingredients, preparation and currently available products.',
+    url: '/products/',
+    cta: 'Explore herbal products',
+  },
+  {
+    title: 'Plants to grow',
+    label: 'A good start, with good roots',
+    image: photos.moringa,
+    alt: 'Moringa seedlings growing in black nursery bags',
+    body: 'Discover useful seedlings, starting with moringa. Ask about plant sizes, suitable growing conditions and availability.',
+    url: '/seedlings/',
+    cta: 'Browse seedlings',
+  },
+  {
+    title: 'Gardens & cultivation',
+    label: 'See how things grow',
+    image: photos.wheatgrass,
+    alt: 'Dense green wheatgrass growing in a tray',
+    body: 'Get closer to herbal cultivation, container gardening and wheatgrass growing, and enquire about a visit.',
+    url: '/gardens/',
+    cta: 'Discover the gardens',
+  },
+];
 ---
 
 <BaseLayout
-  title="Plants. Wellness. Knowledge."
-  description="Discover Herb-All herbal teas, botanical products, practical plant knowledge and fruit tree seedlings. Explore our catalogue and enquire directly."
+  title="Botanical products, gardens & plant knowledge"
+  description="Discover Herb-All botanical products, seedlings and gardens in Ongata Rongai. Meet founder David Mureu Warunge and enquire about visits and learning."
+  image={photos.growing}
 >
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Herbs for all · Naturally better living</p>
+        <p class="eyebrow">Herbs for all · Ongata Rongai, Kenya</p>
         <h1>
-          A little closer
+          Rooted in plants.
           <br />
-          to <em>nature.</em>
+          Shared through <em>knowledge.</em>
         </h1>
         <p class="hero-description">
-          Plants. Wellness. Knowledge.
-          <br />
-          Discover herbal teas, botanical products and quality seedlings — with
-          the knowledge to make thoughtful choices.
+          Herb-All brings together botanical products, useful seedlings and
+          practical learning — with founder David Mureu Warunge at the heart of
+          the garden.
         </p>
         <div class="actions">
           <a class="button" href="/products/">
             Explore herbal products
           </a>
-          <a class="button outline" href="/seedlings/">
-            Browse seedlings
+          <a class="button outline" href="/gardens/">
+            Discover the gardens
           </a>
         </div>
-        <p class="muted">For your everyday rituals. For the things you grow.</p>
+        <a class="text-link" href="/about/#founder">
+          Meet David
+        </a>
       </div>
       <div class="hero-photo">
         <Picture
-          src="/images/botanical.webp"
-          alt="Fresh green tea leaves growing in a sunlit plantation"
+          src={photos.growing}
+          alt="Container-grown leafy plants, aloe and seedlings in the Herb-All garden collection"
           eager
+          sizes="(max-width: 760px) calc(100vw - 32px), 580px"
         />
         <div class="hero-caption">
-          <span>FROM THE EARTH, WITH CARE</span>
-          <p>Good things start with plants.</p>
+          <span>PLANTS. WELLNESS. KNOWLEDGE.</span>
+          <p>Growing, learning and sharing.</p>
         </div>
       </div>
     </div>
   </section>
   <div class="container values-strip">
-    <span>Botanical products & herbal teas</span>
-    <span>Fruit trees & useful seedlings</span>
-    <span>Plant knowledge, thoughtfully shared</span>
+    <span>Herbal products & seedlings</span>
+    <span>Garden visits by arrangement</span>
+    <span>Practical plant knowledge</span>
   </div>
   <section>
     <div class="container">
       <div class="section-head">
         <div>
-          <p class="eyebrow">The herbal collection</p>
-          <h2>Your next everyday ritual.</h2>
+          <p class="eyebrow">Explore Herb-All</p>
+          <h2>
+            From the growing space
+            <br />
+            to your everyday.
+          </h2>
           <p>
-            Meet familiar botanicals in a new way. Explore our sample catalogue,
-            then ask about ingredients and availability.
+            Discover the plants, products and conversations that bring Herb-All
+            together.
           </p>
         </div>
-        <a class="text-link" href="/products/">
-          View all herbal products
-        </a>
       </div>
-      <div class="card-grid">
-        {products.map((entry) => (
-          <Card entry={entry} />
+      <div class="card-grid offering-grid">
+        {offerings.map((o) => (
+          <article class="card">
+            <a class="card-image" href={o.url} tabindex="-1" aria-hidden="true">
+              <Picture
+                src={o.image}
+                alt={o.alt}
+                sizes="(max-width: 480px) calc(100vw - 32px), (max-width: 760px) 45vw, 390px"
+                class="product-photo"
+              />
+            </a>
+            <div class="card-body">
+              <p class="eyebrow">{o.label}</p>
+              <h3>
+                <a href={o.url}>{o.title}</a>
+              </h3>
+              <p>{o.body}</p>
+              <a class="text-link" href={o.url}>
+                {o.cta}
+              </a>
+            </div>
+          </article>
         ))}
       </div>
     </div>
   </section>
   <section class="tinted">
     <div class="container story-grid">
-      <Picture
-        src="/images/seedlings.webp"
-        alt="Young seedlings growing in nursery pots"
-        class="story-photo"
-      />
+      <figure class="garden-feature">
+        <Picture
+          src={photos.garden}
+          alt="A mixed container garden with seedlings, leafy herbs and aloe"
+          class="story-photo"
+        />
+        <figcaption>Useful plants, grown side by side.</figcaption>
+      </figure>
       <div>
-        <p class="eyebrow">Growing better</p>
+        <p class="eyebrow">The Herb-All gardens</p>
         <h2>
-          Plant something.
-          <br />
-          Grow a possibility.
+          A place to grow.
+          <br />A place to learn.
         </h2>
         <p>
-          From a home garden to a growing orchard, the right seedling is a place
-          to begin. Explore fruit trees and useful plants, and ask us what suits
-          your growing plans.
+          Herbal cultivation, kitchen gardening and organic farming practices
+          come together in David’s growing space. Look closer at the plants and
+          ask how a garden visit or practical learning session could fit your
+          interests.
         </p>
         <div class="actions">
-          <a class="button" href="/seedlings/">
-            Find your seedling
+          <a class="button" href="/gardens/">
+            Explore the garden story
+          </a>
+          <a class="button outline" href={enquiryPath('Garden visit')}>
+            Enquire about a visit
           </a>
         </div>
-        <p class="muted">
-          Availability and cultivar information confirmed on enquiry.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">The seedling collection</p>
-          <h2>Good roots. Fresh starts.</h2>
-        </div>
-        <a class="text-link" href="/seedlings/">
-          View all seedlings
+        <a class="text-link" href="/gardens/#wheatgrass">
+          Explore wheatgrass growing
         </a>
       </div>
-      <div class="card-grid">
-        {seedlings.map((entry) => (
-          <Card entry={entry} />
-        ))}
-      </div>
     </div>
   </section>
+  <FounderStory />
   <section class="tinted">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Why Herb-All?</p>
-          <h2>
-            Rooted in plants.
-            <br />
-            Grounded in care.
-          </h2>
-        </div>
-        <a href="/about/" class="text-link">
-          Get to know us
-        </a>
+    <div class="container learning-intro">
+      <div>
+        <p class="eyebrow">Learning, with context</p>
+        <h2>
+          Botanical curiosity.
+          <br />
+          Practical experience.
+        </h2>
       </div>
-      <div class="pillars">
-        <div>
-          <span class="pillar-number">01</span>
-          <h3>Natural wellness</h3>
-          <p>
-            Explore plant-based ingredients as part of a varied, balanced
-            lifestyle, without miracle promises.
-          </p>
-        </div>
-        <div>
-          <span class="pillar-number">02</span>
-          <h3>Plant knowledge</h3>
-          <p>
-            A place for botanical curiosity, traditional plant knowledge and a
-            clear distinction between tradition and evidence.
-          </p>
-        </div>
-        <div>
-          <span class="pillar-number">03</span>
-          <h3>Growing better</h3>
-          <p>
-            Help for choosing useful plants and asking the right questions
-            before putting down roots.
-          </p>
+      <div>
+        <p>
+          Through Rigita Herbal Medicine School, David shares an interest in
+          herbal cultivation and organic farming. Ask about practical learning
+          opportunities and the subjects you’d like to explore.
+        </p>
+        <p>
+          His research background is part of the story. It is not a promise of
+          medical benefits or an endorsement of Herb-All products by KEMRI.
+        </p>
+        <div class="actions">
+          <a class="button" href={enquiryPath('Practical learning')}>
+            Ask about learning opportunities
+          </a>
+          <a class="text-link" href="/about/#research">
+            Read the research context
+          </a>
         </div>
       </div>
     </div>
@@ -178,13 +204,13 @@ const articles = (await publishedArticles()).slice(0, 3);
       <div class="section-head">
         <div>
           <p class="eyebrow">The Herb-All journal</p>
-          <h2>A little knowledge goes a long way.</h2>
+          <h2>Keep your curiosity growing.</h2>
           <p>
-            Learn about herbs, preparation and growing — one thoughtful guide at
-            a time.
+            Guides to plants, preparation and growing — with care around
+            evidence and health information.
           </p>
         </div>
-        <a href="/learn/" class="text-link">
+        <a class="text-link" href="/learn/">
           Explore the knowledge hub
         </a>
       </div>
@@ -193,30 +219,9 @@ const articles = (await publishedArticles()).slice(0, 3);
           <Card entry={entry} />
         ))}
       </div>
-      <div class="taxonomy" aria-label="Popular plants">
-        <span>Explore popular plants:</span>
-        <a href="/products/moringa-tea/">Moringa</a>
-        <a href="/products/hibiscus-tea/">Hibiscus</a>
-        <a href="/products/ginger-herbal-tea/">Ginger</a>
-        <a href="/seedlings/avocado/">Avocado</a>
-      </div>
     </div>
   </section>
-  <section>
-    <div class="container cta-panel">
-      <div>
-        <p class="eyebrow">Let’s talk plants</p>
-        <h2>Found something you love?</h2>
-        <p>
-          Ask about products, seedlings and availability. We’ll help you take
-          the next step.
-        </p>
-      </div>
-      <a class="button light" href="/contact/">
-        Get in touch
-      </a>
-    </div>
-  </section>
+  <EnquiryPanel />
   <div class="container social-band">
     <p class="eyebrow">Keep growing with us</p>
     <h2>More plants. More everyday inspiration.</h2>

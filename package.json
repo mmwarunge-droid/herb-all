@@ -13,7 +13,8 @@
     "test:browser": "playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "postbuild": "node scripts/alias-sitemap.mjs"
+    "postbuild": "node scripts/alias-sitemap.mjs",
+    "images:optimize": "node scripts/optimize-brand-images.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.3",
@@ -29,6 +30,7 @@
     "@playwright/test": "^1.63.0",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
+    "sharp": "0.35.5",
     "typescript": "^5.9.3"
   },
   "engines": {

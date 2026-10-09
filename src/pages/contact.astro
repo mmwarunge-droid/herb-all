@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import { enquiryTopics } from '../config/brand';
 import { site } from '../config/site';
 ---
 
@@ -12,13 +13,19 @@ import { site } from '../config/site';
     <p class="eyebrow">Let’s talk plants</p>
     <h1>A question is a good place to start.</h1>
     <p>
-      Ask about a herbal product, a seedling or current availability. There’s no
-      online checkout — confirm the details with us before placing an order.
+      Ask about products, seedlings, a garden visit, a consultation or practical
+      learning in Ongata Rongai. There’s no online checkout — confirm the
+      details with us before placing an order.
     </p>
   </header>
   <section class="container contact-grid">
     <div>
-      <h2>Get in touch.</h2>
+      <h2>Arrange a conversation with David.</h2>
+      <p>
+        Visits and learning sessions are by arrangement. Confirm the date,
+        scope, any fees and precise directions directly before travelling. An
+        enquiry does not reserve a visit.
+      </p>
       <ul class="contact-methods">
         {site.email && (
           <li>
@@ -92,6 +99,14 @@ import { site } from '../config/site';
           </>
         )}
         <div>
+          <label for="topic">Enquiry type</label>
+          <select id="topic" name="topic">
+            {enquiryTopics.map((topic) => (
+              <option value={topic}>{topic}</option>
+            ))}
+          </select>
+        </div>
+        <div>
           <label for="name">Your name</label>
           <input
             id="name"
@@ -150,6 +165,15 @@ import { site } from '../config/site';
 <script>
   const form = document.querySelector<HTMLFormElement>('#enquiry-form');
   if (form) {
+    const params = new URLSearchParams(location.search);
+    const topic = form.querySelector<HTMLSelectElement>('#topic')!;
+    const requestedTopic = params.get('topic');
+    if (
+      Array.from(topic.options).some(
+        (option) => option.value === requestedTopic,
+      )
+    )
+      topic.value = requestedTopic!;
     const item = form.querySelector<HTMLInputElement>('#item')!;
     item.value = (new URLSearchParams(location.search).get('item') || '').slice(
       0,
@@ -161,8 +185,8 @@ import { site } from '../config/site';
         const email = form.dataset.email;
         if (!email) return;
         const d = new FormData(form);
-        const body = `Hello Herb-All,\n\nName: ${d.get('name')}\nReply email: ${d.get('email')}\nEnquiry: ${d.get('item') || 'General enquiry'}\n\n${d.get('message')}`;
-        location.href = `mailto:${email}?subject=${encodeURIComponent('Herb-All enquiry: ' + String(d.get('item') || 'General'))}&body=${encodeURIComponent(body)}`;
+        const body = `Hello Herb-All,\n\nName: ${d.get('name')}\nReply email: ${d.get('email')}\nTopic: ${d.get('topic')}\nItem: ${d.get('item') || 'Not specified'}\n\n${d.get('message')}`;
+        location.href = `mailto:${email}?subject=${encodeURIComponent('Herb-All enquiry: ' + String(d.get('topic') || 'General enquiry'))}&body=${encodeURIComponent(body)}`;
         document.querySelector('#enquiry-status')!.textContent =
           'Your email application will open. Review and send your message there.';
       });

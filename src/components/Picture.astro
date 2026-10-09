@@ -1,32 +1,46 @@
 ---
+import manifest from '../config/brand-images.json';
 interface Props {
   src: string;
   alt: string;
   eager?: boolean;
   class?: string;
+  sizes?: string;
+  position?: string;
 }
-const { src, alt, eager = false, class: className } = Astro.props;
-const responsive = [
+const {
+  src,
+  alt,
+  eager = false,
+  class: className,
+  sizes = '(max-width: 760px) calc(100vw - 32px), 600px',
+  position = 'center',
+} = Astro.props;
+const supplied = manifest[src as keyof typeof manifest];
+const stock = [
   '/images/botanical.webp',
   '/images/tea.webp',
   '/images/seedlings.webp',
 ].includes(src);
-const srcset = responsive
-  ? `${src.replace('.webp', '-small.webp')} 600w, ${src} 1200w`
-  : undefined;
+const srcset = supplied
+  ? supplied.variants.map((v) => `${v.src} ${v.width}w`).join(', ')
+  : stock
+    ? `${src.replace('.webp', '-small.webp')} 600w, ${src} 1200w`
+    : undefined;
 ---
 
 <img
   src={src}
   srcset={srcset}
-  sizes="(max-width: 480px) 100vw, (max-width: 760px) 50vw, 600px"
+  sizes={sizes}
   alt={alt}
-  width="1000"
-  height="750"
+  width={supplied?.width || 1000}
+  height={supplied?.height || 750}
   loading={eager ? 'eager' : 'lazy'}
   fetchpriority={eager ? 'high' : 'auto'}
   decoding="async"
   class={className}
+  style={{ objectPosition: position }}
   data-fallback="/images/botanical.webp"
 />
 <script>

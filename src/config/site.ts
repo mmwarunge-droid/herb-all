@@ -2,7 +2,7 @@ const env = import.meta.env;
 export const site = {
   siteName: 'Herb-All',
   siteDescription:
-    'Explore Herb-All botanical products, seedlings, garden visits and practical plant knowledge with founder David Mureu Warunge in Ongata Rongai, Kenya.',
+    'Explore Herb-All botanical products, seedlings, garden visits and practical plant knowledge with founder David Muriu Warunge in Ongata Rongai, Kenya.',
   siteUrl: env.PUBLIC_SITE_URL || 'https://herb-all.example',
   email: env.PUBLIC_BUSINESS_EMAIL ?? 'dwmuriu725@gmail.com',
   phone: env.PUBLIC_PHONE_NUMBER ?? '+254722603819',

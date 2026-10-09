@@ -5,7 +5,7 @@ Implemented in the existing `mmwarunge-droid/herb-all` repository on `feat/found
 ## Completed experience
 
 - Homepage: botanical garden hero, product/seedling/garden entry points, garden story, founder portraits, learning and contextual enquiry calls to action.
-- About: David Mureu Warunge introduction, prior laboratory/research and current cultivation story, externally linked mouse study with evidence limitations, brand principles.
+- About: David Muriu Warunge introduction, prior laboratory/research and current cultivation story, externally linked mouse study with evidence limitations, brand principles.
 - Gardens: new `/gardens/` route, growing-space overview, four-image gallery, dedicated wheatgrass cultivation section, arranged visits, consultation and Rigita practical-learning enquiries. No invented product stock, fees, syllabus or scheduling.
 - Products/seedlings: actual packaged-herb photograph used as contextual imagery, not a tea substitute; actual moringa seedlings used in the matching catalogue/detail entry. Existing filters, detail pages and learning content remain.
 - Contact: owner-confirmed email and WhatsApp, labelled topic selector with recognised query-prefill, item prefill and email composer carrying topic/name/reply address/message. Site explains that an enquiry is not a reservation and that the visitor must send from their email application. Optional Netlify handling remains opt-in.

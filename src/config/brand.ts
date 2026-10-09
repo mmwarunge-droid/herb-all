@@ -1,5 +1,5 @@
 export const founder = {
-  name: 'David Mureu Warunge',
+  name: 'David Muriu Warunge',
   role: 'Founder · Herbal cultivation & knowledge-sharing',
   location: 'Ongata Rongai, Kenya',
   researchUrl:

@@ -1,3 +1,7 @@
+# Commerce deployment update
+
+The site now includes serverless commerce. Follow [COMMERCE_OPERATIONS](COMMERCE_OPERATIONS.md) for PostgreSQL, runtime secrets, migrations, administrator setup and release gates. Static-only deployment does not enable the Shop. Existing site configuration below describes the inherited informational frontend; new commerce requires the additional steps above.
+
 # Publish with Netlify
 
 This is a static website. No server, database, adapter, payment provider or secret is needed.

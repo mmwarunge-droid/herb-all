@@ -1,6 +1,6 @@
 # Herb-All commerce implementation — 2026-10-09
 
-Implemented in the existing Astro repository on `feat/commerce-inventory`. This is a locally validated implementation and release preparation, not a deployed or production-certified store. The existing Netlify configuration is retained. No production database, authenticated Netlify project, verified Pochi account or farm coordinates were available; no deployment, real payment, external refund or customer email was initiated.
+Implemented in the existing Astro repository on `feat/commerce-inventory`. This is a locally and CI-validated implementation with an automatically deployed static/function preview, not a configured or production-certified store. The existing Netlify configuration is retained. No production database, authenticated Netlify administration access, verified Pochi account or farm coordinates were available; no production promotion, real payment, external refund or customer email was initiated.
 
 ## Implemented customer and administrator workflows
 
@@ -68,4 +68,8 @@ The CI workflow validates against isolated PostgreSQL, never production. Preview
 
 Required release work: identify the authorized existing Netlify project, provision staging/production PostgreSQL and private secrets, apply migrations, provision the first admin, configure approved real catalogue/stock/images and verified Pochi instructions, and validate HTTPS/API/auth/upload/scheduler/payment workflows in staging before production promotion. Farm coordinates/Routes credentials and Resend credentials are optional; manual quotes and tracking work without them. Review legal text and recovery/retention policy with the owner. Deploy only through the existing authorized hosting project, preserve the database for rollback, and record live checks before accepting customer payments.
 
-The implementation is reviewable in Git; no claim is made that branch builds, payment enablement or hosting deployment have occurred until separately verified.
+## GitHub and hosted preview evidence
+
+[Draft PR #3](https://github.com/mmwarunge-droid/herb-all/pull/3) contains the implementation. The [GitHub validation run](https://github.com/mmwarunge-droid/herb-all/actions/runs/37965189401) passed every step, including clean installation, both migrations twice, backend tests and both browser suites.
+
+The repository's existing Netlify integration automatically created [deploy preview 3](https://deploy-preview-3--herb-all.netlify.app/shop/), identifying the existing `herb-all` project. Read-only checks returned HTTP 200 for the shop shell and HTTP 503 with a sanitized configuration message for `/api/products`. The preview database is unconfigured; this does not demonstrate a working hosted checkout or certify production. No database secrets, verified Pochi configuration, hosting settings or production promotion were changed. The local PostgreSQL rehearsal server was stopped after validation.

@@ -2,11 +2,11 @@ const env = import.meta.env;
 export const site = {
   siteName: 'Herb-All',
   siteDescription:
-    'Explore herbal teas, botanical knowledge and fruit tree seedlings. Plants, wellness and knowledge for everyday living.',
+    'Explore Herb-All botanical products, seedlings, garden visits and practical plant knowledge with founder David Mureu Warunge in Ongata Rongai, Kenya.',
   siteUrl: env.PUBLIC_SITE_URL || 'https://herb-all.example',
-  email: env.PUBLIC_BUSINESS_EMAIL || '',
-  phone: env.PUBLIC_PHONE_NUMBER || '',
-  whatsapp: env.PUBLIC_WHATSAPP_NUMBER || '',
+  email: env.PUBLIC_BUSINESS_EMAIL ?? 'dwmuriu725@gmail.com',
+  phone: env.PUBLIC_PHONE_NUMBER ?? '+254722603819',
+  whatsapp: env.PUBLIC_WHATSAPP_NUMBER ?? '+254722603819',
   facebook: env.PUBLIC_FACEBOOK_URL || '',
   instagram: env.PUBLIC_INSTAGRAM_URL || '',
   netlifyFormEnabled: env.PUBLIC_ENABLE_NETLIFY_FORM === 'true',

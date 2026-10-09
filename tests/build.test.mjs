@@ -70,3 +70,31 @@ test('crawl assets, RSS, detail routes and no irrelevant template routes', () =>
   assert.ok(!existsSync(join(root, 'en')));
   assert.ok(!existsSync(join(root, 'api')));
 });
+
+test('supplied images preserve originals and ship only responsive derivatives', async () => {
+  const { createHash } = await import('node:crypto');
+  const sources = JSON.parse(
+    readFileSync(
+      new URL('../scripts/brand-image-sources.json', import.meta.url),
+      'utf8',
+    ),
+  );
+  assert.equal(sources.length, 8);
+  for (const source of sources) {
+    const original = readFileSync(
+      new URL('../assets/originals/' + source.original, import.meta.url),
+    );
+    assert.equal(
+      createHash('sha256').update(original).digest('hex'),
+      source.sha256,
+    );
+    for (const width of [480, 800, 1200])
+      assert.ok(
+        existsSync(join(root, 'images/brand', `${source.slug}-${width}.webp`)),
+      );
+  }
+  assert.ok(!existsSync(join(root, 'assets/originals')));
+  const gardens = readFileSync(join(root, 'gardens/index.html'), 'utf8');
+  assert.match(gardens, /wheatgrass-1200.webp/);
+  assert.match(gardens, /topic=Garden\+visit/);
+});

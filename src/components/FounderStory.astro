@@ -1,0 +1,71 @@
+---
+import Picture from './Picture.astro';
+import { founder, photos, enquiryPath } from '../config/brand';
+interface Props {
+  detailed?: boolean;
+}
+const { detailed = false } = Astro.props;
+---
+
+<section id="founder" class="founder-section">
+  <div class="container founder-grid">
+    <div class="founder-images">
+      <figure>
+        <Picture
+          src={photos.laboratory}
+          alt="David Mureu Warunge wearing a laboratory coat in a laboratory setting"
+          sizes="(max-width: 760px) 45vw, 320px"
+          class="founder-portrait"
+        />
+        <figcaption>A background in laboratory work</figcaption>
+      </figure>
+      <figure class="garden-portrait">
+        <Picture
+          src={photos.founderGarden}
+          alt="David Mureu Warunge examining a plant while holding a notebook in the garden"
+          sizes="(max-width: 760px) 45vw, 320px"
+          class="founder-portrait"
+        />
+        <figcaption>Knowledge put into practice</figcaption>
+      </figure>
+    </div>
+    <div class="founder-copy">
+      <p class="eyebrow">Meet the founder behind Herb-All</p>
+      <h2>{founder.name}</h2>
+      <p class="founder-role">{founder.role}</p>
+      <p>
+        Bringing together experience in medical laboratory research, a passion
+        for botanical knowledge, and practical work in herbal cultivation and
+        organic farming.
+      </p>
+      <p>
+        David’s background includes work as a Medical Laboratory Technologist at
+        the Kenya Medical Research Institute, with research connections to the
+        Centre for Biotechnology Research and Development and parasitology.
+      </p>
+      <p>
+        Following his retirement from institutional work, his focus turned to
+        growing useful plants, developing Herb-All’s gardens and sharing
+        practical knowledge. Today, he is the person to speak with about a
+        garden visit, a consultation or learning opportunities.
+      </p>
+      <p class="location-line">Based in {founder.location}</p>
+      <div class="actions">
+        <a class="button" href={enquiryPath('Garden visit')}>
+          Enquire about a farm visit
+        </a>
+        <a class="button outline" href={enquiryPath('Consultation')}>
+          Ask about a consultation
+        </a>
+      </div>
+      <a class="text-link" href="/gardens/#learning">
+        Explore practical learning
+      </a>
+      {!detailed && (
+        <a class="text-link founder-more" href="/about/#research">
+          Read the research background
+        </a>
+      )}
+    </div>
+  </div>
+</section>

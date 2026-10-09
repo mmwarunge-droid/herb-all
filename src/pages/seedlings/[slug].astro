@@ -31,7 +31,9 @@ const related = (await publishedSeedlings())
       <div>
         <Picture src={d.image} alt={d.imageAlt} eager class="detail-image" />
         <p class="muted">
-          Illustrative photograph, not current Herb-All stock.
+          {d.image.startsWith('/images/brand/')
+            ? 'Photograph supplied by Herb-All. Current plant size and availability are confirmed on enquiry.'
+            : 'Illustrative photograph, not current Herb-All stock.'}
         </p>
       </div>
       <div>

@@ -40,7 +40,7 @@ Read [CONTENT](docs/CONTENT.md) to add products, seedlings or articles, mark dra
 
 ## Deploy to Netlify
 
-See [DEPLOYMENT](docs/DEPLOYMENT.md). Build command: `npm run build`. Publish directory: `dist`. No Netlify adapter or server is needed. Create a new GitHub repository for this derivative (do not push to the starter’s repository), upload the source, then import it in Netlify. Do not upload `.env`, `node_modules`, screenshots or test reports.
+See [DEPLOYMENT](docs/DEPLOYMENT.md). Build command: `npm run build`. Publish directory: `dist`. No Netlify adapter or server is needed. Continue using the existing `mmwarunge-droid/herb-all` repository and its existing hosting configuration. Review a feature branch before merging; do not create a replacement repository. Do not upload `.env`, `node_modules`, screenshots or test reports.
 
 ## Before commercial launch
 
@@ -49,3 +49,9 @@ Replace `PUBLIC_SITE_URL` with the final HTTPS domain and supply business email,
 Search Console instructions are in [SEO](docs/SEO.md). A GitHub or Netlify account, live domain or hosting deployment is not created by the source build. Deployment needs your GitHub/Netlify account and final business configuration.
 
 Future commerce can use product slugs and optional prices/currency as identifiers. Availability, inventory, a CMS or checkout can be added without changing the public content-first architecture; none is implemented now.
+
+## Founder and gardens enhancement
+
+`src/config/brand.ts` contains founder details, supplied photo references and enquiry topics. `FounderStory.astro` and `EnquiryPanel.astro` share the story and calls to action across the homepage, About and Gardens pages. `/gardens/` presents the growing collection, wheatgrass cultivation and arranged visits/learning. The labelled contact selector prefills recognised enquiry topics; contact channels use owner-confirmed public defaults, with environment overrides supported.
+
+See [image inventory](docs/IMAGE_INVENTORY.md), [factual review](docs/FOUNDER_FACT_CHECK.md) and [implementation report](docs/ENHANCEMENT_REPORT.md). Run `npm run images:optimize` after an intentional source-image update, updating the checksummed source manifest first. Originals remain outside `public/` and `dist/`.

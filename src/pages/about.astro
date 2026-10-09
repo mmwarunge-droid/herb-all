@@ -1,85 +1,110 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Picture from '../components/Picture.astro';
+import FounderStory from '../components/FounderStory.astro';
+import EnquiryPanel from '../components/EnquiryPanel.astro';
+import { founder, photos, enquiryPath } from '../config/brand';
 ---
 
 <BaseLayout
-  title="About Herb-All"
-  description="Meet Herb-All: a botanical catalogue and learning space built around natural wellness, plant knowledge and growing better."
+  title="Our story & founder David Mureu Warunge"
+  description="Meet David Mureu Warunge, founder of Herb-All. Explore his laboratory research background, garden work and approach to sharing botanical knowledge."
+  image={photos.founderGarden}
 >
   <header class="container page-heading">
-    <p class="eyebrow">Herbs for all</p>
+    <p class="eyebrow">The person behind the plants</p>
     <h1>
-      A shared curiosity.
-      <br />A greener everyday.
+      A life of curiosity.
+      <br />A garden of possibilities.
     </h1>
     <p>
-      Herb-All brings herbal products, useful seedlings and thoughtful plant
-      knowledge into one place. We believe getting closer to plants starts with
-      asking good questions.
+      Herb-All connects botanical products, useful seedlings and practical plant
+      knowledge. Its story is also David’s: an interest in research carried into
+      cultivation, organic farming and learning.
     </p>
   </header>
-  <section class="container story-grid">
-    <Picture
-      src="/images/botanical.webp"
-      alt="Green botanical leaves catching the sunlight"
-      class="story-photo"
-    />
-    <div>
-      <h2>Plants. Wellness. Knowledge.</h2>
-      <p>
-        We’re building a space for people interested in herbal teas, plant-based
-        ingredients and the things they can grow. African botanical heritage is
-        part of that curiosity — approached with respect, context and care,
-        without treating all traditions as the same.
-      </p>
-      <p>
-        We are a catalogue and educational platform, not a medical provider. We
-        distinguish traditional use from scientific evidence and avoid promises
-        that plants can replace healthcare.
-      </p>
-      <a class="text-link" href="/disclaimer/">
-        Our approach to health information
-      </a>
-    </div>
-  </section>
-  <section class="tinted">
-    <div class="container pillars">
+  <FounderStory detailed />
+  <section id="research" class="tinted">
+    <div class="container research-grid">
       <div>
-        <span class="pillar-number">01</span>
-        <h3>Natural wellness</h3>
-        <p>
-          Helping people learn about plants, herbs and plant-based nutrition as
-          part of a balanced lifestyle.
-        </p>
+        <p class="eyebrow">Laboratory experience & research</p>
+        <h2>
+          A scientific background.
+          <br />A careful perspective.
+        </h2>
       </div>
       <div>
-        <span class="pillar-number">02</span>
-        <h3>Plant knowledge</h3>
         <p>
-          Making traditional and modern information easier to explore, while
-          being honest about evidence and uncertainty.
+          David’s supplied biography connects his parasitology experience to a
+          2015 study of <em>Azadirachta indica</em> and{' '}
+          <em>Ekebergia capensis</em> in mice infected with{' '}
+          <em>Schistosoma mansoni</em>. The publication lists a co-author as
+          David Muriu.
         </p>
-      </div>
-      <div>
-        <span class="pillar-number">03</span>
-        <h3>Growing better</h3>
         <p>
-          Connecting home growers and farmers with useful seedlings and the
-          questions that support a good start.
+          The study examined plant extracts in an animal model. It does not
+          establish that a Herb-All product is effective or safe for people, and
+          it should not be used as a treatment recommendation.
+        </p>
+        <a
+          class="text-link"
+          href={founder.researchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read the 2015 mouse-study publication
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <p class="research-note">
+          Herb-All is independent. References to prior institutional work do not
+          imply KEMRI endorsement, a medical licence or a clinical
+          qualification.
         </p>
       </div>
     </div>
   </section>
-  <section class="container">
-    <div class="cta-panel">
-      <div>
-        <h2>Let’s keep growing.</h2>
-        <p>Have a question about a plant or product? Start a conversation.</p>
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What guides Herb-All</p>
+          <h2>Plants, with care and context.</h2>
+        </div>
       </div>
-      <a class="button light" href="/contact/">
-        Get in touch
-      </a>
+      <div class="pillars">
+        <div>
+          <span class="pillar-number">01</span>
+          <h3>Natural wellness</h3>
+          <p>
+            Explore plants as part of everyday life. Keep traditional use,
+            nutrition and clinical evidence distinct.
+          </p>
+        </div>
+        <div>
+          <span class="pillar-number">02</span>
+          <h3>Plant knowledge</h3>
+          <p>
+            Learn through conversations and practical observation. Detailed
+            scientific claims need credible sources.
+          </p>
+        </div>
+        <div>
+          <span class="pillar-number">03</span>
+          <h3>Growing better</h3>
+          <p>
+            Ask about useful plants, seedlings and locally suitable growing
+            approaches before putting down roots.
+          </p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="button" href="/gardens/">
+          See the gardens & learning
+        </a>
+        <a class="button outline" href={enquiryPath('Practical learning')}>
+          Ask about Rigita learning
+        </a>
+      </div>
     </div>
   </section>
+  <EnquiryPanel />
 </BaseLayout>

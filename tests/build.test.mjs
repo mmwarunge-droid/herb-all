@@ -46,7 +46,10 @@ test('built metadata, headings, image alt text, JSON-LD and internal links', () 
     }
     if (
       !file.endsWith('404.html') &&
-      !file.endsWith('contact/thanks/index.html')
+      !file.endsWith('contact/thanks/index.html') &&
+      !['admin', 'cart', 'checkout', 'order'].some((route) =>
+        file.endsWith(route + '/index.html'),
+      )
     )
       assert.ok(!html.includes('content="noindex"'));
   }

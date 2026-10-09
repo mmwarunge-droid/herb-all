@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CommerceShell from '../components/CommerceShell.astro';
+---
+
+<BaseLayout
+  title="Checkout & farm delivery"
+  description="Enter your contact and delivery details to request a stock-confirmed Herb-All order."
+  noindex
+>
+  <CommerceShell title="A few details, then we’ll take care.">
+    <p slot="intro">
+      We reserve the selected stock while Herb-All confirms availability and
+      transport. Do not pay until your order shows confirmed terms and verified
+      Pochi instructions.
+    </p>
+    <div class="commerce-columns">
+      <form id="checkout-form" class="contact-form">
+        <h2>Your details</h2>
+        <label for="customer-name">Full name</label>
+        <input
+          id="customer-name"
+          name="name"
+          required
+          maxlength="150"
+          autocomplete="name"
+        />
+        <label for="customer-phone">Mobile phone</label>
+        <input
+          id="customer-phone"
+          name="phone"
+          type="tel"
+          required
+          autocomplete="tel"
+        />
+        <label for="customer-email">Email (optional)</label>
+        <input
+          id="customer-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+        />
+        <label for="delivery-method">Delivery method</label>
+        <select id="delivery-method" name="delivery_method">
+          <option value="delivery">
+            Farm delivery — transport quoted separately
+          </option>
+        </select>
+        <fieldset id="delivery-fields">
+          <legend>Delivery destination</legend>
+          <label for="county">County</label>
+          <input id="county" name="county" required maxlength="100" />
+          <label for="town">Town</label>
+          <input id="town" name="town" required maxlength="100" />
+          <label for="estate">Estate or location</label>
+          <input id="estate" name="estate" required maxlength="200" />
+          <label for="address">Address, landmark & delivery instructions</label>
+          <textarea
+            id="address"
+            name="address"
+            required
+            maxlength="500"
+          ></textarea>
+        </fieldset>
+        <label for="customer-notes">Order notes (optional)</label>
+        <textarea id="customer-notes" name="notes" maxlength="1000"></textarea>
+        <p class="muted">
+          Manual address entry always works. Herb-All reviews any available
+          road-distance estimate before setting a delivery quotation.
+        </p>
+        <p>
+          Your details are used to arrange this order. Do not include sensitive
+          medical information. <a href="/privacy/">Privacy information</a>.
+        </p>
+        <button class="button" id="place-order" disabled>
+          Place order request
+        </button>
+      </form>
+      <aside id="checkout-summary" class="order-panel"></aside>
+    </div>
+  </CommerceShell>
+</BaseLayout>
+<script>
+  import '../scripts/storefront';
+</script>

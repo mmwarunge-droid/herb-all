@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CommerceShell from '../../components/CommerceShell.astro';
+---
+
+<BaseLayout
+  title="Shop plants & botanical products"
+  description="Shop administrator-approved Herb-All plants and botanical products. Check current KES prices, stock, and order quantities before checkout."
+>
+  <CommerceShell title="Plants for your next chapter.">
+    <p slot="intro">
+      Browse the current growing collection. Prices and availability come
+      directly from Herb-All’s inventory. Farm delivery is quoted personally;
+      merchandise requires a 50% deposit after stock and delivery terms are
+      confirmed.
+    </p>
+    <form id="shop-filters" class="filters">
+      <div>
+        <label for="shop-search">Search shop</label>
+        <input id="shop-search" name="q" type="search" maxlength="100" />
+      </div>
+      <div>
+        <label for="shop-category">Shop category</label>
+        <select id="shop-category" name="category">
+          <option value="">All categories</option>
+        </select>
+      </div>
+      <div>
+        <label for="shop-sort">Sort products</label>
+        <select id="shop-sort" name="sort">
+          <option value="name">Name</option>
+          <option value="price_asc">Price: low to high</option>
+          <option value="price_desc">Price: high to low</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+      <button class="button" type="submit">
+        Find products
+      </button>
+    </form>
+    <div id="shop-content" aria-live="polite">
+      <p>Loading the current collection…</p>
+    </div>
+    <div id="shop-pagination" class="actions"></div>
+    <noscript>
+      <p>
+        Enable JavaScript to load live prices and stock. You can also{' '}
+        <a href="/contact/">enquire directly</a>.
+      </p>
+    </noscript>
+  </CommerceShell>
+</BaseLayout>
+<script>
+  import '../../scripts/storefront';
+</script>

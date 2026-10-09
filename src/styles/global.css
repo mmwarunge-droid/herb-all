@@ -1019,3 +1019,253 @@ select {
     gap: 1.5rem;
   }
 }
+/* Commerce uses the existing botanical palette and readable native controls. */
+.cart-link {
+  white-space: nowrap;
+  font-weight: 700;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.cart-link span {
+  background: #153c2e;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.1rem 0.5rem;
+}
+.commerce-section {
+  padding-top: 0;
+  min-height: 350px;
+}
+.commerce-section form {
+  display: grid;
+  gap: 0.8rem;
+}
+.commerce-section .filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+.commerce-section label {
+  display: block;
+  font-weight: 600;
+}
+.commerce-section fieldset {
+  padding: 1rem;
+  border: 1px solid #9aab91;
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+}
+.commerce-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+.order-panel {
+  padding: 1.6rem;
+  background: #f0f2e9;
+  border: 1px solid #ccd6bf;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  overflow-wrap: anywhere;
+}
+.shop-card img,
+.shop-image-fallback {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.shop-image-fallback {
+  background: #edf0e6;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  color: #365344;
+}
+.shop-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #153c2e;
+}
+.shop-price span {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.shop-card h2 {
+  font-size: 1.7rem;
+}
+.shop-card form {
+  margin: 1rem 0;
+}
+.shop-detail {
+  max-width: 900px;
+  margin: auto;
+}
+.shop-detail .shop-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccd6bf;
+}
+.cart-row input {
+  max-width: 100px;
+}
+.cart-row span {
+  flex: 1;
+  min-width: 160px;
+}
+.order-lines {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+.order-lines li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #ccd6bf;
+}
+.order-lines span {
+  float: right;
+}
+.financials {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+}
+.financials dd {
+  margin: 0;
+  font-weight: 700;
+}
+.timeline {
+  border-left: 2px solid #9aab91;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+.timeline li {
+  margin: 1rem 0;
+}
+.admin-toolbar,
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.admin-tabs button {
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #9aab91;
+  background: #faf9f4;
+  color: #153c2e;
+  border-radius: 4px;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.dashboard-grid h3 {
+  font-size: 1.1rem;
+}
+.dashboard-grid strong {
+  font-size: 2rem;
+}
+.check-label {
+  display: flex !important;
+  gap: 0.7rem;
+  align-items: center;
+}
+.check-label input {
+  width: 20px;
+  height: 20px;
+}
+.product-gallery {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.product-gallery img {
+  max-width: 200px;
+  height: auto;
+}
+#admin-view > form {
+  max-width: 760px;
+  margin: 1.5rem 0;
+}
+.recovery-panel {
+  margin-top: 2rem;
+  max-width: 760px;
+}
+.status-label {
+  font-weight: 700;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 1280px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+    position: relative;
+  }
+  .mobile-nav summary {
+    padding: 0.6rem 1rem;
+    min-height: 44px;
+  }
+  .mobile-nav nav {
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    width: 230px;
+    background: var(--cream);
+    padding: 1rem;
+    border: 1px solid #ccd6bf;
+  }
+  .mobile-nav a {
+    display: block;
+    padding: 0.6rem;
+  }
+}
+@media (max-width: 760px) {
+  .commerce-columns,
+  .shop-detail .shop-card {
+    grid-template-columns: 1fr;
+  }
+  .financials {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .financials dd {
+    margin-bottom: 0.7rem;
+  }
+  .order-panel {
+    padding: 1rem;
+  }
+  .cart-link {
+    font-size: 0.9rem;
+  }
+  .nav-shell {
+    gap: 0.5rem;
+  }
+  .mobile-nav summary {
+    padding: 0.5rem;
+  }
+  .order-lines span {
+    float: none;
+    display: block;
+  }
+}
+.commerce-section {
+  overflow-wrap: anywhere;
+}

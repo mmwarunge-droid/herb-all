@@ -14,7 +14,14 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "postbuild": "node scripts/alias-sitemap.mjs",
-    "images:optimize": "node scripts/optimize-brand-images.mjs"
+    "images:optimize": "node scripts/optimize-brand-images.mjs",
+    "db:migrate": "node --env-file-if-exists=.env server/migrate.mjs",
+    "admin:create": "node --env-file-if-exists=.env server/cli.mjs admin:create",
+    "admin:recover": "node --env-file-if-exists=.env server/cli.mjs admin:recover",
+    "reservations:expire": "node --env-file-if-exists=.env server/cli.mjs reservations:expire",
+    "preview:commerce": "node --env-file-if-exists=.env server/local.mjs",
+    "test:commerce": "node --test --test-concurrency=1 tests/commerce/*.test.mjs",
+    "test:commerce:browser": "playwright test --config playwright.commerce.config.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.3",
@@ -22,7 +29,9 @@
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.6",
-    "tailwindcss": "^4.3.3"
+    "pg": "^8.23.1",
+    "tailwindcss": "^4.3.3",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
@@ -30,7 +39,6 @@
     "@playwright/test": "^1.63.0",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
-    "sharp": "0.35.5",
     "typescript": "^5.9.3"
   },
   "engines": {

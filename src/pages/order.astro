@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CommerceShell from '../components/CommerceShell.astro';
+---
+
+<BaseLayout
+  title="Track your Herb-All order"
+  description="Use your order reference and private tracking key to review Herb-All order progress and submit payment evidence securely."
+  noindex
+>
+  <CommerceShell title="Your order, at a glance.">
+    <p slot="intro">
+      Your private tracking key protects your order details. Keep it safe and
+      share it only with trusted people.
+    </p>
+    <form id="tracking-form" class="filters">
+      <div>
+        <label for="order-reference">Order reference</label>
+        <input
+          id="order-reference"
+          name="reference"
+          required
+          maxlength="40"
+          autocomplete="off"
+        />
+      </div>
+      <div>
+        <label for="tracking-token">Private tracking key</label>
+        <input
+          id="tracking-token"
+          name="tracking_token"
+          type="password"
+          required
+          maxlength="200"
+          autocomplete="off"
+        />
+      </div>
+      <button class="button">View order</button>
+      <button class="button outline" type="button" id="show-tracking-key">
+        Show private key
+      </button>
+      <button class="button outline" type="button" id="copy-tracking-key">
+        Copy private key
+      </button>
+    </form>
+    <div id="order-content"></div>
+  </CommerceShell>
+</BaseLayout>
+<script>
+  import '../scripts/storefront';
+</script>

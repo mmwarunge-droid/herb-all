@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CommerceShell from '../components/CommerceShell.astro';
+---
+
+<BaseLayout
+  title="Your shopping cart"
+  description="Review Herb-All quantities and current prices. Confirm your merchandise subtotal and 50% deposit before checkout."
+  noindex
+>
+  <CommerceShell title="Your growing collection.">
+    <p slot="intro">
+      Prices and stock are checked again on the server. Transport is quoted
+      separately by Herb-All.
+    </p>
+    <div id="cart-content"></div>
+    <div class="actions">
+      <a class="button outline" href="/shop/">
+        Continue shopping
+      </a>
+      <a class="button" id="checkout-link" href="/checkout/" hidden>
+        Proceed to checkout
+      </a>
+    </div>
+  </CommerceShell>
+</BaseLayout>
+<script>
+  import '../scripts/storefront';
+</script>

@@ -12,6 +12,9 @@ export default defineConfig({
     sitemap({
       filter: (url) =>
         !url.includes('/contact/thanks/') &&
+        !['/admin/', '/cart/', '/checkout/', '/order/'].some((path) =>
+          url.endsWith(path),
+        ) &&
         !url.endsWith('/404/') &&
         !url.endsWith('/404.html'),
     }),

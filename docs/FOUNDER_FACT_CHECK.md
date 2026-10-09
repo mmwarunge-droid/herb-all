@@ -1,6 +1,6 @@
 # Founder factual review
 
-Public name: **David Mureu Warunge**. Public role: founder, herbal cultivation and knowledge-sharing. No doctor title, degree, medical licence, certification or institutional endorsement is published.
+Public name: **David Muriu Warunge**. Public role: founder, herbal cultivation and knowledge-sharing. No doctor title, degree, medical licence, certification or institutional endorsement is published.
 
 ## Owner-supplied facts
 

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CommerceShell from '../../components/CommerceShell.astro';
+---
+
+<BaseLayout
+  title="Herb-All administration"
+  description="Secure Herb-All inventory, order and payment administration."
+  noindex
+>
+  <CommerceShell title="The farm, organised." eyebrow="Herb-All administration">
+    <p slot="intro">
+      Authorized staff only. Products, stock and payments are managed through
+      authenticated server operations.
+    </p>
+    <div id="admin-content">
+      <form id="admin-login" class="contact-form">
+        <h2>Administrator sign in</h2>
+        <label for="admin-email">Email</label>
+        <input
+          id="admin-email"
+          name="email"
+          type="email"
+          autocomplete="username"
+          required
+        />
+        <label for="admin-password">Password</label>
+        <input
+          id="admin-password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          maxlength="128"
+        />
+        <button class="button">Sign in</button>
+      </form>
+      <details class="recovery-panel">
+        <summary>Recover access with a private token</summary>
+        <p>
+          Ask the deployment operator to issue a one-time recovery token through
+          the secure CLI. No public administrator registration is available.
+        </p>
+        <form id="admin-recovery">
+          <label for="reset-token">Recovery token</label>
+          <input
+            id="reset-token"
+            name="token"
+            type="password"
+            required
+            autocomplete="off"
+          />
+          <label for="reset-password">New password (12+ characters)</label>
+          <input
+            id="reset-password"
+            name="password"
+            type="password"
+            minlength="12"
+            maxlength="128"
+            required
+            autocomplete="new-password"
+          />
+          <button class="button">Update password</button>
+        </form>
+      </details>
+    </div>
+  </CommerceShell>
+</BaseLayout>
+<script>
+  import '../../scripts/admin';
+</script>

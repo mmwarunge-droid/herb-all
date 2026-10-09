@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  eyebrow?: string;
+}
+const { title, eyebrow = 'Herb-All shop' } = Astro.props;
+---
+
+<header class="container page-heading">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  <slot name="intro" />
+</header>
+<section class="container commerce-section">
+  <p id="commerce-status" role="status" aria-live="polite"></p>
+  <slot />
+</section>

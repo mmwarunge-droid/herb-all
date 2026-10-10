@@ -93,7 +93,7 @@ try {
     console.log('Reviewed reservations:', await transaction(expire));
   } else
     fail(
-      'Commands: admin:create [email], admin:recover <email>, reservations:expire',
+      'Commands: admin:create [email], admin:recover <email>, catalogue:import <super-email>, reservations:expire',
     );
 } catch (e) {
   console.error(

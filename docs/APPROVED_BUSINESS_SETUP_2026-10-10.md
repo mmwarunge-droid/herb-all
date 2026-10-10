@@ -31,3 +31,7 @@ Migration 003 records the collection exception on new orders. Existing orders ke
 ## Production gate
 
 GitHub `main` pushes automatically deploy to the existing Netlify project. This deploys source code; it does not provision PostgreSQL, inject private secrets, run production migrations, bootstrap administrators or import stock. Production database access and Netlify Functions configuration are still unavailable in this session. Checkout must remain disabled until those operations, actual stock, verified payee and the documented launch checks are complete. No production account, inventory import, payment or refund is claimed.
+
+## Validation evidence
+
+Local validation for this change: Astro check examines 67 files with zero errors/warnings/hints; production-origin build generates 47 pages; three build tests pass; 37 PostgreSQL backend tests pass; five commerce browser tests pass; the separately disabled server rejects checkout in its browser test; all ten original browser tests pass. Both Netlify Functions package successfully with the official bundler, including native Sharp. Formatting and diff checks pass. Migrations 001–003 apply to a fresh isolated database and repeat without changes; upgrading the previous isolated database preserves historical order fields with collection opt-in false. Synthetic receipt evidence is confined to isolated test databases. No live payment is performed.

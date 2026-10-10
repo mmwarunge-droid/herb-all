@@ -349,9 +349,15 @@ test('super administrator creates staff, changes role and revokes existing sessi
   await page
     .getByLabel('Role for ' + email, { exact: true })
     .selectOption('orders');
+  const savedRole = page.waitForResponse(
+    (response) =>
+      response.url().endsWith('/api/admin/accounts/role') &&
+      response.request().method() === 'POST',
+  );
   await page
     .getByRole('button', { name: 'Save role for ' + email, exact: true })
     .click();
+  expect((await savedRole).status()).toBe(200);
   await expect(
     page.getByLabel('Role for ' + email, { exact: true }),
   ).toHaveValue('orders');

@@ -1,7 +1,12 @@
 import { test, expect } from '@playwright/test';
 import sharp from 'sharp';
 import AxeBuilder from '@axe-core/playwright';
-import { reset, fixtureAdmin, fixtureProduct } from '../commerce/fixtures.mjs';
+import {
+  reset,
+  fixtureAdmin,
+  fixtureProduct,
+  basket,
+} from '../commerce/fixtures.mjs';
 import { closeDatabase, database } from '../../server/db.mjs';
 let admin: any;
 test.beforeEach(async () => {
@@ -389,17 +394,18 @@ test('unconfigured preview and closed checkout display safe, usable messaging', 
   ).toBeVisible();
   await page.unroute('**/api/**');
   const p = await fixtureProduct(admin);
-  await page.route('**/api/public/settings', (route) =>
-    route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({
-        checkout_enabled: false,
-        reservation_hours: 48,
-        collection_enabled: false,
+  if (process.env.COMMERCE_CHECKOUT_ENABLED !== 'false')
+    await page.route('**/api/public/settings', (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          checkout_enabled: false,
+          reservation_hours: 48,
+          collection_enabled: false,
+        }),
       }),
-    }),
-  );
+    );
   await page.goto('/shop/');
   await page.evaluate(
     (item) =>
@@ -420,6 +426,16 @@ test('unconfigured preview and closed checkout display safe, usable messaging', 
   );
   await expect(page.locator('#checkout-form button')).toBeDisabled();
   await axe(page);
+  if (process.env.COMMERCE_CHECKOUT_ENABLED === 'false') {
+    const blocked = await page.request.post('/api/orders', {
+      headers: {
+        Origin: 'http://127.0.0.1:4321',
+        'Idempotency-Key': crypto.randomUUID().replaceAll('-', ''),
+      },
+      data: basket([{ product_id: p.id, quantity: 1 }]),
+    });
+    expect(blocked.status()).toBe(503);
+  }
   expect(
     (await database().query('SELECT count(*) n FROM orders')).rows[0].n,
   ).toBe('0');

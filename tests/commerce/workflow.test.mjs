@@ -1417,3 +1417,172 @@ test('maintenance safely skips an intentionally unconfigured static deployment',
     process.env.DATABASE_URL = saved;
   }
 });
+
+test('new farm collection requires no upfront payment but full settlement before handover', async () => {
+  const a = await fixtureAdmin();
+  const p = await fixtureProduct(a);
+  await database().query('UPDATE settings SET data=$1 WHERE id=1', [
+    {
+      collection_enabled: true,
+      balance_policy: 'delivery',
+      payment_enabled: true,
+      payee: 'Isolated fixture',
+      pochi_phone: '+254712345678',
+      payment_instructions: 'Test only',
+    },
+  ]);
+  const placed = await tx((c) =>
+    placeOrder(
+      c,
+      {
+        ...basket([{ product_id: p.id, quantity: 1 }]),
+        delivery_method: 'collection',
+      },
+      token(),
+    ),
+  );
+  await tx(async (c) =>
+    orderAction(
+      c,
+      await order(c, placed.order.reference),
+      { action: 'confirm_stock' },
+      a,
+    ),
+  );
+  let view = await tx(async (c) =>
+    detail(c, await order(c, placed.order.reference)),
+  );
+  assert.equal(view.deposit_cents, 0);
+  assert.equal(view.current_due_cents, 0);
+  assert.equal(view.payment_available, false);
+  await tx(async (c) =>
+    orderAction(
+      c,
+      await order(c, placed.order.reference),
+      { action: 'prepare' },
+      a,
+    ),
+  );
+  view = await tx(async (c) =>
+    detail(c, await order(c, placed.order.reference)),
+  );
+  assert.equal(view.current_due_cents, 15000);
+  assert.equal(view.dispatch_due_cents, 15000);
+  await assert.rejects(
+    tx(async (c) =>
+      orderAction(
+        c,
+        await order(c, placed.order.reference),
+        { action: 'dispatch', reason: 'Collection' },
+        a,
+      ),
+    ),
+  );
+  await tx(async (c) =>
+    submitPayment(
+      c,
+      await order(c, placed.order.reference),
+      evidence('PICKUP1234', '150'),
+    ),
+  );
+  const payment = await row(
+    database(),
+    "SELECT id FROM payments WHERE reference='PICKUP1234'",
+  );
+  await tx((c) =>
+    decidePayment(
+      c,
+      {
+        payment_id: payment.id,
+        decision: 'verified',
+        verified_amount: '150',
+        reason: 'Fixture account checked',
+        confirmed: true,
+      },
+      a,
+    ),
+  );
+  await tx(async (c) =>
+    orderAction(
+      c,
+      await order(c, placed.order.reference),
+      { action: 'dispatch', reason: 'Collected at farm' },
+      a,
+    ),
+  );
+  await tx(async (c) =>
+    orderAction(
+      c,
+      await order(c, placed.order.reference),
+      { action: 'deliver' },
+      a,
+    ),
+  );
+  assert.equal(
+    (
+      await row(database(), 'SELECT stock,reserved FROM products WHERE id=$1', [
+        p.id,
+      ])
+    ).stock,
+    19,
+  );
+});
+
+test('approved catalogue import is explicit, draft-only, idempotent and preserves admin edits', async () => {
+  const { importApprovedCatalogue } =
+    await import('../../server/catalogue.mjs');
+  const a = await fixtureAdmin();
+  assert.deepEqual(await tx((c) => importApprovedCatalogue(c, a.email)), {
+    created: 63,
+    skipped: 0,
+  });
+  const totals = await row(
+    database(),
+    'SELECT count(*) total,sum(stock) stock,count(*) FILTER(WHERE published) published FROM products',
+  );
+  assert.equal(totals.total, '63');
+  assert.equal(totals.stock, '0');
+  assert.equal(totals.published, '0');
+  await database().query(
+    "UPDATE products SET price_cents=12345 WHERE sku='HA-GRAFTED-HASS-AVOCADO'",
+  );
+  assert.deepEqual(await tx((c) => importApprovedCatalogue(c, a.email)), {
+    created: 0,
+    skipped: 63,
+  });
+  assert.equal(
+    Number(
+      (
+        await row(
+          database(),
+          "SELECT price_cents FROM products WHERE sku='HA-GRAFTED-HASS-AVOCADO'",
+        )
+      ).price_cents,
+    ),
+    12345,
+  );
+  const staff = await fixtureAdmin('inventory');
+  await assert.rejects(tx((c) => importApprovedCatalogue(c, staff.email)));
+  await database().query('UPDATE administrators SET active=false WHERE id=$1', [
+    a.id,
+  ]);
+  await assert.rejects(tx((c) => importApprovedCatalogue(c, a.email)));
+});
+
+test('historic collection financial terms keep the original 50 percent deposit', () => {
+  const legacy = {
+    delivery_method: 'collection',
+    collection_pay_on_pickup: false,
+    subtotal_cents: 15000,
+    adjustment_cents: 0,
+    transport_cents: 0,
+    verified_cents: 0,
+    refunded_cents: 0,
+    stock_confirmed: true,
+    status: 'awaiting_deposit',
+    balance_policy: 'before_dispatch',
+    transport_policy: 'upfront',
+  };
+  assert.equal(finance(legacy).deposit_cents, 7500);
+  assert.equal(finance(legacy).current_due_cents, 7500);
+});

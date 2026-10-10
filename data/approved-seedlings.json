@@ -1,0 +1,510 @@
+{
+  "approved_on": "2026-10-10",
+  "currency": "KES",
+  "products": [
+    {
+      "name": "Grafted Hass Avocado",
+      "category": "Avocados",
+      "slug": "grafted-hass-avocado",
+      "sku": "HA-GRAFTED-HASS-AVOCADO",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Grafted Fuerte Avocado",
+      "category": "Avocados",
+      "slug": "grafted-fuerte-avocado",
+      "sku": "HA-GRAFTED-FUERTE-AVOCADO",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Kent Mango",
+      "category": "Mangoes",
+      "slug": "kent-mango",
+      "sku": "HA-KENT-MANGO",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Apple Mango",
+      "category": "Mangoes",
+      "slug": "apple-mango",
+      "sku": "HA-APPLE-MANGO",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Tommy Mango",
+      "category": "Mangoes",
+      "slug": "tommy-mango",
+      "sku": "HA-TOMMY-MANGO",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Ngowe Mango",
+      "category": "Mangoes",
+      "slug": "ngowe-mango",
+      "sku": "HA-NGOWE-MANGO",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Pixie Orange",
+      "category": "Citrus",
+      "slug": "pixie-orange",
+      "sku": "HA-PIXIE-ORANGE",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Washington Orange",
+      "category": "Citrus",
+      "slug": "washington-orange",
+      "sku": "HA-WASHINGTON-ORANGE",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Valencia Orange",
+      "category": "Citrus",
+      "slug": "valencia-orange",
+      "sku": "HA-VALENCIA-ORANGE",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Blood Orange",
+      "category": "Citrus",
+      "slug": "blood-orange",
+      "sku": "HA-BLOOD-ORANGE",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Minneola Orange",
+      "category": "Citrus",
+      "slug": "minneola-orange",
+      "sku": "HA-MINNEOLA-ORANGE",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Tangerines",
+      "category": "Citrus",
+      "slug": "tangerines",
+      "sku": "HA-TANGERINES",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Variegated Lemon",
+      "category": "Citrus",
+      "slug": "variegated-lemon",
+      "sku": "HA-VARIEGATED-LEMON",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Hybrid Meyer Lemon",
+      "category": "Citrus",
+      "slug": "hybrid-meyer-lemon",
+      "sku": "HA-HYBRID-MEYER-LEMON",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Meyer Lemon",
+      "category": "Citrus",
+      "slug": "meyer-lemon",
+      "sku": "HA-MEYER-LEMON",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Rough Lemon",
+      "category": "Citrus",
+      "slug": "rough-lemon",
+      "sku": "HA-ROUGH-LEMON",
+      "unit": "seedling",
+      "price": "150"
+    },
+    {
+      "name": "Lime Variety",
+      "category": "Citrus",
+      "slug": "lime-variety",
+      "sku": "HA-LIME-VARIETY",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Grapes",
+      "category": "Vines and Tropicals",
+      "slug": "grapes",
+      "sku": "HA-GRAPES",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Purple Passion",
+      "category": "Vines and Tropicals",
+      "slug": "purple-passion",
+      "sku": "HA-PURPLE-PASSION",
+      "unit": "seedling",
+      "price": "100"
+    },
+    {
+      "name": "Yellow Passion",
+      "category": "Vines and Tropicals",
+      "slug": "yellow-passion",
+      "sku": "HA-YELLOW-PASSION",
+      "unit": "seedling",
+      "price": "100"
+    },
+    {
+      "name": "Sweet Granadilla",
+      "category": "Vines and Tropicals",
+      "slug": "sweet-granadilla",
+      "sku": "HA-SWEET-GRANADILLA",
+      "unit": "seedling",
+      "price": "150"
+    },
+    {
+      "name": "Giant Passion",
+      "category": "Vines and Tropicals",
+      "slug": "giant-passion",
+      "sku": "HA-GIANT-PASSION",
+      "unit": "seedling",
+      "price": "150"
+    },
+    {
+      "name": "Tree Tomato",
+      "category": "Vines and Tropicals",
+      "slug": "tree-tomato",
+      "sku": "HA-TREE-TOMATO",
+      "unit": "seedling",
+      "price": "100"
+    },
+    {
+      "name": "Dwarf Pawpaw (Malkia F1)",
+      "category": "Vines and Tropicals",
+      "slug": "dwarf-pawpaw-malkia-f1",
+      "sku": "HA-DWARF-PAWPAW-MALKIA-F1",
+      "unit": "seedling",
+      "price": "150"
+    },
+    {
+      "name": "Normal Pawpaw",
+      "category": "Vines and Tropicals",
+      "slug": "normal-pawpaw",
+      "sku": "HA-NORMAL-PAWPAW",
+      "unit": "seedling",
+      "price": "100"
+    },
+    {
+      "name": "Dragon Fruit",
+      "category": "Vines and Tropicals",
+      "slug": "dragon-fruit",
+      "sku": "HA-DRAGON-FRUIT",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Pineapple",
+      "category": "Vines and Tropicals",
+      "slug": "pineapple",
+      "sku": "HA-PINEAPPLE",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Wambugu Apple",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "wambugu-apple",
+      "sku": "HA-WAMBUGU-APPLE",
+      "unit": "seedling",
+      "price": "700"
+    },
+    {
+      "name": "Grafted Apple-to-Apple",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "grafted-apple-to-apple",
+      "sku": "HA-GRAFTED-APPLE-TO-APPLE",
+      "unit": "seedling",
+      "price": "400"
+    },
+    {
+      "name": "Apple-to-Loquat",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "apple-to-loquat",
+      "sku": "HA-APPLE-TO-LOQUAT",
+      "unit": "seedling",
+      "price": "350"
+    },
+    {
+      "name": "Green Apple",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "green-apple",
+      "sku": "HA-GREEN-APPLE",
+      "unit": "seedling",
+      "price": "400"
+    },
+    {
+      "name": "Pears",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "pears",
+      "sku": "HA-PEARS",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Plums",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "plums",
+      "sku": "HA-PLUMS",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Peaches",
+      "category": "Apples, Pears and Stone Fruits",
+      "slug": "peaches",
+      "sku": "HA-PEACHES",
+      "unit": "seedling",
+      "price": "800"
+    },
+    {
+      "name": "Blueberry",
+      "category": "Berries and Small Fruits",
+      "slug": "blueberry",
+      "sku": "HA-BLUEBERRY",
+      "unit": "seedling",
+      "price": "2500"
+    },
+    {
+      "name": "Raspberry",
+      "category": "Berries and Small Fruits",
+      "slug": "raspberry",
+      "sku": "HA-RASPBERRY",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Strawberry",
+      "category": "Berries and Small Fruits",
+      "slug": "strawberry",
+      "sku": "HA-STRAWBERRY",
+      "unit": "seedling",
+      "price": "150"
+    },
+    {
+      "name": "Mulberry",
+      "category": "Berries and Small Fruits",
+      "slug": "mulberry",
+      "sku": "HA-MULBERRY",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Gooseberry",
+      "category": "Berries and Small Fruits",
+      "slug": "gooseberry",
+      "sku": "HA-GOOSEBERRY",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Cherry Guava",
+      "category": "Berries and Small Fruits",
+      "slug": "cherry-guava",
+      "sku": "HA-CHERRY-GUAVA",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Guavas",
+      "category": "Berries and Small Fruits",
+      "slug": "guavas",
+      "sku": "HA-GUAVAS",
+      "unit": "seedling",
+      "price": "150"
+    },
+    {
+      "name": "Pepino Melon",
+      "category": "Berries and Small Fruits",
+      "slug": "pepino-melon",
+      "sku": "HA-PEPINO-MELON",
+      "unit": "seedling",
+      "price": "200"
+    },
+    {
+      "name": "Cooking Banana",
+      "category": "Bananas - Tissue Culture",
+      "slug": "cooking-banana",
+      "sku": "HA-COOKING-BANANA",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Ripening Banana",
+      "category": "Bananas - Tissue Culture",
+      "slug": "ripening-banana",
+      "sku": "HA-RIPENING-BANANA",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Sweet Banana",
+      "category": "Bananas - Tissue Culture",
+      "slug": "sweet-banana",
+      "sku": "HA-SWEET-BANANA",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Kisii Matoke",
+      "category": "Bananas - Tissue Culture",
+      "slug": "kisii-matoke",
+      "sku": "HA-KISII-MATOKE",
+      "unit": "seedling",
+      "price": "250"
+    },
+    {
+      "name": "Plantain",
+      "category": "Bananas - Tissue Culture",
+      "slug": "plantain",
+      "sku": "HA-PLANTAIN",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Red Banana",
+      "category": "Bananas - Tissue Culture",
+      "slug": "red-banana",
+      "sku": "HA-RED-BANANA",
+      "unit": "seedling",
+      "price": "800"
+    },
+    {
+      "name": "Macadamia",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "macadamia",
+      "sku": "HA-MACADAMIA",
+      "unit": "seedling",
+      "price": "400"
+    },
+    {
+      "name": "Grafted Cashew",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "grafted-cashew",
+      "sku": "HA-GRAFTED-CASHEW",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Normal Cashew",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "normal-cashew",
+      "sku": "HA-NORMAL-CASHEW",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Pomegranates",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "pomegranates",
+      "sku": "HA-POMEGRANATES",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Kiwi",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "kiwi",
+      "sku": "HA-KIWI",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Jackfruit",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "jackfruit",
+      "sku": "HA-JACKFRUIT",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Fig Tree",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "fig-tree",
+      "sku": "HA-FIG-TREE",
+      "unit": "seedling",
+      "price": "900"
+    },
+    {
+      "name": "Soursop",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "soursop",
+      "sku": "HA-SOURSOP",
+      "unit": "seedling",
+      "price": "300"
+    },
+    {
+      "name": "Persimmon",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "persimmon",
+      "sku": "HA-PERSIMMON",
+      "unit": "seedling",
+      "price": "700"
+    },
+    {
+      "name": "Jabuticaba",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "jabuticaba",
+      "sku": "HA-JABUTICABA",
+      "unit": "seedling",
+      "price": "1000"
+    },
+    {
+      "name": "Canistel",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "canistel",
+      "sku": "HA-CANISTEL",
+      "unit": "seedling",
+      "price": "2500"
+    },
+    {
+      "name": "Tamarind",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "tamarind",
+      "sku": "HA-TAMARIND",
+      "unit": "seedling",
+      "price": "500"
+    },
+    {
+      "name": "Moringa",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "moringa",
+      "sku": "HA-MORINGA",
+      "unit": "seedling",
+      "price": "350"
+    },
+    {
+      "name": "Zambarau",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "zambarau",
+      "sku": "HA-ZAMBARAU",
+      "unit": "seedling",
+      "price": "600"
+    },
+    {
+      "name": "White Sapote",
+      "category": "Nuts and Exotic Fruits",
+      "slug": "white-sapote",
+      "sku": "HA-WHITE-SAPOTE",
+      "unit": "seedling",
+      "price": "400"
+    }
+  ]
+}

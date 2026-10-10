@@ -440,3 +440,38 @@ test('unconfigured preview and closed checkout display safe, usable messaging', 
     (await database().query('SELECT count(*) n FROM orders')).rows[0].n,
   ).toBe('0');
 });
+
+test('farm collection summary removes the delivery deposit', async ({
+  page,
+}) => {
+  await database().query('UPDATE settings SET data=$1 WHERE id=1', [
+    { collection_enabled: true },
+  ]);
+  const p = await fixtureProduct(admin);
+  await page.goto('/shop/');
+  await page.evaluate(
+    (item) =>
+      localStorage.setItem(
+        'herb-all-cart',
+        JSON.stringify([{ product_id: item, quantity: 1 }]),
+      ),
+    p.id,
+  );
+  await page.goto('/checkout/');
+  await expect(page.locator('#checkout-summary')).toContainText(
+    '50% merchandise deposit',
+  );
+  await page.getByLabel('Delivery method').selectOption('collection');
+  await expect(page.locator('#checkout-summary')).toContainText(
+    'no upfront payment',
+  );
+  await expect(page.locator('#checkout-summary')).not.toContainText(
+    '50% merchandise deposit',
+  );
+  await expect(page.locator('#delivery-fields')).toBeHidden();
+  await page.getByLabel('Delivery method').selectOption('delivery');
+  await expect(page.locator('#checkout-summary')).toContainText(
+    '50% merchandise deposit',
+  );
+  await expect(page.locator('#delivery-fields')).toBeVisible();
+});

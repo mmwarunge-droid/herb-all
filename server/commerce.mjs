@@ -301,7 +301,7 @@ export async function placeOrder(c, b, key) {
   const tracking = accessToken(key);
   const o = await row(
     c,
-    `INSERT INTO orders(id,reference,token_hash,idempotency_hash,request_hash,customer,delivery_method,destination,subtotal_cents,transport_cents,transport_policy,balance_policy,reservation_expires_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,now()+($13 * interval '1 hour')) RETURNING *`,
+    `INSERT INTO orders(id,reference,token_hash,idempotency_hash,request_hash,customer,delivery_method,destination,subtotal_cents,transport_cents,transport_policy,balance_policy,collection_pay_on_pickup,reservation_expires_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$14,now()+($13 * interval '1 hour')) RETURNING *`,
     [
       orderId,
       reference,
@@ -316,6 +316,7 @@ export async function placeOrder(c, b, key) {
       s.transport_policy,
       s.balance_policy,
       s.reservation_hours,
+      b.delivery_method === 'collection',
     ],
   );
   for (const line of quote.items) {
@@ -405,6 +406,7 @@ export async function detail(c, o, admin = false) {
     adjustment_cents: Number(o.adjustment_cents),
     transport_policy: o.transport_policy,
     balance_policy: o.balance_policy,
+    collection_pay_on_pickup: o.collection_pay_on_pickup,
     refunded_cents: Number(o.refunded_cents),
     ...finance(o),
     items: items.map((i) => ({
@@ -702,6 +704,7 @@ export async function orderAction(c, o, b, admin) {
         'deposit_confirmed',
         'awaiting_additional_payment',
         'preparing',
+        ...(o.collection_pay_on_pickup ? ['awaiting_deposit'] : []),
       ].includes(o.status) ||
       finance(o).deposit_outstanding_cents > 0 ||
       !o.stock_confirmed ||

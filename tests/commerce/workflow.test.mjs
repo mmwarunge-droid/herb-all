@@ -2,6 +2,7 @@ import { test, beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
 import { spawnSync } from 'node:child_process';
+import maintenance from '../../netlify/functions/maintenance.mjs';
 import { database, transaction, row, closeDatabase } from '../../server/db.mjs';
 import { id, token, hash, cents, finance } from '../../server/core.mjs';
 import {
@@ -49,6 +50,7 @@ async function call(path, body, session = {}, method) {
   );
   return {
     status: response.status,
+    headers: response.headers,
     data:
       response.headers.get('content-type') === 'image/webp'
         ? await response.arrayBuffer()
@@ -652,9 +654,20 @@ test('image uploads normalize public images and private receipts cannot be acces
   const media = await row(database(), 'SELECT attachment_id FROM payments');
   assert.equal((await call('media/' + media.attachment_id)).status, 401);
   assert.equal(
-    (await call('media/' + media.attachment_id, undefined, s)).status,
-    200,
+    (
+      await call(
+        'media/' + media.attachment_id,
+        undefined,
+        await login(await fixtureAdmin('inventory')),
+      )
+    ).status,
+    403,
   );
+  const receipt = await call('media/' + media.attachment_id, undefined, s);
+  assert.equal(receipt.status, 200);
+  assert.equal(receipt.headers.get('cache-control'), 'no-store');
+  assert.equal(receipt.headers.get('x-robots-tag'), 'noindex');
+  assert.equal(receipt.headers.get('x-frame-options'), 'DENY');
 });
 test('one-time recovery revokes old sessions and cannot be replayed', async () => {
   const a = await fixtureAdmin();
@@ -1274,6 +1287,11 @@ test('unconfigured database and private tracking errors never expose secrets or 
     );
     assert.equal(response.status, 503);
     assert.equal(response.headers.get('x-robots-tag'), 'noindex');
+    assert.equal(response.headers.get('x-frame-options'), 'DENY');
+    assert.equal(
+      response.headers.get('content-security-policy'),
+      "base-uri 'self'; object-src 'none'; frame-ancestors 'none'",
+    );
     assert.deepEqual(await response.json(), {
       error:
         'Shop configuration is not available yet. Please enquire directly.',
@@ -1291,4 +1309,111 @@ test('migration failures do not print private connection values', () => {
   assert.equal(r.status, 1);
   assert.match(r.stderr, /Migration failed/);
   assert.doesNotMatch(r.stderr + r.stdout, /sentinel|stack|ERR_INVALID_URL/);
+});
+
+test('closing checkout preserves existing private orders and reserved inventory', async () => {
+  const a = await fixtureAdmin();
+  const p = await fixtureProduct(
+    a,
+    'Isolated stock shutdown fixture',
+    '150',
+    10,
+  );
+  const placed = await call(
+    'orders',
+    basket([{ product_id: p.id, quantity: 2 }]),
+  );
+  assert.equal(placed.status, 201);
+  process.env.COMMERCE_CHECKOUT_ENABLED = 'false';
+  assert.equal(
+    (await call('orders', basket([{ product_id: p.id, quantity: 1 }]))).status,
+    503,
+  );
+  const tracked = await call('track', {
+    reference: placed.data.order.reference,
+    tracking_token: placed.data.tracking_token,
+  });
+  assert.equal(tracked.status, 200);
+  assert.equal(tracked.data.payment_instructions, null);
+  assert.equal((await row(database(), 'SELECT count(*) n FROM orders')).n, '1');
+  assert.deepEqual(
+    await row(database(), 'SELECT stock,reserved FROM products WHERE id=$1', [
+      p.id,
+    ]),
+    { stock: 10, reserved: 2 },
+  );
+  const session = await login(a);
+  assert.equal(
+    (
+      await call(
+        'admin/order',
+        {
+          reference: placed.data.order.reference,
+          action: 'cancel',
+          reason: 'Isolated shutdown test cancellation',
+        },
+        session,
+      )
+    ).status,
+    200,
+  );
+  assert.deepEqual(
+    await row(database(), 'SELECT stock,reserved FROM products WHERE id=$1', [
+      p.id,
+    ]),
+    { stock: 10, reserved: 0 },
+  );
+});
+
+test('a valid tracking key for one order cannot retrieve another order', async () => {
+  const p = await fixtureProduct(await fixtureAdmin());
+  const first = await call('orders', {
+    ...basket([{ product_id: p.id, quantity: 1 }]),
+    name: 'Isolated customer A',
+  });
+  const second = await call('orders', {
+    ...basket([{ product_id: p.id, quantity: 1 }]),
+    name: 'Isolated customer B',
+  });
+  assert.equal(first.status, 201);
+  assert.equal(second.status, 201);
+  const wrong = await call('track', {
+    reference: first.data.order.reference,
+    tracking_token: second.data.tracking_token,
+  });
+  assert.equal(wrong.status, 404);
+  assert.deepEqual(wrong.data, { error: 'Order or tracking key not found.' });
+});
+
+test('database connection failures are sanitized without private URL data', async () => {
+  const saved = process.env.DATABASE_URL;
+  await closeDatabase();
+  try {
+    const url = new URL(saved);
+    url.username = 'nonexistent_isolated_qa_role';
+    process.env.DATABASE_URL = url.href;
+    const response = await handler(
+      new Request('http://127.0.0.1:4321/api/products'),
+    );
+    assert.equal(response.status, 500);
+    assert.deepEqual(await response.json(), {
+      error:
+        'The request could not be completed. Please retry or contact Herb-All.',
+    });
+  } finally {
+    await closeDatabase();
+    process.env.DATABASE_URL = saved;
+  }
+});
+
+test('maintenance safely skips an intentionally unconfigured static deployment', async () => {
+  const saved = process.env.DATABASE_URL;
+  try {
+    delete process.env.DATABASE_URL;
+    const response = await maintenance();
+    assert.equal(response.status, 204);
+    assert.equal(await response.text(), '');
+  } finally {
+    process.env.DATABASE_URL = saved;
+  }
 });

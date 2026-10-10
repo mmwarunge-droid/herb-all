@@ -36,6 +36,9 @@ const headers = {
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'no-referrer',
   'X-Robots-Tag': 'noindex',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy':
+    "base-uri 'self'; object-src 'none'; frame-ancestors 'none'",
 };
 const json = (data, status = 200, extra = {}) =>
   new Response(JSON.stringify(data), {
@@ -410,9 +413,9 @@ export async function handler(req, context = {}) {
         }
         return new Response(m.bytes, {
           headers: {
+            ...headers,
             'Content-Type': 'image/webp',
             'Cache-Control': m.private ? 'no-store' : 'public, max-age=300',
-            'X-Content-Type-Options': 'nosniff',
           },
         });
       });

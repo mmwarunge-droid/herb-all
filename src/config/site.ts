@@ -3,7 +3,10 @@ export const site = {
   siteName: 'Herb-All',
   siteDescription:
     'Explore Herb-All botanical products, seedlings, garden visits and practical plant knowledge with founder David Muriu Warunge in Ongata Rongai, Kenya.',
-  siteUrl: env.PUBLIC_SITE_URL || 'https://herb-all.example',
+  siteUrl:
+    env.PUBLIC_SITE_URL ||
+    (process.env.CONTEXT === 'production' ? process.env.URL : undefined) ||
+    'https://herb-all.example',
   email: env.PUBLIC_BUSINESS_EMAIL ?? 'dwmuriu725@gmail.com',
   phone: env.PUBLIC_PHONE_NUMBER ?? '+254722603819',
   whatsapp: env.PUBLIC_WHATSAPP_NUMBER ?? '+254722603819',

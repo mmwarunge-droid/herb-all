@@ -58,11 +58,13 @@ export function finance(o) {
   const merchandise = Number(o.subtotal_cents) + Number(o.adjustment_cents);
   const transport =
     o.transport_cents === null ? null : Number(o.transport_cents);
-  const deposit = Math.ceil(merchandise / 2);
+  const pickup = o.collection_pay_on_pickup === true;
+  const deposit = pickup ? 0 : Math.ceil(merchandise / 2);
   const paid = Number(o.verified_cents) - Number(o.refunded_cents);
   const total = merchandise + (transport ?? 0);
-  const initial =
-    deposit + (o.transport_policy === 'upfront' ? (transport ?? 0) : 0);
+  const initial = pickup
+    ? 0
+    : deposit + (o.transport_policy === 'upfront' ? (transport ?? 0) : 0);
   const closed = [
     'cancelled',
     'expired',
@@ -75,7 +77,9 @@ export function finance(o) {
     ? 0
     : Math.max(
         0,
-        (o.balance_policy === 'before_dispatch' ? merchandise : deposit) +
+        (pickup || o.balance_policy === 'before_dispatch'
+          ? merchandise
+          : deposit) +
           (o.transport_policy === 'upfront' ? (transport ?? 0) : 0) -
           paid,
       );
@@ -91,11 +95,13 @@ export function finance(o) {
     current_due_cents:
       closed || !o.stock_confirmed || transport === null
         ? 0
-        : depositOutstanding > 0
-          ? depositOutstanding
-          : o.status === 'dispatched'
-            ? outstanding
-            : dispatchDue,
+        : pickup && !['preparing', 'dispatched'].includes(o.status)
+          ? 0
+          : depositOutstanding > 0
+            ? depositOutstanding
+            : o.status === 'dispatched'
+              ? outstanding
+              : dispatchDue,
     overpayment_cents: closed ? 0 : Math.max(0, paid - total),
     refund_due_cents: closed ? paid : Math.max(0, paid - total),
   };

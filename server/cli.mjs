@@ -3,9 +3,16 @@ import { stdin, stdout } from 'node:process';
 import { transaction, row, closeDatabase } from './db.mjs';
 import { id, token, hash, passwordHash, text, fail } from './core.mjs';
 import { audit, expire } from './commerce.mjs';
+import { importApprovedCatalogue } from './catalogue.mjs';
 const [command, emailArg] = process.argv.slice(2);
 try {
-  if (command === 'admin:create') {
+  if (command === 'catalogue:import') {
+    const email = text(emailArg, 'administrator email', 254).toLowerCase();
+    const result = await transaction((c) => importApprovedCatalogue(c, email));
+    console.log(
+      `Catalogue: ${result.created} drafts created; ${result.skipped} existing SKUs preserved. Stock remains unconfirmed; review in /admin/.`,
+    );
+  } else if (command === 'admin:create') {
     const rl = createInterface({ input: stdin, output: stdout });
     const email = text(
       emailArg || (await rl.question('Administrator email: ')),
@@ -86,7 +93,7 @@ try {
     console.log('Reviewed reservations:', await transaction(expire));
   } else
     fail(
-      'Commands: admin:create [email], admin:recover <email>, reservations:expire',
+      'Commands: admin:create [email], admin:recover <email>, catalogue:import <super-email>, reservations:expire',
     );
 } catch (e) {
   console.error(

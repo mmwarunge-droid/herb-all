@@ -35,3 +35,7 @@ GitHub `main` pushes automatically deploy to the existing Netlify project. This 
 ## Validation evidence
 
 Local validation for this change: Astro check examines 67 files with zero errors/warnings/hints; production-origin build generates 47 pages; three build tests pass; 37 PostgreSQL backend tests pass; five commerce browser tests pass; the separately disabled server rejects checkout in its browser test; all ten original browser tests pass. Both Netlify Functions package successfully with the official bundler, including native Sharp. Formatting and diff checks pass. Migrations 001–003 apply to a fresh isolated database and repeat without changes; upgrading the previous isolated database preserves historical order fields with collection opt-in false. Synthetic receipt evidence is confined to isolated test databases. No live payment is performed.
+
+## Subsequent production audit
+
+[Production audit — 2026-10-11](PRODUCTION_AUDIT_2026-10-11.md) records the newly configured but masked production variables, refreshed deployment, SSL-URL connection blocker, environment-write restriction and fresh validation. Its dated observations supersede this document's earlier infrastructure snapshot; approved business data and operating instructions remain applicable.

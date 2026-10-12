@@ -8,7 +8,7 @@ This supersedes the unresolved database/configuration findings in the October 11
 
 ## Deployment
 
-Production: https://herb-all.netlify.app/. Audited application commit: `fa634823cbdda2e9d566d81d3f4fc1de38026853`; refreshed deployment `6acc469c15114138f5772fc7` is ready. Both Functions are deployed; maintenance schedule is `*/15 * * * *`. Successful live commerce database access is verified. A successful scheduled maintenance invocation has not yet been observed; verify it before checkout launch. The subsequent documentation merge/deployment identity is recorded in the final response.
+Production: https://herb-all.netlify.app/. Audited application commit: `fa634823cbdda2e9d566d81d3f4fc1de38026853`; refreshed deployment `6acc469c15114138f5772fc7` is ready. Both Functions are deployed; maintenance schedule is `*/15 * * * *`. Successful live commerce database access is verified. Sampled maintenance logs contain four info-level execution-duration summaries and no error markers; they do not expose individual SQL transaction results. The subsequent documentation merge/deployment identity is recorded in the final response.
 
 Required configuration confirmed: DATABASE_URL and ORDER_TOKEN_SECRET configured (values withheld), DATABASE_SSL=true, APP_ENV=production, COMMERCE_CHECKOUT_ENABLED=false, PUBLIC_SITE_URL=https://herb-all.netlify.app. Secret strength and preview/development database isolation cannot be established from masked provider values.
 
@@ -57,7 +57,7 @@ Isolated suites cover server-side roles, CSRF, last-Super protection, private or
 
 ## Remaining launch gates
 
-Verify exact Pochi payee, enter actual stock, publish selected inventory, authorize payment reconciliation, observe successful deployed maintenance, verify preview/development database isolation and obtain explicit owner checkout-launch approval. Checkout and payments stay disabled until applicable gates pass.
+Verify exact Pochi payee, enter actual stock, publish selected inventory, authorize payment reconciliation, verify preview/development database isolation and obtain explicit owner checkout-launch approval. Checkout and payments stay disabled until applicable gates pass.
 
 ## Git and artifacts
 

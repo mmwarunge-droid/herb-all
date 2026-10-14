@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
+import Navigation from '../components/Navigation.astro';
 import JsonLd from '../components/JsonLd.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import { site, socialLinks } from '../config/site';
@@ -12,15 +13,6 @@ interface Props {
   article?: boolean;
   noindex?: boolean;
 }
-const links = [
-  ['Home', '/'],
-  ['Shop', '/shop/'],
-  ['Herbal Products', '/products/'],
-  ['Seedlings', '/seedlings/'],
-  ['Gardens', '/gardens/'],
-  ['Learn', '/learn/'],
-  ['About', '/about/'],
-];
 ---
 
 <!doctype html>
@@ -37,40 +29,7 @@ const links = [
       Skip to content
     </a>
     <div class="announcement">Rooted in nature. Shared with everyone.</div>
-    <header class="header">
-      <div class="container nav-shell">
-        <a class="brand" href="/" aria-label="Herb-All home">
-          <span class="brand-mark" aria-hidden="true">
-            ✳
-          </span>{' '}
-          herb-all<span class="brand-dot">.</span>
-        </a>
-        <nav class="desktop-nav" aria-label="Main navigation">
-          {links.map(([label, url]) => (
-            <a
-              href={url}
-              aria-current={Astro.url.pathname === url ? 'page' : undefined}
-            >
-              {label}
-            </a>
-          ))}
-          <a href="/contact/" class="button small">
-            Get in touch
-          </a>
-        </nav>
-        <a class="cart-link" href="/cart/" aria-label="Shopping cart">
-          Cart <span data-cart-count>0</span>
-        </a>
-        <details class="mobile-nav">
-          <summary>Menu</summary>
-          <nav aria-label="Mobile navigation">
-            {[...links, ['Contact', '/contact/']].map(([label, url]) => (
-              <a href={url}>{label}</a>
-            ))}
-          </nav>
-        </details>
-      </div>
-    </header>
+    <Navigation />
     <main id="main">
       <slot />
     </main>
@@ -110,6 +69,7 @@ const links = [
           </p>
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
+          <a href="/image-credits/">Image credits</a>
         </div>
       </div>
       <div class="container footer-bottom">

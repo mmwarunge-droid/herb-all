@@ -15,10 +15,21 @@ function update() {
     document
       .querySelectorAll('[data-cart-count]')
       .forEach((el) => (el.textContent = String(count)));
+    document
+      .querySelectorAll('.cart-link')
+      .forEach((el) =>
+        el.setAttribute(
+          'aria-label',
+          `Shopping cart, ${count} ${count === 1 ? 'item' : 'items'}`,
+        ),
+      );
   } catch {
     document
       .querySelectorAll('[data-cart-count]')
       .forEach((el) => (el.textContent = '0'));
+    document
+      .querySelectorAll('.cart-link')
+      .forEach((el) => el.setAttribute('aria-label', 'Shopping cart, 0 items'));
   }
 }
 update();

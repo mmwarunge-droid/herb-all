@@ -1,0 +1,1657 @@
+{
+  "images": {
+    "orange": {
+      "image": "/images/products/temporary/orange-1200.webp",
+      "imageAlt": "Representative orange photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 956,
+      "variants": [
+        {
+          "src": "/images/products/temporary/orange-480.webp",
+          "width": 480,
+          "height": 383,
+          "bytes": 8784
+        },
+        {
+          "src": "/images/products/temporary/orange-800.webp",
+          "width": 800,
+          "height": 638,
+          "bytes": 19258
+        },
+        {
+          "src": "/images/products/temporary/orange-1200.webp",
+          "width": 1200,
+          "height": 956,
+          "bytes": 36540
+        }
+      ],
+      "imageCredit": "Kuttykrishnan Photos",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Orange_fruit_(Citrus_%C3%97_sinensis).jpg",
+      "imageLicense": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "isTemporaryImage": true,
+      "label": "Orange"
+    },
+    "avocado": {
+      "image": "/images/products/temporary/avocado-1200.webp",
+      "imageAlt": "Representative avocado photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 900,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/avocado-480.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 18050
+        },
+        {
+          "src": "/images/products/temporary/avocado-800.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 56288
+        },
+        {
+          "src": "/images/products/temporary/avocado-1200.webp",
+          "width": 900,
+          "height": 1200,
+          "bytes": 112616
+        }
+      ],
+      "imageCredit": "FASTILY",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Avocado_seedling_in_water_1_2021-01-08.jpeg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Avocado"
+    },
+    "mango": {
+      "image": "/images/products/temporary/mango-1200.webp",
+      "imageAlt": "Representative mango photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/mango-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 12600
+        },
+        {
+          "src": "/images/products/temporary/mango-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 41542
+        },
+        {
+          "src": "/images/products/temporary/mango-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 82410
+        }
+      ],
+      "imageCredit": "Tangopaso",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Mango_indica_seedling_D150418.jpg",
+      "imageLicense": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "isTemporaryImage": true,
+      "label": "Mango"
+    },
+    "lime": {
+      "image": "/images/products/temporary/lime-1200.webp",
+      "imageAlt": "Representative lime photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 577,
+      "variants": [
+        {
+          "src": "/images/products/temporary/lime-480.webp",
+          "width": 480,
+          "height": 231,
+          "bytes": 11994
+        },
+        {
+          "src": "/images/products/temporary/lime-800.webp",
+          "width": 800,
+          "height": 384,
+          "bytes": 30546
+        },
+        {
+          "src": "/images/products/temporary/lime-1200.webp",
+          "width": 1200,
+          "height": 577,
+          "bytes": 60426
+        }
+      ],
+      "imageCredit": "Evan-Amos",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Lime-Whole-Split.jpg",
+      "imageLicense": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "isTemporaryImage": true,
+      "label": "Lime"
+    },
+    "mandarin": {
+      "image": "/images/products/temporary/mandarin-1200.webp",
+      "imageAlt": "Representative mandarin photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/mandarin-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 16744
+        },
+        {
+          "src": "/images/products/temporary/mandarin-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 42506
+        },
+        {
+          "src": "/images/products/temporary/mandarin-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 87432
+        }
+      ],
+      "imageCredit": "George Chernilevsky",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Citrus_reticulata_fruit_2009_G1.jpg",
+      "imageLicense": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "isTemporaryImage": true,
+      "label": "Mandarin"
+    },
+    "lemon": {
+      "image": "/images/products/temporary/lemon-1200.webp",
+      "imageAlt": "Representative lemon photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 848,
+      "variants": [
+        {
+          "src": "/images/products/temporary/lemon-480.webp",
+          "width": 480,
+          "height": 339,
+          "bytes": 11084
+        },
+        {
+          "src": "/images/products/temporary/lemon-800.webp",
+          "width": 800,
+          "height": 565,
+          "bytes": 26764
+        },
+        {
+          "src": "/images/products/temporary/lemon-1200.webp",
+          "width": 1200,
+          "height": 848,
+          "bytes": 54730
+        }
+      ],
+      "imageCredit": "André Karwath aka Aka",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Lemon.jpg",
+      "imageLicense": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "isTemporaryImage": true,
+      "label": "Lemon"
+    },
+    "granadilla": {
+      "image": "/images/products/temporary/granadilla-1200.webp",
+      "imageAlt": "Representative sweet granadilla photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 800,
+      "variants": [
+        {
+          "src": "/images/products/temporary/granadilla-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 11508
+        },
+        {
+          "src": "/images/products/temporary/granadilla-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 27774
+        },
+        {
+          "src": "/images/products/temporary/granadilla-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 55730
+        }
+      ],
+      "imageCredit": "Ivar Leidus",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Sweet_granadillas_(Passiflora_ligularis)_-_whole_and_cross_section.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Sweet granadilla"
+    },
+    "grape": {
+      "image": "/images/products/temporary/grape-1200.webp",
+      "imageAlt": "Representative grape photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 681,
+      "variants": [
+        {
+          "src": "/images/products/temporary/grape-480.webp",
+          "width": 480,
+          "height": 272,
+          "bytes": 18646
+        },
+        {
+          "src": "/images/products/temporary/grape-800.webp",
+          "width": 800,
+          "height": 454,
+          "bytes": 40860
+        },
+        {
+          "src": "/images/products/temporary/grape-1200.webp",
+          "width": 1200,
+          "height": 681,
+          "bytes": 75506
+        }
+      ],
+      "imageCredit": "eflon (Alex from Ithaca, NY)",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Edle_Weinrebe,_%27Vitis_vinifera%27_subsp._%27vinifera.jpg",
+      "imageLicense": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "isTemporaryImage": true,
+      "label": "Grape"
+    },
+    "passion": {
+      "image": "/images/products/temporary/passion-1200.webp",
+      "imageAlt": "Representative passion fruit photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 905,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/passion-480.webp",
+          "width": 362,
+          "height": 480,
+          "bytes": 24350
+        },
+        {
+          "src": "/images/products/temporary/passion-800.webp",
+          "width": 603,
+          "height": 800,
+          "bytes": 51302
+        },
+        {
+          "src": "/images/products/temporary/passion-1200.webp",
+          "width": 905,
+          "height": 1200,
+          "bytes": 92752
+        }
+      ],
+      "imageCredit": "Heydew",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Passiflora_edulis_flower_and_fruit.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Passion fruit"
+    },
+    "giantpassion": {
+      "image": "/images/products/temporary/giantpassion-1200.webp",
+      "imageAlt": "Representative giant passion fruit photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/giantpassion-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 18570
+        },
+        {
+          "src": "/images/products/temporary/giantpassion-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 38242
+        },
+        {
+          "src": "/images/products/temporary/giantpassion-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 66414
+        }
+      ],
+      "imageCredit": "Fpalli",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Passiflora_quadrangularis_(Barbadine_2).jpg",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Giant passion fruit"
+    },
+    "tamarillo": {
+      "image": "/images/products/temporary/tamarillo-1200.webp",
+      "imageAlt": "Representative tree tomato photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 903,
+      "variants": [
+        {
+          "src": "/images/products/temporary/tamarillo-480.webp",
+          "width": 480,
+          "height": 361,
+          "bytes": 15528
+        },
+        {
+          "src": "/images/products/temporary/tamarillo-800.webp",
+          "width": 800,
+          "height": 602,
+          "bytes": 31078
+        },
+        {
+          "src": "/images/products/temporary/tamarillo-1200.webp",
+          "width": 1200,
+          "height": 903,
+          "bytes": 62402
+        }
+      ],
+      "imageCredit": "Diego Delso",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Tamarillo_(Solanum_betaceum),_Jard%C3%ADn_Bot%C3%A1nico_de_M%C3%BAnich,_Alemania,_2013-01-27,_DD_02.JPG",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Tree tomato"
+    },
+    "papaya": {
+      "image": "/images/products/temporary/papaya-1200.webp",
+      "imageAlt": "Representative papaya photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 893,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/papaya-480.webp",
+          "width": 357,
+          "height": 480,
+          "bytes": 21848
+        },
+        {
+          "src": "/images/products/temporary/papaya-800.webp",
+          "width": 595,
+          "height": 800,
+          "bytes": 45528
+        },
+        {
+          "src": "/images/products/temporary/papaya-1200.webp",
+          "width": 893,
+          "height": 1200,
+          "bytes": 80902
+        }
+      ],
+      "imageCredit": "Joydeep",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Carica_papaya_14_7_2012.jpg",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Papaya"
+    },
+    "pineapple": {
+      "image": "/images/products/temporary/pineapple-1200.webp",
+      "imageAlt": "Representative pineapple photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 799,
+      "variants": [
+        {
+          "src": "/images/products/temporary/pineapple-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 30986
+        },
+        {
+          "src": "/images/products/temporary/pineapple-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 71800
+        },
+        {
+          "src": "/images/products/temporary/pineapple-1200.webp",
+          "width": 1200,
+          "height": 799,
+          "bytes": 143216
+        }
+      ],
+      "imageCredit": "Markus Leupold-Löwenthal",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:AnanasComosusOnPlant.jpg",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Pineapple"
+    },
+    "dragonfruit": {
+      "image": "/images/products/temporary/dragonfruit-1200.webp",
+      "imageAlt": "Representative dragon fruit photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/dragonfruit-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 37796
+        },
+        {
+          "src": "/images/products/temporary/dragonfruit-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 75104
+        },
+        {
+          "src": "/images/products/temporary/dragonfruit-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 123122
+        }
+      ],
+      "imageCredit": "Forest & Kim Starr",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Starr_030702-0004_Hylocereus_undatus.jpg",
+      "imageLicense": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "isTemporaryImage": true,
+      "label": "Dragon fruit"
+    },
+    "apple": {
+      "image": "/images/products/temporary/apple-1200.webp",
+      "imageAlt": "Representative apple photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 960,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/apple-480.webp",
+          "width": 384,
+          "height": 480,
+          "bytes": 41454
+        },
+        {
+          "src": "/images/products/temporary/apple-800.webp",
+          "width": 640,
+          "height": 800,
+          "bytes": 105646
+        },
+        {
+          "src": "/images/products/temporary/apple-1200.webp",
+          "width": 960,
+          "height": 1200,
+          "bytes": 215000
+        }
+      ],
+      "imageCredit": "Dominicus Johannes Bergsma",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Malus_domestica_%27Stark%27s_Earliest%27._Locatie_De_Kruidhof_02.JPG",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Apple"
+    },
+    "peach": {
+      "image": "/images/products/temporary/peach-1200.webp",
+      "imageAlt": "Representative peach photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 818,
+      "variants": [
+        {
+          "src": "/images/products/temporary/peach-480.webp",
+          "width": 480,
+          "height": 327,
+          "bytes": 13230
+        },
+        {
+          "src": "/images/products/temporary/peach-800.webp",
+          "width": 800,
+          "height": 545,
+          "bytes": 33268
+        },
+        {
+          "src": "/images/products/temporary/peach-1200.webp",
+          "width": 1200,
+          "height": 818,
+          "bytes": 69686
+        }
+      ],
+      "imageCredit": "Jack Dykinga, USDA",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Autumn_Red_peaches.jpg",
+      "imageLicense": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "isTemporaryImage": true,
+      "label": "Peach"
+    },
+    "pear": {
+      "image": "/images/products/temporary/pear-604.webp",
+      "imageAlt": "Representative pear photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 389,
+      "height": 604,
+      "variants": [
+        {
+          "src": "/images/products/temporary/pear-480.webp",
+          "width": 309,
+          "height": 480,
+          "bytes": 7142
+        },
+        {
+          "src": "/images/products/temporary/pear-604.webp",
+          "width": 389,
+          "height": 604,
+          "bytes": 11574
+        }
+      ],
+      "imageCredit": "Deborah G. Passmore",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrus_communis_Forelle.jpg",
+      "imageLicense": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "isTemporaryImage": true,
+      "label": "Pear"
+    },
+    "plum": {
+      "image": "/images/products/temporary/plum-1200.webp",
+      "imageAlt": "Representative plum photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 498,
+      "variants": [
+        {
+          "src": "/images/products/temporary/plum-480.webp",
+          "width": 480,
+          "height": 199,
+          "bytes": 26506
+        },
+        {
+          "src": "/images/products/temporary/plum-800.webp",
+          "width": 800,
+          "height": 332,
+          "bytes": 68814
+        },
+        {
+          "src": "/images/products/temporary/plum-1200.webp",
+          "width": 1200,
+          "height": 498,
+          "bytes": 139374
+        }
+      ],
+      "imageCredit": "Salil Kumar Mukherjee",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Prunus_domestica_ripe_fruits.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Plum"
+    },
+    "blueberry": {
+      "image": "/images/products/temporary/blueberry-1024.webp",
+      "imageAlt": "Representative blueberry photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1024,
+      "height": 669,
+      "variants": [
+        {
+          "src": "/images/products/temporary/blueberry-480.webp",
+          "width": 480,
+          "height": 314,
+          "bytes": 16538
+        },
+        {
+          "src": "/images/products/temporary/blueberry-800.webp",
+          "width": 800,
+          "height": 523,
+          "bytes": 35510
+        },
+        {
+          "src": "/images/products/temporary/blueberry-1024.webp",
+          "width": 1024,
+          "height": 669,
+          "bytes": 52890
+        }
+      ],
+      "imageCredit": "Darkone (talk · contribs)",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Vaccinium_corymbosum_Beeren.jpg",
+      "imageLicense": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "isTemporaryImage": true,
+      "label": "Blueberry"
+    },
+    "raspberry": {
+      "image": "/images/products/temporary/raspberry-1200.webp",
+      "imageAlt": "Representative raspberry photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 800,
+      "variants": [
+        {
+          "src": "/images/products/temporary/raspberry-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 40206
+        },
+        {
+          "src": "/images/products/temporary/raspberry-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 112442
+        },
+        {
+          "src": "/images/products/temporary/raspberry-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 255496
+        }
+      ],
+      "imageCredit": "Ivar Leidus",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Raspberries_(Rubus_idaeus).jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Raspberry"
+    },
+    "strawberry": {
+      "image": "/images/products/temporary/strawberry-1200.webp",
+      "imageAlt": "Representative strawberry photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/strawberry-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 51850
+        },
+        {
+          "src": "/images/products/temporary/strawberry-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 132610
+        },
+        {
+          "src": "/images/products/temporary/strawberry-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 264130
+        }
+      ],
+      "imageCredit": "Kolforn (Kolforn) I'd appreciate if you could mail me (Kolforn@gmail.com) if you want to use this picture out of the Wikimedia project scope. This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license. You are free: to share – to copy, distribute and transmit the work to remix – to adapt the work Under the following conditions: attribution – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. share alike – If you remix, transform, or build upon the material, you must distribute your contributions under the same or compatible license as the original.https://creativecommons.org/licenses/by-sa/4.0CC BY-SA 4.0 Creative Commons Attribution-Share Alike 4.0 truetrue",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:-2020-06-06_Strawberry_plant_with_unripe_fruit,_(Fragaria_%C3%97_ananassa),_Trimingham.JPG",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Strawberry"
+    },
+    "gooseberry": {
+      "image": "/images/products/temporary/gooseberry-1200.webp",
+      "imageAlt": "Representative cape gooseberry photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 800,
+      "variants": [
+        {
+          "src": "/images/products/temporary/gooseberry-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 8208
+        },
+        {
+          "src": "/images/products/temporary/gooseberry-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 22388
+        },
+        {
+          "src": "/images/products/temporary/gooseberry-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 48824
+        }
+      ],
+      "imageCredit": "Ivar Leidus",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Physalis_peruviana_fruits_close-up.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Cape gooseberry"
+    },
+    "mulberry": {
+      "image": "/images/products/temporary/mulberry-1125.webp",
+      "imageAlt": "Representative mulberry photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 851,
+      "height": 1125,
+      "variants": [
+        {
+          "src": "/images/products/temporary/mulberry-480.webp",
+          "width": 363,
+          "height": 480,
+          "bytes": 16394
+        },
+        {
+          "src": "/images/products/temporary/mulberry-800.webp",
+          "width": 605,
+          "height": 800,
+          "bytes": 32600
+        },
+        {
+          "src": "/images/products/temporary/mulberry-1125.webp",
+          "width": 851,
+          "height": 1125,
+          "bytes": 50954
+        }
+      ],
+      "imageCredit": "Beko",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Black_mulberry_fruit_(Morus_nigra).jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Mulberry"
+    },
+    "cherryguava": {
+      "image": "/images/products/temporary/cherryguava-1200.webp",
+      "imageAlt": "Representative cherry guava photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/cherryguava-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 38066
+        },
+        {
+          "src": "/images/products/temporary/cherryguava-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 81480
+        },
+        {
+          "src": "/images/products/temporary/cherryguava-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 148516
+        }
+      ],
+      "imageCredit": "Forest and Kim Starr",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Starr-120229-2983-Psidium_cattleianum-leaves_and_yellow_fruit-Waikapu_Valley-Maui_(25135874715).jpg",
+      "imageLicense": "CC BY 3.0 us",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+      "isTemporaryImage": true,
+      "label": "Cherry guava"
+    },
+    "guava": {
+      "image": "/images/products/temporary/guava-1200.webp",
+      "imageAlt": "Representative guava photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/guava-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 30514
+        },
+        {
+          "src": "/images/products/temporary/guava-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 67592
+        },
+        {
+          "src": "/images/products/temporary/guava-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 125924
+        }
+      ],
+      "imageCredit": "Forest & Kim Starr",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Starr_020803-0117_Psidium_guajava.jpg",
+      "imageLicense": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "isTemporaryImage": true,
+      "label": "Guava"
+    },
+    "banana": {
+      "image": "/images/products/temporary/banana-1200.webp",
+      "imageAlt": "Representative banana photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/banana-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 49582
+        },
+        {
+          "src": "/images/products/temporary/banana-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 147166
+        },
+        {
+          "src": "/images/products/temporary/banana-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 327440
+        }
+      ],
+      "imageCredit": "Thamizhpparithi Maari",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Young_Banana_plant_of_Kallidaikurichi.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Banana"
+    },
+    "pepino": {
+      "image": "/images/products/temporary/pepino-1200.webp",
+      "imageAlt": "Representative pepino photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/pepino-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 32392
+        },
+        {
+          "src": "/images/products/temporary/pepino-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 90188
+        },
+        {
+          "src": "/images/products/temporary/pepino-1200.webp",
+          "width": 1200,
+          "height": 1200,
+          "bytes": 197954
+        }
+      ],
+      "imageCredit": "Fumikas Sagisavas",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Solanum_muricatum_~_ginseng_fruit.jpg",
+      "imageLicense": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "isTemporaryImage": true,
+      "label": "Pepino"
+    },
+    "cashew": {
+      "image": "/images/products/temporary/cashew-1200.webp",
+      "imageAlt": "Representative cashew photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 825,
+      "variants": [
+        {
+          "src": "/images/products/temporary/cashew-480.webp",
+          "width": 480,
+          "height": 330,
+          "bytes": 24264
+        },
+        {
+          "src": "/images/products/temporary/cashew-800.webp",
+          "width": 800,
+          "height": 550,
+          "bytes": 52928
+        },
+        {
+          "src": "/images/products/temporary/cashew-1200.webp",
+          "width": 1200,
+          "height": 825,
+          "bytes": 96580
+        }
+      ],
+      "imageCredit": "Wilfredor",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Anacardium_occidentale_from_Margarita_island.jpg",
+      "imageLicense": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "isTemporaryImage": true,
+      "label": "Cashew"
+    },
+    "macadamia": {
+      "image": "/images/products/temporary/macadamia-1067.webp",
+      "imageAlt": "Representative macadamia photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 712,
+      "height": 1067,
+      "variants": [
+        {
+          "src": "/images/products/temporary/macadamia-480.webp",
+          "width": 320,
+          "height": 480,
+          "bytes": 8908
+        },
+        {
+          "src": "/images/products/temporary/macadamia-800.webp",
+          "width": 534,
+          "height": 800,
+          "bytes": 17662
+        },
+        {
+          "src": "/images/products/temporary/macadamia-1067.webp",
+          "width": 712,
+          "height": 1067,
+          "bytes": 24788
+        }
+      ],
+      "imageCredit": "MorePix",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Macadamia_nuts_on_tree.JPG",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Macadamia"
+    },
+    "pomegranate": {
+      "image": "/images/products/temporary/pomegranate-1200.webp",
+      "imageAlt": "Representative pomegranate photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 799,
+      "variants": [
+        {
+          "src": "/images/products/temporary/pomegranate-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 29922
+        },
+        {
+          "src": "/images/products/temporary/pomegranate-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 63320
+        },
+        {
+          "src": "/images/products/temporary/pomegranate-1200.webp",
+          "width": 1200,
+          "height": 799,
+          "bytes": 113434
+        }
+      ],
+      "imageCredit": "Jebulon",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Punica_granatum_fruit_Grenade.jpg",
+      "imageLicense": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "isTemporaryImage": true,
+      "label": "Pomegranate"
+    },
+    "kiwi": {
+      "image": "/images/products/temporary/kiwi-1000.webp",
+      "imageAlt": "Representative kiwi photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1000,
+      "height": 746,
+      "variants": [
+        {
+          "src": "/images/products/temporary/kiwi-480.webp",
+          "width": 480,
+          "height": 358,
+          "bytes": 18670
+        },
+        {
+          "src": "/images/products/temporary/kiwi-800.webp",
+          "width": 800,
+          "height": 597,
+          "bytes": 48224
+        },
+        {
+          "src": "/images/products/temporary/kiwi-1000.webp",
+          "width": 1000,
+          "height": 746,
+          "bytes": 69730
+        }
+      ],
+      "imageCredit": "André Karwath aka Aka",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Kiwi_aka.jpg",
+      "imageLicense": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "isTemporaryImage": true,
+      "label": "Kiwi"
+    },
+    "jackfruit": {
+      "image": "/images/products/temporary/jackfruit-1200.webp",
+      "imageAlt": "Representative jackfruit photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 800,
+      "variants": [
+        {
+          "src": "/images/products/temporary/jackfruit-480.webp",
+          "width": 480,
+          "height": 320,
+          "bytes": 36074
+        },
+        {
+          "src": "/images/products/temporary/jackfruit-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 96262
+        },
+        {
+          "src": "/images/products/temporary/jackfruit-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 190740
+        }
+      ],
+      "imageCredit": "Suyash Dwivedi",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Jackfruit_tree_with_fruit.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Jackfruit"
+    },
+    "fig": {
+      "image": "/images/products/temporary/fig-1024.webp",
+      "imageAlt": "Representative fig photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1024,
+      "height": 768,
+      "variants": [
+        {
+          "src": "/images/products/temporary/fig-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 36636
+        },
+        {
+          "src": "/images/products/temporary/fig-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 85826
+        },
+        {
+          "src": "/images/products/temporary/fig-1024.webp",
+          "width": 1024,
+          "height": 768,
+          "bytes": 131718
+        }
+      ],
+      "imageCredit": "AxelRohdeElias; Caricated on commons by: Galloramenu",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Ficus_carica_Panasc%C3%A8.jpg",
+      "imageLicense": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "isTemporaryImage": true,
+      "label": "Fig"
+    },
+    "persimmon": {
+      "image": "/images/products/temporary/persimmon-1200.webp",
+      "imageAlt": "Representative persimmon photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 900,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/persimmon-480.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 12132
+        },
+        {
+          "src": "/images/products/temporary/persimmon-800.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 28316
+        },
+        {
+          "src": "/images/products/temporary/persimmon-1200.webp",
+          "width": 900,
+          "height": 1200,
+          "bytes": 60498
+        }
+      ],
+      "imageCredit": "Liné1",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Diospyros_kaki_fruit_02_by_Line1.JPG",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Persimmon"
+    },
+    "soursop": {
+      "image": "/images/products/temporary/soursop-1200.webp",
+      "imageAlt": "Representative soursop photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 896,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/soursop-480.webp",
+          "width": 358,
+          "height": 480,
+          "bytes": 46298
+        },
+        {
+          "src": "/images/products/temporary/soursop-800.webp",
+          "width": 597,
+          "height": 800,
+          "bytes": 116320
+        },
+        {
+          "src": "/images/products/temporary/soursop-1200.webp",
+          "width": 896,
+          "height": 1200,
+          "bytes": 238962
+        }
+      ],
+      "imageCredit": "MurielBendel",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Annona_muricata_fruit_Beqa_Fiji.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Soursop"
+    },
+    "jabuticaba": {
+      "image": "/images/products/temporary/jabuticaba-1200.webp",
+      "imageAlt": "Representative jabuticaba photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 795,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/jabuticaba-480.webp",
+          "width": 318,
+          "height": 480,
+          "bytes": 54464
+        },
+        {
+          "src": "/images/products/temporary/jabuticaba-800.webp",
+          "width": 530,
+          "height": 800,
+          "bytes": 126010
+        },
+        {
+          "src": "/images/products/temporary/jabuticaba-1200.webp",
+          "width": 795,
+          "height": 1200,
+          "bytes": 225962
+        }
+      ],
+      "imageCredit": "Bruno.karklis",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Plinia_cauliflora_2.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Jabuticaba"
+    },
+    "canistel": {
+      "image": "/images/products/temporary/canistel-300.webp",
+      "imageAlt": "Representative canistel photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 298,
+      "height": 300,
+      "variants": [
+        {
+          "src": "/images/products/temporary/canistel-300.webp",
+          "width": 298,
+          "height": 300,
+          "bytes": 17634
+        }
+      ],
+      "imageCredit": "Hans B. at Dutch Wikipedia",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Canistel.jpg",
+      "imageLicense": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Public_domain",
+      "isTemporaryImage": true,
+      "label": "Canistel"
+    },
+    "tamarind": {
+      "image": "/images/products/temporary/tamarind-768.webp",
+      "imageAlt": "Representative tamarind photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 576,
+      "height": 768,
+      "variants": [
+        {
+          "src": "/images/products/temporary/tamarind-480.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 50150
+        },
+        {
+          "src": "/images/products/temporary/tamarind-768.webp",
+          "width": 576,
+          "height": 768,
+          "bytes": 102632
+        }
+      ],
+      "imageCredit": "B.navez",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_pods.JPG",
+      "imageLicense": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "isTemporaryImage": true,
+      "label": "Tamarind"
+    },
+    "zambarau": {
+      "image": "/images/products/temporary/zambarau-1200.webp",
+      "imageAlt": "Representative zambarau photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/zambarau-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 17694
+        },
+        {
+          "src": "/images/products/temporary/zambarau-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 39472
+        },
+        {
+          "src": "/images/products/temporary/zambarau-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 76858
+        }
+      ],
+      "imageCredit": "Khả Vân Đại Hãn",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Syzygium_cumini_(black_plum).jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Zambarau"
+    },
+    "hibiscus": {
+      "image": "/images/products/temporary/hibiscus-1200.webp",
+      "imageAlt": "Representative hibiscus photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/hibiscus-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 13870
+        },
+        {
+          "src": "/images/products/temporary/hibiscus-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 29228
+        },
+        {
+          "src": "/images/products/temporary/hibiscus-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 51316
+        }
+      ],
+      "imageCredit": "Earl Benton",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Hibiscus_Sabdariffa_calyxes.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Hibiscus"
+    },
+    "sapote": {
+      "image": "/images/products/temporary/sapote-1200.webp",
+      "imageAlt": "Representative white sapote photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/sapote-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 31608
+        },
+        {
+          "src": "/images/products/temporary/sapote-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 60836
+        },
+        {
+          "src": "/images/products/temporary/sapote-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 102604
+        }
+      ],
+      "imageCredit": "M108t",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Casimiroa_edulis_fruit_in_Tropical_Dream_Center,_Okinawa.jpg",
+      "imageLicense": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "isTemporaryImage": true,
+      "label": "White sapote"
+    },
+    "ginger": {
+      "image": "/images/products/temporary/ginger-1200.webp",
+      "imageAlt": "Representative ginger photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 900,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/products/temporary/ginger-480.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 8036
+        },
+        {
+          "src": "/images/products/temporary/ginger-800.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 18910
+        },
+        {
+          "src": "/images/products/temporary/ginger-1200.webp",
+          "width": 900,
+          "height": 1200,
+          "bytes": 38030
+        }
+      ],
+      "imageCredit": "Olli Salmela, (Dacnoh)",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Zingiber_officinale_fresh_rhizome.JPG",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Ginger"
+    },
+    "turmeric": {
+      "image": "/images/products/temporary/turmeric-1200.webp",
+      "imageAlt": "Representative turmeric photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 494,
+      "variants": [
+        {
+          "src": "/images/products/temporary/turmeric-480.webp",
+          "width": 480,
+          "height": 198,
+          "bytes": 11394
+        },
+        {
+          "src": "/images/products/temporary/turmeric-800.webp",
+          "width": 800,
+          "height": 329,
+          "bytes": 31994
+        },
+        {
+          "src": "/images/products/temporary/turmeric-1200.webp",
+          "width": 1200,
+          "height": 494,
+          "bytes": 72324
+        }
+      ],
+      "imageCredit": "Simon A. Eugster",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Curcuma_longa_roots.jpg",
+      "imageLicense": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "isTemporaryImage": true,
+      "label": "Turmeric"
+    },
+    "lemongrass": {
+      "image": "/images/products/temporary/lemongrass-1200.webp",
+      "imageAlt": "Representative lemongrass photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/lemongrass-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 58266
+        },
+        {
+          "src": "/images/products/temporary/lemongrass-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 148810
+        },
+        {
+          "src": "/images/products/temporary/lemongrass-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 296464
+        }
+      ],
+      "imageCredit": "Undeka 11",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Cymbopogon_citratus_lemongrass_plant_in_garden.jpg",
+      "imageLicense": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "isTemporaryImage": true,
+      "label": "Lemongrass"
+    },
+    "moringaleaves": {
+      "image": "/images/products/temporary/moringaleaves-1200.webp",
+      "imageAlt": "Representative moringa leaves photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/moringaleaves-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 65576
+        },
+        {
+          "src": "/images/products/temporary/moringaleaves-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 174164
+        },
+        {
+          "src": "/images/products/temporary/moringaleaves-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 349892
+        }
+      ],
+      "imageCredit": "Obsidian Soul",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Kalamunggay_(Moringa_oleifera),_Philippines.jpg",
+      "imageLicense": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "isTemporaryImage": true,
+      "label": "Moringa leaves"
+    },
+    "meyer": {
+      "image": "/images/products/temporary/meyer-1200.webp",
+      "imageAlt": "Representative meyer lemon photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/meyer-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 20046
+        },
+        {
+          "src": "/images/products/temporary/meyer-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 45670
+        },
+        {
+          "src": "/images/products/temporary/meyer-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 89392
+        }
+      ],
+      "imageCredit": "Forest and Kim Starr",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Starr-150326-1641-Citrus_meyeri-fruit-Citrus_Grove_Sand_Island-Midway_Atoll_(24636884144).jpg",
+      "imageLicense": "CC BY 3.0 us",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+      "isTemporaryImage": true,
+      "label": "Meyer lemon"
+    },
+    "minneola": {
+      "image": "/images/products/temporary/minneola-1200.webp",
+      "imageAlt": "Representative minneola tangelo photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 797,
+      "variants": [
+        {
+          "src": "/images/products/temporary/minneola-480.webp",
+          "width": 480,
+          "height": 319,
+          "bytes": 13120
+        },
+        {
+          "src": "/images/products/temporary/minneola-800.webp",
+          "width": 800,
+          "height": 531,
+          "bytes": 31848
+        },
+        {
+          "src": "/images/products/temporary/minneola-1200.webp",
+          "width": 1200,
+          "height": 797,
+          "bytes": 63792
+        }
+      ],
+      "imageCredit": "Amada44",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Minneola_fruit_1.jpg",
+      "imageLicense": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "isTemporaryImage": true,
+      "label": "Minneola tangelo"
+    },
+    "roughlemon": {
+      "image": "/images/products/temporary/roughlemon-1200.webp",
+      "imageAlt": "Representative rough lemon photograph; not current Herb-All stock or an exact cultivar.",
+      "width": 1200,
+      "height": 900,
+      "variants": [
+        {
+          "src": "/images/products/temporary/roughlemon-480.webp",
+          "width": 480,
+          "height": 360,
+          "bytes": 21120
+        },
+        {
+          "src": "/images/products/temporary/roughlemon-800.webp",
+          "width": 800,
+          "height": 600,
+          "bytes": 46044
+        },
+        {
+          "src": "/images/products/temporary/roughlemon-1200.webp",
+          "width": 1200,
+          "height": 900,
+          "bytes": 82786
+        }
+      ],
+      "imageCredit": "Forest and Kim Starr",
+      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Starr-061105-1366-Citrus_jambhiri-fruit-Makawao-Maui_(24841894686).jpg",
+      "imageLicense": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "isTemporaryImage": true,
+      "label": "Rough lemon"
+    },
+    "owned-moringa": {
+      "image": "/images/brand/moringa-seedlings-1200.webp",
+      "imageAlt": "Moringa seedlings photographed by Herb-All.",
+      "width": 1200,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/brand/moringa-seedlings-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 41672
+        },
+        {
+          "src": "/images/brand/moringa-seedlings-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 94768
+        },
+        {
+          "src": "/images/brand/moringa-seedlings-1200.webp",
+          "width": 1200,
+          "height": 1200,
+          "bytes": 177208
+        }
+      ],
+      "imageCredit": "Herb-All",
+      "imageSourceUrl": "/gardens/",
+      "imageLicense": "Herb-All supplied photograph",
+      "licenseUrl": "/image-credits/",
+      "isTemporaryImage": false,
+      "label": "Moringa seedlings"
+    },
+    "orchard": {
+      "image": "/images/brand/garden-plants-1200.webp",
+      "imageAlt": "Generic garden plants — graft combination not depicted.",
+      "width": 1200,
+      "height": 1200,
+      "variants": [
+        {
+          "src": "/images/brand/garden-plants-480.webp",
+          "width": 480,
+          "height": 480,
+          "bytes": 88282
+        },
+        {
+          "src": "/images/brand/garden-plants-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 199114
+        },
+        {
+          "src": "/images/brand/garden-plants-1200.webp",
+          "width": 1200,
+          "height": 1200,
+          "bytes": 355410
+        }
+      ],
+      "imageCredit": "Herb-All",
+      "imageSourceUrl": "/gardens/",
+      "imageLicense": "Herb-All supplied photograph",
+      "licenseUrl": "/image-credits/",
+      "isTemporaryImage": true,
+      "label": "Generic garden planting"
+    }
+  },
+  "mappings": {
+    "HA-GRAFTED-HASS-AVOCADO": "avocado",
+    "HA-GRAFTED-FUERTE-AVOCADO": "avocado",
+    "HA-KENT-MANGO": "mango",
+    "HA-APPLE-MANGO": "mango",
+    "HA-TOMMY-MANGO": "mango",
+    "HA-NGOWE-MANGO": "mango",
+    "HA-PIXIE-ORANGE": "mandarin",
+    "HA-WASHINGTON-ORANGE": "orange",
+    "HA-VALENCIA-ORANGE": "orange",
+    "HA-BLOOD-ORANGE": "orange",
+    "HA-MINNEOLA-ORANGE": "minneola",
+    "HA-TANGERINES": "mandarin",
+    "HA-VARIEGATED-LEMON": "lemon",
+    "HA-HYBRID-MEYER-LEMON": "meyer",
+    "HA-MEYER-LEMON": "meyer",
+    "HA-ROUGH-LEMON": "roughlemon",
+    "HA-LIME-VARIETY": "lime",
+    "HA-GRAPES": "grape",
+    "HA-PURPLE-PASSION": "passion",
+    "HA-YELLOW-PASSION": "passion",
+    "HA-SWEET-GRANADILLA": "granadilla",
+    "HA-GIANT-PASSION": "giantpassion",
+    "HA-TREE-TOMATO": "tamarillo",
+    "HA-DWARF-PAWPAW-MALKIA-F1": "papaya",
+    "HA-NORMAL-PAWPAW": "papaya",
+    "HA-DRAGON-FRUIT": "dragonfruit",
+    "HA-PINEAPPLE": "pineapple",
+    "HA-WAMBUGU-APPLE": "apple",
+    "HA-GRAFTED-APPLE-TO-APPLE": "apple",
+    "HA-APPLE-TO-LOQUAT": "orchard",
+    "HA-GREEN-APPLE": "apple",
+    "HA-PEARS": "pear",
+    "HA-PLUMS": "plum",
+    "HA-PEACHES": "peach",
+    "HA-BLUEBERRY": "blueberry",
+    "HA-RASPBERRY": "raspberry",
+    "HA-STRAWBERRY": "strawberry",
+    "HA-MULBERRY": "mulberry",
+    "HA-GOOSEBERRY": "gooseberry",
+    "HA-CHERRY-GUAVA": "cherryguava",
+    "HA-GUAVAS": "guava",
+    "HA-PEPINO-MELON": "pepino",
+    "HA-COOKING-BANANA": "banana",
+    "HA-RIPENING-BANANA": "banana",
+    "HA-SWEET-BANANA": "banana",
+    "HA-KISII-MATOKE": "banana",
+    "HA-PLANTAIN": "banana",
+    "HA-RED-BANANA": "banana",
+    "HA-MACADAMIA": "macadamia",
+    "HA-GRAFTED-CASHEW": "cashew",
+    "HA-NORMAL-CASHEW": "cashew",
+    "HA-POMEGRANATES": "pomegranate",
+    "HA-KIWI": "kiwi",
+    "HA-JACKFRUIT": "jackfruit",
+    "HA-FIG-TREE": "fig",
+    "HA-SOURSOP": "soursop",
+    "HA-PERSIMMON": "persimmon",
+    "HA-JABUTICABA": "jabuticaba",
+    "HA-CANISTEL": "canistel",
+    "HA-TAMARIND": "tamarind",
+    "HA-MORINGA": "owned-moringa",
+    "HA-ZAMBARAU": "zambarau",
+    "HA-WHITE-SAPOTE": "sapote",
+    "products/moringa-tea": "moringaleaves",
+    "products/hibiscus-tea": "hibiscus",
+    "products/turmeric-herbal-blend": "turmeric",
+    "products/guava-leaf-tea": "guava",
+    "products/lemongrass-tea": "lemongrass",
+    "products/ginger-herbal-tea": "ginger",
+    "seedlings/avocado": "avocado",
+    "seedlings/mango": "mango",
+    "seedlings/guava": "guava",
+    "seedlings/lemon": "lemon",
+    "seedlings/passion-fruit": "passion",
+    "seedlings/moringa": "owned-moringa"
+  }
+}

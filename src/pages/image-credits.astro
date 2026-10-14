@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import sources from '../../scripts/temporary-image-sources.json';
+---
+
+<BaseLayout
+  title="Product image credits"
+  description="Sources, creators and reuse licenses for Herb-All’s temporary representative product photography."
+>
+  <div class="container page-heading">
+    <p class="eyebrow">Photography & provenance</p>
+    <h1>Product image credits</h1>
+    <p>
+      These photographs help illustrate plants and ingredients while Herb-All
+      prepares its own product photography. They do not show current stock,
+      exact cultivars, plant sizes or finished packaging.
+    </p>
+  </div>
+  <section class="container prose">
+    <p>
+      Photos have been resized and re-encoded as WebP; card displays may crop
+      them. Adapted photographs retain the source license, including ShareAlike
+      where applicable. Credits refer to images only, not the website’s code or
+      Herb-All-owned photographs.
+    </p>
+    {Object.entries(sources).map(([id, source]) => (
+      <article id={id} class="image-credit">
+        <h2>{source.label}</h2>
+        <p>
+          {source.creator}.{' '}
+          <a href={source.sourcePageUrl} rel="noopener noreferrer">
+            {source.title.replace('File:', '')}
+          </a>{' '}
+          —{' '}
+          <a href={source.licenseUrl} rel="noopener noreferrer">
+            {source.license}
+          </a>
+          .
+        </p>
+        <p>Representative photograph. {source.modifications}</p>
+      </article>
+    ))}
+    <article id="owned-moringa" class="image-credit">
+      <h2>Herb-All moringa seedlings</h2>
+      <p>
+        Photograph supplied by Herb-All; retained instead of a third-party
+        replacement.
+      </p>
+    </article>
+    <article id="orchard" class="image-credit">
+      <h2>Generic garden planting</h2>
+      <p>
+        Photograph supplied by Herb-All. Used as a clearly generic garden
+        reference for Apple-to-Loquat until the graft combination and its
+        photography are confirmed.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

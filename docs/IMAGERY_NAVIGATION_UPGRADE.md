@@ -22,11 +22,11 @@ Below 1180px a native dialog drawer supplies navigation, secondary links and enq
 - Build: 48 static pages; build tests: 4 passed.
 - Formatting and diff checks pass.
 - Original browser tests: 10 passed; focused navigation/image tests: 7 passed.
-- Automated accessibility: zero WCAG A/AA violations across 14 original route scans and desktop More/mobile drawer states.
+- Automated accessibility: zero WCAG A/AA violations across 14 original route scans and desktop More/mobile drawer states and a populated cart badge.
 - Responsive routes pass at 320, 375, 768, 1024 and 1440px, with no overflow, failed main images or page exceptions.
 - Isolated PostgreSQL commerce backend: 37 passed; commerce browser: 5 passed. Original commerce assertions/selectors were retained.
 - All mapped src/srcset assets exist; unreferenced temporary assets are rejected by the build test.
-- The first drawer test exposed native Chromium focus cycling through browser chrome; an explicit Tab wrap corrected it and the final suite passed.
+- The first drawer test exposed native Chromium focus cycling through browser chrome; an explicit Tab wrap corrected it. CI subsequently caught inherited white text on the pale populated-cart badge; an explicit dark color and a positive-count accessibility check corrected it. Final suites pass.
 
 Functions/server/migrations are unchanged, so no additional Functions packaging was needed. Production publication and financial behavior were not exercised or changed for this visual task.
 

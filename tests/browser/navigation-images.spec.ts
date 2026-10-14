@@ -90,6 +90,13 @@ test('cart count has accessible singular/plural names and survives reload', asyn
   await expect(
     page.getByRole('link', { name: 'Shopping cart, 1 item', exact: true }),
   ).toBeVisible();
+  const contrast = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+    .analyze();
+  expect(
+    contrast.violations,
+    JSON.stringify(contrast.violations, null, 2),
+  ).toEqual([]);
 });
 test('representative static images and credits render; supplied photos remain', async ({
   page,

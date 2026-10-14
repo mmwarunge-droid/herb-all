@@ -1334,6 +1334,7 @@ select {
   white-space: nowrap;
 }
 .cart-link .cart-count {
+  color: var(--green);
   display: inline-grid;
   place-items: center;
   min-width: 1.6rem;

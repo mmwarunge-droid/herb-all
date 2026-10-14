@@ -1,3 +1,7 @@
+import {
+  productImageMarkup,
+  installProductImageFallbacks,
+} from './product-images';
 export {};
 // API responses are rendered as text or HTML-escaped values, never trusted markup.
 const esc = (v: unknown) =>
@@ -58,11 +62,6 @@ function save(items: CartItem[]) {
   localStorage.setItem('herb-all-cart', JSON.stringify(items));
   window.dispatchEvent(new Event('cart-updated'));
 }
-function image(p: any) {
-  return p.images?.length
-    ? `<img src="/api/media/${esc(p.images[0].id)}" alt="${esc(p.images[0].alt)}" width="600" height="600" loading="lazy"/>`
-    : '<div class="shop-image-fallback">Product photograph coming soon</div>';
-}
 function stock(p: any) {
   return p.unavailable
     ? 'Temporarily unavailable'
@@ -74,7 +73,7 @@ function stock(p: any) {
 }
 function product(p: any, detailed = false) {
   const purchasable = !p.unavailable && p.available >= p.min_quantity;
-  return `<article class="card shop-card">${image(p)}<div class="card-body"><p class="eyebrow">${esc(p.category)}</p><h2>${esc(p.name)}</h2><p>${esc(p.variant)}</p><p class="shop-price">${money(p.price_cents)} <span>/ ${esc(p.unit)}</span></p><p>${stock(p)}</p><p>${esc(detailed ? p.description : p.short_description)}</p>${
+  return `<article class="card shop-card">${productImageMarkup(p, detailed)}<div class="card-body"><p class="eyebrow">${esc(p.category)}</p><h2>${esc(p.name)}</h2><p>${esc(p.variant)}</p><p class="shop-price">${money(p.price_cents)} <span>/ ${esc(p.unit)}</span></p><p>${stock(p)}</p><p>${esc(detailed ? p.description : p.short_description)}</p>${
     detailed
       ? `<p>${esc(p.handling)}</p><p>Order ${p.min_quantity}–${p.max_quantity} units. SKU: ${esc(p.sku)}</p><div class="product-gallery">${(
           p.images || []
@@ -119,6 +118,7 @@ async function shop() {
       target.innerHTML = items.length
         ? `<div class="${params.get('product') ? 'shop-detail' : 'card-grid'}">${items.map((p: any) => product(p, !!params.get('product'))).join('')}</div>`
         : '<div class="empty-state"><h2>The next growing collection is on its way.</h2><p>No matching published stock is available. <a href="/contact/">Ask Herb-All about plants and availability</a>.</p></div>';
+      installProductImageFallbacks(target);
       message('');
       const pagination = document.querySelector('#shop-pagination')!;
       pagination.innerHTML =

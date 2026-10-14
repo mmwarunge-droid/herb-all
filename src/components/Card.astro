@@ -1,5 +1,6 @@
 ---
 import Picture from './Picture.astro';
+import ProductVisual from './ProductVisual.astro';
 import { readingTime } from '../utils/content';
 import type { CollectionEntry } from 'astro:content';
 interface Props {
@@ -22,12 +23,24 @@ const url = `/${kind === 'articles' ? 'learn' : kind}/${d.slug}/`;
   data-ingredient={'ingredient' in d ? d.ingredient : ''}
   data-tags={JSON.stringify(d.tags)}
 >
-  <a href={url} class="card-image" tabindex="-1" aria-hidden="true">
-    <Picture src={d.image} alt={d.imageAlt} />
+  <div class="card-image">
+    {kind === 'articles' ? (
+      <a href={url} tabindex="-1" aria-hidden="true">
+        <Picture src={d.image} alt={d.imageAlt} />
+      </a>
+    ) : (
+      <ProductVisual
+        href={url}
+        name={d.title}
+        imageKey={`${kind}/${d.slug}`}
+        src={d.image}
+        alt={d.imageAlt}
+      />
+    )}
     <span class="image-label">
       {kind === 'articles' ? 'Field notes' : 'Sample catalogue'}
     </span>
-  </a>
+  </div>
   <div class="card-body">
     <p class="eyebrow">{d.category}</p>
     <h3>

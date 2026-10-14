@@ -101,3 +101,56 @@ test('supplied images preserve originals and ship only responsive derivatives', 
   assert.match(gardens, /wheatgrass-1200.webp/);
   assert.match(gardens, /topic=Garden\+visit/);
 });
+
+test('all approved products have licensed or clearly generic local image mappings', () => {
+  const inventory = JSON.parse(
+    readFileSync(
+      new URL('../src/config/temporary-product-images.json', import.meta.url),
+    ),
+  );
+  const sources = JSON.parse(
+    readFileSync(
+      new URL('../scripts/temporary-image-sources.json', import.meta.url),
+    ),
+  );
+  const catalogue = JSON.parse(
+    readFileSync(new URL('../data/approved-seedlings.json', import.meta.url)),
+  );
+  for (const p of catalogue.products)
+    assert.ok(inventory.images[inventory.mappings[p.sku]], p.sku);
+  const referenced = new Set(
+    Object.values(inventory.images).flatMap((image) =>
+      image.variants.map((v) => v.src),
+    ),
+  );
+  for (const file of readdirSync(
+    new URL('../public/images/products/temporary/', import.meta.url),
+  )) {
+    assert.ok(
+      referenced.has('/images/products/temporary/' + file),
+      'Uncredited/unmapped asset ' + file,
+    );
+  }
+  for (const [id, image] of Object.entries(inventory.images)) {
+    assert.ok(existsSync(join(root, image.image)), id);
+    assert.ok(image.imageAlt.length > 10, id);
+    for (const v of image.variants) {
+      assert.ok(existsSync(join(root, v.src)), v.src);
+      assert.ok(v.width <= 1200);
+    }
+    if (sources[id]) {
+      assert.match(
+        sources[id].sourcePageUrl,
+        /^https:\/\/commons\.wikimedia\.org\//,
+      );
+      assert.match(sources[id].license, /^(CC0|Public domain|CC BY)/);
+      assert.match(sources[id].sha256, /^[a-f0-9]{64}$/);
+      assert.ok(sources[id].creator);
+      assert.ok(
+        readFileSync(join(root, 'image-credits/index.html'), 'utf8').includes(
+          `id="${id}"`,
+        ),
+      );
+    }
+  }
+});

@@ -1,0 +1,80 @@
+---
+import { temporaryImage } from '../utils/product-images';
+import brand from '../config/brand-images.json';
+interface Props {
+  name: string;
+  imageKey: string;
+  src: string;
+  alt: string;
+  eager?: boolean;
+  href?: string;
+}
+const { name, imageKey, src, alt, eager = false, href } = Astro.props;
+const supplied = brand[src as keyof typeof brand];
+const temporary = supplied ? undefined : temporaryImage(imageKey);
+const generic = [
+  '/images/botanical.webp',
+  '/images/tea.webp',
+  '/images/seedlings.webp',
+].includes(src);
+const image = temporary?.image || (generic ? undefined : src);
+const variants = temporary?.variants || supplied?.variants;
+const MediaTag = href ? 'a' : 'div';
+---
+
+<figure class="product-visual" data-product-visual>
+  <MediaTag
+    href={href}
+    aria-label={href ? `View ${name}` : undefined}
+    class="product-visual-link"
+  >
+    <div class="product-visual-media">
+      <div
+        class="botanical-placeholder"
+        role="img"
+        aria-label={`${name} — botanical placeholder`}
+        hidden={!!image}
+      >
+        <svg viewBox="0 0 100 100" width="80" height="80" aria-hidden="true">
+          <path
+            d="M50 86V48M50 64C20 64 18 31 18 31S50 31 50 64ZM50 49C78 49 82 17 82 17S50 17 50 49Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          />
+        </svg>
+        <span>{name}</span>
+        <small>Product photography coming soon</small>
+      </div>
+      {image && (
+        <img
+          style={
+            temporary && temporary.width < temporary.height
+              ? 'object-fit: contain'
+              : undefined
+          }
+          data-product-image
+          src={image}
+          srcset={variants?.map((v) => `${v.src} ${v.width}w`).join(', ')}
+          sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1100px) 45vw, 600px"
+          alt={temporary?.imageAlt || alt}
+          width={temporary?.width || supplied?.width || 1000}
+          height={temporary?.height || supplied?.height || 750}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : 'auto'}
+          decoding="async"
+        />
+      )}
+    </div>
+  </MediaTag>
+  {temporary?.isTemporaryImage && (
+    <figcaption>
+      Representative image — Herb-All photography coming soon.{' '}
+      <a href={`/image-credits/#${temporary.id}`}>Image credits</a>
+    </figcaption>
+  )}
+</figure>
+<script>
+  import { installProductImageFallbacks } from '../scripts/product-images';
+  installProductImageFallbacks(document);
+</script>

@@ -2,7 +2,8 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import Picture from '../../components/Picture.astro';
+import ProductVisual from '../../components/ProductVisual.astro';
+import { temporaryImage } from '../../utils/product-images';
 import MedicalDisclaimer from '../../components/MedicalDisclaimer.astro';
 import JsonLd from '../../components/JsonLd.astro';
 import Card from '../../components/Card.astro';
@@ -16,13 +17,17 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const d = entry.data;
+const visual = temporaryImage(`products/${d.slug}`);
+const visualSrc = d.image.startsWith('/images/brand/')
+  ? d.image
+  : visual?.image || d.image;
 const { Content } = await render(entry);
 const related = (await publishedProducts())
   .filter((e) => e.id !== entry.id)
   .slice(0, 3);
 ---
 
-<BaseLayout title={d.title} description={d.description} image={d.image}>
+<BaseLayout title={d.title} description={d.description} image={visualSrc}>
   <article class="container detail">
     <Breadcrumb
       category="Herbal products"
@@ -31,10 +36,13 @@ const related = (await publishedProducts())
     />
     <div class="detail-grid">
       <div>
-        <Picture src={d.image} alt={d.imageAlt} eager class="detail-image" />
-        <p class="muted">
-          Illustrative photograph, not current Herb-All stock.
-        </p>
+        <ProductVisual
+          name={d.title}
+          imageKey={`products/${d.slug}`}
+          src={d.image}
+          alt={d.imageAlt}
+          eager
+        />
       </div>
       <div>
         <p class="eyebrow">{d.category}</p>
@@ -93,7 +101,7 @@ const related = (await publishedProducts())
       '@type': 'Product',
       name: d.title,
       description: d.description,
-      image: new URL(d.image, site.siteUrl).href,
+      image: new URL(visualSrc, site.siteUrl).href,
       url: new URL(Astro.url.pathname, site.siteUrl).href,
       category: d.category,
       brand: { '@type': 'Brand', name: site.siteName },

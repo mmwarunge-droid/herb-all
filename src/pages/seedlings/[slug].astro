@@ -2,7 +2,8 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import Picture from '../../components/Picture.astro';
+import ProductVisual from '../../components/ProductVisual.astro';
+import { temporaryImage } from '../../utils/product-images';
 import Card from '../../components/Card.astro';
 import { publishedSeedlings } from '../../utils/content';
 import { enquiryLink } from '../../config/site';
@@ -14,13 +15,17 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const d = entry.data;
+const visual = temporaryImage(`seedlings/${d.slug}`);
+const visualSrc = d.image.startsWith('/images/brand/')
+  ? d.image
+  : visual?.image || d.image;
 const { Content } = await render(entry);
 const related = (await publishedSeedlings())
   .filter((e) => e.id !== entry.id)
   .slice(0, 3);
 ---
 
-<BaseLayout title={d.title} description={d.description} image={d.image}>
+<BaseLayout title={d.title} description={d.description} image={visualSrc}>
   <article class="container detail">
     <Breadcrumb
       category="Seedlings"
@@ -29,12 +34,19 @@ const related = (await publishedSeedlings())
     />
     <div class="detail-grid">
       <div>
-        <Picture src={d.image} alt={d.imageAlt} eager class="detail-image" />
-        <p class="muted">
-          {d.image.startsWith('/images/brand/')
-            ? 'Photograph supplied by Herb-All. Current plant size and availability are confirmed on enquiry.'
-            : 'Illustrative photograph, not current Herb-All stock.'}
-        </p>
+        <ProductVisual
+          name={d.title}
+          imageKey={`seedlings/${d.slug}`}
+          src={d.image}
+          alt={d.imageAlt}
+          eager
+        />
+        {d.image.startsWith('/images/brand/') && (
+          <p class="muted">
+            Photograph supplied by Herb-All. Current plant size and availability
+            are confirmed on enquiry.
+          </p>
+        )}
       </div>
       <div>
         <p class="eyebrow">{d.category}</p>

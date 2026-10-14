@@ -60,6 +60,10 @@ No Lighthouse before/after comparison was measured. External derivatives total 9
 - tests/browser/navigation-images.spec.ts
 - public/images/products/temporary/: all 140 WebP paths are enumerated in the image inventory and manifest.
 
+## Hosted verification
+
+On October 14, Netlify reported the existing site as disabled and no deployment preview for this branch was created. The public site returned 503; the last published application commit remained 3e2945b21a545ea535bf418a8ceb3c5fbeab30f4. Hosting configuration was not changed by this task. Local validation is complete; hosted visual verification awaits restoration of the existing site and a feature preview.
+
 ## Remaining work
 
-Replace representative photos with confirmed Herb-All product photography when available. Confirm the Apple-to-Loquat graft identity/photo before substituting a specific plant image. Opening checkout remains a separate owner-controlled task.
+Restore the existing Netlify site if its disabled state is not intentional, then verify a hosted feature preview. Replace representative photos with confirmed Herb-All product photography when available. Confirm the Apple-to-Loquat graft identity/photo before substituting a specific plant image. Opening checkout remains a separate owner-controlled task.

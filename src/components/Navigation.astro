@@ -1,0 +1,156 @@
+---
+const primary = [
+  ['Home', '/'],
+  ['Shop', '/shop/'],
+  ['Seedlings', '/seedlings/'],
+  ['Gardens', '/gardens/'],
+  ['Learn', '/learn/'],
+  ['About', '/about/'],
+];
+const secondary = [
+  ['Herbal Products', '/products/'],
+  ['Farm visits', '/contact/?topic=Garden%20visit'],
+  ['Track an order', '/order/'],
+  ['Terms', '/terms/'],
+  ['Privacy', '/privacy/'],
+  ['Disclaimer', '/disclaimer/'],
+  ['Image credits', '/image-credits/'],
+];
+const current = (url: string) =>
+  !url.includes('?') &&
+  (url === '/'
+    ? Astro.url.pathname === '/'
+    : Astro.url.pathname.startsWith(url));
+---
+
+<header class="header">
+  <div class="container nav-shell">
+    <a class="brand" href="/" aria-label="Herb-All home">
+      <span class="brand-mark" aria-hidden="true">
+        ✳
+      </span>{' '}
+      herb-all<span class="brand-dot">.</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {primary.map(([label, url]) => (
+        <a href={url} aria-current={current(url) ? 'page' : undefined}>
+          {label}
+        </a>
+      ))}
+      <details class="nav-more">
+        <summary
+          class:list={{
+            'section-active': secondary.some(([, url]) => current(url)),
+          }}
+        >
+          More <span aria-hidden="true">⌄</span>
+        </summary>
+        <div class="more-links">
+          {secondary.map(([label, url]) => (
+            <a href={url} aria-current={current(url) ? 'page' : undefined}>
+              {label}
+            </a>
+          ))}
+        </div>
+      </details>
+    </nav>
+    <div class="nav-actions">
+      <a class="cart-link" href="/cart/" aria-label="Shopping cart, 0 items">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        >
+          <path d="M3 3h2l3 13h11l2-9H6" />
+          <circle cx="9" cy="20" r="1" />
+          <circle cx="18" cy="20" r="1" />
+        </svg>
+        <span>Cart</span>
+        <span data-cart-count class="cart-count">
+          0
+        </span>
+      </a>
+      <a href="/contact/" class="button small nav-enquire">
+        Enquire
+      </a>
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-haspopup="dialog"
+        aria-controls="navigation-drawer"
+        aria-expanded="false"
+        hidden
+      >
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menu
+      </button>
+      <details class="nav-fallback">
+        <summary>Browse</summary>
+        <nav aria-label="Mobile navigation">
+          {[...primary, ...secondary, ['Enquire', '/contact/']].map(
+            ([label, url]) => (
+              <a href={url} aria-current={current(url) ? 'page' : undefined}>
+                {label}
+              </a>
+            ),
+          )}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+<dialog
+  id="navigation-drawer"
+  class="navigation-drawer"
+  aria-labelledby="drawer-title"
+>
+  <div class="drawer-heading">
+    <h2 id="drawer-title">Explore Herb-All</h2>
+    <button
+      type="button"
+      data-close-nav
+      autofocus
+      aria-label="Close navigation"
+    >
+      Close <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <nav aria-label="Mobile navigation">
+    <div class="drawer-primary">
+      {primary.map(([label, url]) => (
+        <a href={url} aria-current={current(url) ? 'page' : undefined}>
+          {label}
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+    <p class="eyebrow">More from Herb-All</p>
+    <div class="drawer-secondary">
+      {secondary.map(([label, url]) => (
+        <a href={url} aria-current={current(url) ? 'page' : undefined}>
+          {label}
+        </a>
+      ))}
+    </div>
+    <a class="button drawer-enquire" href="/contact/">
+      Contact & enquiries
+    </a>
+  </nav>
+</dialog>
+<script>
+  import '../scripts/navigation';
+</script>

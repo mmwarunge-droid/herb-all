@@ -39,6 +39,11 @@ jobs:
       - run: npm run db:migrate
       - run: npm run db:migrate
       - run: npm run test:commerce
+      - run: npm run test:hosting
+        env:
+          HOSTING_TEST_DATABASE_URL: postgres://herb_test:isolated_ci_only@localhost:5432/herb_all_test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:commerce:browser
+        env:
+          HOSTING_ADAPTER: vercel
       - run: npm run test:browser

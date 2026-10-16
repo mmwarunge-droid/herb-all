@@ -46,3 +46,7 @@ Declare private database/order-token/provider values through the authorized Netl
 The source adds `X-Frame-Options: DENY` and a targeted CSP (`base-uri 'self'; object-src 'none'; frame-ancestors 'none'`) to static responses and directly to API responses. It intentionally does not impose script/style/connect restrictions that would break Astro’s generated scripts, JSON-LD, inline image positioning or same-origin commerce. This is targeted frame/base/object protection, not a claim of a strict script CSP. Netlify custom static headers do not apply to Functions responses; their private no-store/noindex headers are emitted by `server/api.mjs`. The observed existing HTTPS Netlify site already supplies HSTS; no additional custom-domain preload policy is introduced. Verify effective headers after each deployment.
 
 An intentionally unconfigured deployment’s scheduled maintenance returns 204 without accessing a missing database. This is a safe no-op, not evidence that production expiry/notifications are configured. A configured database failure remains an operational error requiring investigation.
+
+## Vercel preparation (2026-10-14)
+
+See [migration status and deployment gates](VERCEL_MIGRATION.md). Vercel adapters are prepared; Hobby commercial-use and 15-minute cron restrictions block hosted preview and production cutover. No upgrade or paid resource is authorized. Keep checkout disabled. Netlify instructions below/above are legacy; no new production host is live.

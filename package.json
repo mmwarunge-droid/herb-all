@@ -23,17 +23,20 @@
     "test:commerce": "node --test --test-concurrency=1 tests/commerce/*.test.mjs",
     "test:commerce:browser": "playwright test --config playwright.commerce.config.ts",
     "catalogue:import": "node --env-file-if-exists=.env server/cli.mjs catalogue:import",
-    "images:temporary": "node scripts/optimize-temporary-images.mjs && node scripts/document-temporary-images.mjs"
+    "images:temporary": "node scripts/optimize-temporary-images.mjs && node scripts/document-temporary-images.mjs",
+    "test:hosting": "node tests/hosting/vercel.test.mjs",
+    "preview:vercel": "HOSTING_ADAPTER=vercel node --env-file-if-exists=.env server/local.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.3",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
+    "@vercel/functions": "^3.10.1",
     "astro": "^7.3.6",
     "pg": "^8.23.1",
-    "tailwindcss": "^4.3.3",
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

@@ -2,6 +2,8 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
 import { handler } from './api.mjs';
+import commerce from '../api/[...path].mjs';
+import maintenance from '../api/maintenance.mjs';
 const root = resolve('dist');
 const port = Number(process.env.PORT || 4321);
 createServer(async (req, res) => {
@@ -19,16 +21,19 @@ createServer(async (req, res) => {
         }
         chunks.push(chunk);
       }
-      const r = await handler(
-        new Request(url, {
-          method: req.method,
-          headers: req.headers,
-          body: ['GET', 'HEAD'].includes(req.method)
-            ? undefined
-            : Buffer.concat(chunks),
-        }),
-        { ip: req.socket.remoteAddress },
-      );
+      const request = new Request(url, {
+        method: req.method,
+        headers: req.headers,
+        body: ['GET', 'HEAD'].includes(req.method)
+          ? undefined
+          : Buffer.concat(chunks),
+      });
+      const r =
+        process.env.HOSTING_ADAPTER === 'vercel'
+          ? await (
+              url.pathname === '/api/maintenance' ? maintenance : commerce
+            ).fetch(request)
+          : await handler(request, { ip: req.socket.remoteAddress });
       res.writeHead(r.status, Object.fromEntries(r.headers));
       res.end(Buffer.from(await r.arrayBuffer()));
       return;

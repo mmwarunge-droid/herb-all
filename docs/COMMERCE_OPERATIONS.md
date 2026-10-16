@@ -97,3 +97,7 @@ Do not blindly cancel allegedly paid orders to free stock. Inspect pending evide
 ## Owner-approved setup
 
 See [Approved business setup — 2026-10-10](APPROVED_BUSINESS_SETUP_2026-10-10.md) for the two approved administrator emails, the explicit 63-product draft import, confirmed Pochi number and delivery versus Rongai farm collection terms. The payee and physical stock counts still require verification; importing drafts does not open checkout.
+
+## Vercel preparation (2026-10-14)
+
+See [migration status and deployment gates](VERCEL_MIGRATION.md). Vercel adapters are prepared; Hobby commercial-use and 15-minute cron restrictions block hosted preview and production cutover. No upgrade or paid resource is authorized. Keep checkout disabled. Netlify instructions below/above are legacy; no new production host is live.

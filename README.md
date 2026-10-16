@@ -61,3 +61,7 @@ See [image inventory](docs/IMAGE_INVENTORY.md), [factual review](docs/FOUNDER_FA
 Read [commerce operations](docs/COMMERCE_OPERATIONS.md) before enabling the Shop in production. This covers database migrations, silent initial administrator provisioning, account recovery, products/stock, Pochi verification, delivery quotations, notifications and release gates. No production products or payment details are seeded. The existing Markdown catalogue is educational; purchasable products come from PostgreSQL.
 
 Run `npm run db:migrate`, `npm run admin:create -- <email>`, then `npm run preview:commerce` with a privately configured `.env`. `npm run preview` serves static pages only. Commerce tests require a dedicated migrated database whose name ends in `herb_all_test`: `npm run test:commerce`, then `npm run test:commerce:browser`. These tests truncate that test database; never point them at production. Both browser suites start a server on port 4321; run them sequentially.
+
+## Vercel preparation (2026-10-14)
+
+See [migration status and deployment gates](docs/VERCEL_MIGRATION.md). Vercel adapters are prepared; Hobby commercial-use and 15-minute cron restrictions block hosted preview and production cutover. No upgrade or paid resource is authorized. Keep checkout disabled. Netlify instructions below/above are legacy; no new production host is live.

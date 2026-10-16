@@ -1,18 +1,23 @@
 const env = import.meta.env;
+if (process.env.VERCEL_ENV === 'production' && !env.PUBLIC_SITE_URL) {
+  throw new Error(
+    'Configure PUBLIC_SITE_URL for the approved production domain before building.',
+  );
+}
 export const site = {
   siteName: 'Herb-All',
   siteDescription:
     'Explore Herb-All botanical products, seedlings, garden visits and practical plant knowledge with founder David Muriu Warunge in Ongata Rongai, Kenya.',
-  siteUrl:
-    env.PUBLIC_SITE_URL ||
-    (process.env.CONTEXT === 'production' ? process.env.URL : undefined) ||
-    'https://herb-all.example',
+  siteUrl: env.PUBLIC_SITE_URL || 'https://herb-all.example',
   email: env.PUBLIC_BUSINESS_EMAIL ?? 'dwmuriu725@gmail.com',
   phone: env.PUBLIC_PHONE_NUMBER ?? '+254722603819',
   whatsapp: env.PUBLIC_WHATSAPP_NUMBER ?? '+254722603819',
   facebook: env.PUBLIC_FACEBOOK_URL || '',
   instagram: env.PUBLIC_INSTAGRAM_URL || '',
-  netlifyFormEnabled: env.PUBLIC_ENABLE_NETLIFY_FORM === 'true',
+  netlifyFormEnabled:
+    !process.env.VERCEL &&
+    !process.env.VERCEL_ENV &&
+    env.PUBLIC_ENABLE_NETLIFY_FORM === 'true',
   defaultSocialImage: '/images/social.jpg',
   organization: { name: 'Herb-All' },
 };

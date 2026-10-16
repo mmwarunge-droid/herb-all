@@ -31,3 +31,6 @@ AGENTS.md
 playwright-report/
 test-results/
 .sites-runtime/
+
+# Vercel local project settings, environments and build output
+.vercel/

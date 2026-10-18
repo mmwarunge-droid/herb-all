@@ -1,0 +1,45 @@
+---
+import Card from './Card.astro';
+import { publishedProducts, publishedSeedlings } from '../utils/content';
+const products = await publishedProducts();
+const seedlings = await publishedSeedlings();
+---
+
+<header class="container page-heading">
+  <p class="eyebrow">Informational catalogue · availability by enquiry</p>
+  <h1>Plants, seedlings & botanical products</h1>
+  <p>
+    Online ordering is temporarily unavailable. Please contact Herb-All to
+    confirm current availability.
+  </p>
+  <p>
+    Explore our published plant and product profiles below. These are
+    informational examples, not live inventory, stock quantities or confirmed
+    prices. Representative photographs do not show current farm stock.
+  </p>
+  <a class="button" href="/contact/?topic=Products%20%26%20seedlings">
+    Enquire about availability
+  </a>
+</header>
+<section
+  class="container catalogue-section"
+  aria-labelledby="catalogue-products"
+>
+  <h2 id="catalogue-products">Herbal products</h2>
+  <div class="card-grid">
+    {products.map((entry) => (
+      <Card entry={entry} />
+    ))}
+  </div>
+</section>
+<section
+  class="container catalogue-section"
+  aria-labelledby="catalogue-seedlings"
+>
+  <h2 id="catalogue-seedlings">Seedlings & growing profiles</h2>
+  <div class="card-grid">
+    {seedlings.map((entry) => (
+      <Card entry={entry} />
+    ))}
+  </div>
+</section>

@@ -42,3 +42,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:commerce:browser
       - run: npm run test:browser
+      - run: npm run build:static
+        env:
+          PUBLIC_SITE_URL: https://herb-all.example
+      - run: npm run test:static:browser

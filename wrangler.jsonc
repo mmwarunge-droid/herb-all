@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "herb-all-public",
+  "account_id": "53db5b4ecfa4667727ed603a8e8c4db9",
+  "main": "cloudflare/worker.mjs",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": true,
+  "build": { "command": "npm run build:static" },
+  "preview_urls": false,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api", "/api/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+}

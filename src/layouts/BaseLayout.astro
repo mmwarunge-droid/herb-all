@@ -4,7 +4,7 @@ import SEO from '../components/SEO.astro';
 import Navigation from '../components/Navigation.astro';
 import JsonLd from '../components/JsonLd.astro';
 import SocialLinks from '../components/SocialLinks.astro';
-import { site, socialLinks } from '../config/site';
+import { site, socialLinks, frontendOnly } from '../config/site';
 import { founder } from '../config/brand';
 interface Props {
   title: string;
@@ -48,8 +48,10 @@ interface Props {
         </div>
         <div>
           <strong>Explore</strong>
-          <a href="/shop/">Shop live products</a>
-          <a href="/order/">Track an order</a>
+          <a href="/shop/">
+            {frontendOnly ? 'Explore the catalogue' : 'Shop live products'}
+          </a>
+          {!frontendOnly && <a href="/order/">Track an order</a>}
           <a href="/products/">Herbal products</a>
           <a href="/seedlings/">Seedlings</a>
           <a href="/learn/">Knowledge hub</a>
@@ -94,5 +96,6 @@ interface Props {
 </html>
 
 <script>
-  import '../scripts/cart-count';
+  if (import.meta.env.PUBLIC_FRONTEND_ONLY !== 'true')
+    import('../scripts/cart-count');
 </script>

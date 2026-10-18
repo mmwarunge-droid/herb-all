@@ -1,0 +1,34 @@
+---
+interface Props {
+  kind: 'cart' | 'checkout' | 'admin' | 'order';
+}
+const { kind } = Astro.props;
+const titles = {
+  cart: 'Online cart is temporarily unavailable',
+  checkout: 'Online ordering is temporarily unavailable',
+  admin: 'Administration is temporarily unavailable',
+  order: 'Online order tracking is temporarily unavailable',
+};
+---
+
+<section class="container page-heading">
+  <p class="eyebrow">Herb-All</p>
+  <h1>{titles[kind]}</h1>
+  <p>
+    Online ordering is temporarily unavailable. Please contact Herb-All to
+    confirm current availability.
+  </p>
+  <p>
+    {kind === 'admin'
+      ? 'Administrator sign-in is unavailable at present. Existing accounts have not been replaced.'
+      : 'No order, stock reservation or payment can be submitted through this website. For an existing order, contact Herb-All directly; do not share your private tracking key.'}
+  </p>
+  <div class="actions">
+    <a class="button" href="/contact/">
+      Contact & enquiries
+    </a>
+    <a class="button outline" href="/shop/">
+      Explore the catalogue
+    </a>
+  </div>
+</section>

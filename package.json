@@ -23,7 +23,9 @@
     "test:commerce": "node --test --test-concurrency=1 tests/commerce/*.test.mjs",
     "test:commerce:browser": "playwright test --config playwright.commerce.config.ts",
     "catalogue:import": "node --env-file-if-exists=.env server/cli.mjs catalogue:import",
-    "images:temporary": "node scripts/optimize-temporary-images.mjs && node scripts/document-temporary-images.mjs"
+    "images:temporary": "node scripts/optimize-temporary-images.mjs && node scripts/document-temporary-images.mjs",
+    "build:static": "PUBLIC_FRONTEND_ONLY=true COMMERCE_CHECKOUT_ENABLED=false astro build && node scripts/alias-sitemap.mjs && node scripts/verify-static.mjs",
+    "test:static:browser": "playwright test --config playwright.static.config.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.3",
@@ -32,8 +34,8 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.6",
     "pg": "^8.23.1",
-    "tailwindcss": "^4.3.3",
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
@@ -41,7 +43,8 @@
     "@playwright/test": "^1.63.0",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.151.1"
   },
   "engines": {
     "node": ">=22.12.0"

@@ -31,3 +31,7 @@ AGENTS.md
 playwright-report/
 test-results/
 .sites-runtime/
+
+# Local Cloudflare authentication/build state
+.wrangler/
+.dev.vars*

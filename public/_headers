@@ -1,0 +1,22 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+  Content-Security-Policy: base-uri 'self'; object-src 'none'; frame-ancestors 'none'
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=86400
+/admin/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+/cart/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+/checkout/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
+/order/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex

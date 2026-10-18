@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { site } from './src/config/site';
 export default defineConfig({
-  site: site.siteUrl,
+  site: process.env.PUBLIC_SITE_URL || site.siteUrl,
   output: 'static',
   trailingSlash: 'always',
   integrations: [

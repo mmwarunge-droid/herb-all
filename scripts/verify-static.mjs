@@ -38,3 +38,32 @@ assert.ok(
 console.log(
   `Static safety scan passed: ${files.length} files; no secret patterns or Netlify origin; commerce forms absent.`,
 );
+
+const expectedOrigin = process.env.PUBLIC_SITE_URL;
+assert.ok(
+  expectedOrigin && expectedOrigin.startsWith('https://'),
+  'An explicit HTTPS origin is required',
+);
+for (const f of [
+  'sitemap.xml',
+  'sitemap-index.xml',
+  'sitemap-0.xml',
+  'robots.txt',
+  'rss.xml',
+]) {
+  const text = readFileSync('dist/' + f, 'utf8');
+  assert.ok(text.includes(expectedOrigin), `Wrong SEO origin: ${f}`);
+  if (expectedOrigin !== 'https://herb-all.example')
+    assert.ok(!text.includes('herb-all.example'), `Example origin: ${f}`);
+}
+for (const f of files.filter((f) => f.endsWith('.html'))) {
+  const text = readFileSync(f, 'utf8');
+  assert.ok(
+    text.includes('rel="canonical" href="' + expectedOrigin + '/'),
+    `Wrong canonical: ${f}`,
+  );
+}
+console.log(
+  'Canonical, sitemap, robots and RSS origins verified:',
+  expectedOrigin,
+);

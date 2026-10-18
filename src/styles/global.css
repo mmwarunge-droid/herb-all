@@ -1535,6 +1535,7 @@ select {
   align-self: start;
 }
 .image-credit {
+  overflow-wrap: anywhere;
   padding-block: 1.5rem;
   border-bottom: 1px solid #deded2;
 }
